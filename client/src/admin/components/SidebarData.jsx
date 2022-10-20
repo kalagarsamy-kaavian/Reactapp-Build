@@ -19,8 +19,8 @@ export const SidebarData = [
         title: 'ProjectStatus',
         path: '/admin/ProjectStatus',
         icon: <AssignmentIndOutlinedIcon />,
-        iconClosed: <RiIcons.RiArrowDownSFill />,
-        iconOpened: <RiIcons.RiArrowUpSFill />,
+        // iconClosed: <RiIcons.RiArrowDownSFill />,
+        // iconOpened: <RiIcons.RiArrowUpSFill />,
 
 
         subNav: [
@@ -47,6 +47,11 @@ export const SidebarData = [
         title: 'RemoveEmployee',
         path: '/admin/RemoveEmployee',
         icon: <Io5Icons.IoPersonRemove />
+    },
+    {
+        title: 'Search',
+        path: '/admin/Search',
+        icon: <BiIcons.BiTask />
     },
     {
         title: 'About',

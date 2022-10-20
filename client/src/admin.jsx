@@ -9,12 +9,12 @@ function App(){
         <div className="App">
             <Header/>
             
+
             <div className="barline">
                 <Sidebar>
                     <Outlet/>
                     </Sidebar>
                     <Footer/>
-
             </div>
             
         </div>

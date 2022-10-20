@@ -2,12 +2,12 @@ import React from 'react';
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-// import Button from "@mui/material/Button";
+import Button from "@mui/material/Button";
 import Search from './Search';
 import logo from "./logo.png";
 import {BiLogOut,BiUser} from "react-icons/bi";
 import LogOutbtn from './LogOutbtn';
-// import { GrUserAdmin } from "react-icons/gr";
+import { GrUserAdmin } from "react-icons/gr";
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 
 

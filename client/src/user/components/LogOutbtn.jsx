@@ -3,7 +3,7 @@ import React from 'react'
 // import Button from "@mui/material/Button";
 
 
-export const LogOutbtn = (props) => {
+export const LogOut = (props) => {
   return (
     <form action='/LogOut' method='get'>
         <label htmlFor="Header-logout">
@@ -17,4 +17,4 @@ export const LogOutbtn = (props) => {
 }
 
 
-export default LogOutbtn;
+export default LogOut;

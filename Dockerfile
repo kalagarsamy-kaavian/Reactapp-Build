@@ -25,4 +25,4 @@ EXPOSE 3002
 # TODO: only dist and node_modules folders are needed after build
 # could delete these for smaller prod image
 
-CMD sh -c 'cd $WORKDIR/app/server && node ./index.js'
+CMD sh -c 'cd $WORKDIR/app/server && node ./server.js'

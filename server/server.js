@@ -26,6 +26,8 @@ app.delete('/emprecord',(req,res)=>{
     newEmployee.deleteOne({"Empid": data.data}).then(data=>res.json(data));
     console.log('deleted')
 })
+
+
 app.post('/login',async(req,res)=>{
     const{user,pass}=req.body;   
     // const db=getDB();
@@ -144,6 +146,11 @@ newModel.find({Teamname:Teamname}).then(todoItems=>{
     });
 })
 
+// app.get('/pms/Filter', (req, res) => {
+// 	newEmployee.find({}).then(data => {
+// 		res.json(data);
+// 	});
+// });
 app.get('/pms/Filter', (req, res) => {
 	newEmployee.find({}).then(data => {
 		res.json(data);

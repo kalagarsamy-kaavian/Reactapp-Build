@@ -1,0 +1,75 @@
+.searchtable{
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 1.50em;
+    padding-left: 210px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+}
+.searchtable thead tr{
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+}
+.searchtable th,
+.searchtable td{
+    padding: 12px 15px;
+}
+.searchtable tbody{
+    border-bottom: 1px solid #dddddd;
+    
+}
+/* .Atable tbody tr:hover{
+    background:blue;
+    color: #dddddd;
+} */
+.searchtable tbody tr:nth-of-type(even){
+    background-color: #f3f3f3;
+}
+.searchtable tbody tr:nth-last-of-type{
+    border-bottom: 10px solid #009879;
+}
+.searchtable tbody tr.active-row{
+    font-weight: bold;
+    color: #009879;
+}
+/* .Atable table {
+    font-family: sans-serif;
+    width:max-content;
+    padding-left: 300px;
+    border: #333;
+    position: static;
+    table-layout: fixed;
+   
+
+}
+
+.Atable table th {
+    background: rgb(15, 15, 15);
+    color: #fff;
+    column-gap: 10px;
+
+
+
+}
+
+.Atable table th,
+td {
+    font-size: 1.4rem;
+    
+}
+
+.Atable table tbody {
+    background-color: #eee;
+    color: rgb(57, 57, 57);
+
+} */
+
+filter btn/
+.filteralign {
+    width: 100%;
+    column-gap: 100px;
+    display: flex;
+    padding-left: 470px;
+}

@@ -1,0 +1,33 @@
+.header {
+    background: #0e0ef3;
+
+    @media screen and (max-width:1100px) {
+        font-size: 1.5rem !important;
+        margin-right: 1em;
+        margin-left: 1em;
+    }
+}
+
+.huser {
+    font-size: medium;
+    display: flex;
+    padding-left: 0px;
+}
+
+.usericon {
+    padding-right: 0;
+    display: flex;
+}
+
+.himg {
+    padding-left: 147px;
+}
+
+.htitlename {
+    color: rgb(0, 0, 0);
+    float: right;
+    padding-left: 100px;
+    font: bold;
+    font-size: xx-large;
+
+}

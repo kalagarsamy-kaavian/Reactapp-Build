@@ -9,14 +9,14 @@ import './Home.css';
 	// 	fetch('http://localhost:3001/pms/Hometl').then(res => res.json()).then(data => setItem(data));
 	// }, []);
 	return <div>
-			<div className="heading">
+			<div className="h_heading">
 			<h1>PROJECT  MANAGEMENT  SYSTEM</h1>
 			<h1>PROJECT  MANAGEMENT  SYSTEM</h1>
 			</div>
 			
 			<div className="homesection">
 			<img class="wave" src={waveimg}/>
-				<div className="contentBox"> 
+				<div className="h_contentBox"> 
 					<h1> Learning Made Easy</h1>
 					<p>Project Management System is designed to help businesses and individuals track projects, tasks, and schedules. It's a great way to stay organized and ensure that your team remains on-task</p>
 					

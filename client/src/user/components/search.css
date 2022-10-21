@@ -1,0 +1,26 @@
+.pushable {
+    background: rgb(5, 1, 47);
+    border-radius: 8px;
+    border: none;
+    padding: 10;
+    cursor: pointer;
+    outline-offset: 4px;
+    
+  }
+  .front {
+    display: block;
+    padding: 12px 32px;
+    border-radius: 12px;
+    font-size: 0.5rem;
+    background: rgb(56, 30, 200);
+    color: white;
+    transform: translateY(-6px);
+    font-size: small;
+  }
+  
+  .pushable:active .front {
+    transform: translateY(-2px);
+  }
+  .btn {
+    font-size: large;
+  }

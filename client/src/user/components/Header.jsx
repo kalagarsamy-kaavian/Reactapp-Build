@@ -1,4 +1,5 @@
 import React from 'react';
+import "./header.css";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
@@ -25,10 +26,10 @@ function Header() {
                         
                     </IconButton> */}
 
-                <h1 className='user'>USER<AccountCircleOutlinedIcon className='usericon'/></h1>    
-                <img className='img' src={logo} alt="logo"></img>
-                <Typography className='titlename' variant='h6' component="div" sx={{ flexGrow: 1 }}><h1>Project Management System</h1></Typography>
-                <Search />
+                <h1 className='huser'>USER<AccountCircleOutlinedIcon className='usericon'/></h1>    
+                <img className='himg' src={logo} alt="logo"></img>
+                <Typography className='htitlename' variant='h6' component="div" sx={{ flexGrow: 1 }}>Project Management System</Typography>
+                {/* <Search /> */}
                 <LogOutbtn/>
                 {/* <Button color="inherit">LogOut<BiLogOut className='logout'/></Button> */}
             </Toolbar>

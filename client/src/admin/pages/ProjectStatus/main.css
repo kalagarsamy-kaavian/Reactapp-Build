@@ -1,0 +1,203 @@
+.pteamname {
+  width: 150px;
+  height: 50px;
+  padding-right: 25px;
+  padding-top: 35px;
+  padding-bottom: 25px;
+  padding-left: 5px;
+  color: white;
+  background: rgb(3, 8, 153);
+  border-radius: 10px;
+  /* position:relative; */
+  right: 300px;
+  font-size: large;
+  /* color: #fff; */
+}
+
+.pteamname:hover {
+  background: rgb(3, 95, 194);
+  cursor: pointer;
+}
+
+.pteamname h7 {
+  position:relative;
+  padding-left: 10px;
+  bottom: -8px;
+}
+
+.teamtabel {
+  padding-left: 500px;
+  padding-top: 150px;
+}
+
+
+.teamtabel th {
+  width: fit-content;
+  background: rgb(15, 15, 15);
+  color: #fff;
+  font-size: x-large;
+  position: relative;
+  height: 50px;
+}
+
+.teamtabel th:hover {
+  background: white;
+  color: black;
+}
+
+.teamtabel td {
+  background: #eee;
+  color: rgb(57, 57, 57);
+  font-size: x-large;
+  position: relative;
+  height: 50px;
+}
+
+.teamtabel td:hover {
+  background: blue;
+  color: #eee;
+}
+
+.a-btn {
+  overflow: hidden;
+  padding-left: 700px;
+}
+
+
+.button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: rgb(0, 0, 172);
+  border: none;
+  color: #eee;
+  text-align: center;
+  font-size: 18px;
+  padding: 20px;
+  width: 150px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.title {
+  font-size: large;
+  padding-top: 4px;
+  padding-right: 30px;
+  padding-left: 40px;
+
+}
+
+.platform {
+  font-size: large;
+  padding-top: 4px;
+  padding-right: 30px;
+  padding-left: 40px;
+
+}
+
+.tname {
+  font-size: large;
+  padding-top: 4px;
+  padding-right: 30px;
+  padding-left: 40px;
+
+
+}
+
+.description {
+  font-size: large;
+  padding-top: 4px;
+  padding-right: 30px;
+  padding-left: 40px;
+
+}
+
+.sdate {
+  font-size: large;
+
+}
+
+.sdate:hover {
+  cursor: pointer;
+
+
+}
+
+.edate {
+  font-size: large;
+
+}
+
+.edate {
+  cursor: pointer;
+
+
+}
+
+.duration {
+  font-size: large;
+  /* padding-top:4px;
+    padding-right: 70px;
+    padding-left: 40px; */
+
+}
+
+.label {
+  display: block;
+  align-self: center;
+  width: fit-content;
+
+}
+
+.allocate {
+  position: absolute;
+  align: inline-block;
+  right: 650px;
+  /* bottom:400px; */
+  width: 300px;
+  /* height: fit-content; */
+  border: 3px solid #0e0909;
+  background: rgb(41, 3, 211);
+  color: #0e0909;
+}
+/* .mainoverall {
+  position:relative;
+  top:140px;
+
+} */
+
+select {
+  position: relative;
+  left: 200px;
+  font-size: large;
+}
+
+select:hover {
+  cursor: pointer;
+  background: #eee;
+}

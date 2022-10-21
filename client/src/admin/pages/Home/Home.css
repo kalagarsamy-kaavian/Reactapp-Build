@@ -4,7 +4,7 @@
     box-sizing: border-box;
     font-family: 'Poppins',sans-serif;
 }
-.heading{
+.h_heading{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,17 +15,17 @@
 
 }
 /* Pms style */
-.heading h1{
+.h_heading h1{
     position: absolute;
     color: rgb(19, 19, 19);
     transform: translate(-50%,-50%);
     font-size: 3em;
 }
-.heading h1:nth-child(1){
+.h_heading h1:nth-child(1){
     color: transparent;
     -webkit-text-stroke: 2px #03a9f4;
 }
-.heading h1:nth-child(2){
+.h_heading h1:nth-child(2){
     color: #03a9f4;
     animation: animate 4s ease-in-out infinite;
 }
@@ -47,16 +47,16 @@
      align-items: center;
      /* background-image: image(); */
 }
-.contentBox{
+.h_contentBox{
     width: 40%;
     /* background-color: orange; */
     padding-left: 1em;
 }
-.contentBox h1{
+.h_contentBox h1{
     font-size: 2.5rem;
     color: #301934;
 }
-.contentBox p{
+.h_contentBox p{
     font-size: 1.2rem;
     margin: 1em 0;
     font-family: 'Poppins',sans-serif;

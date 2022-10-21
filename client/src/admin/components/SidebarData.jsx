@@ -51,7 +51,7 @@ export const SidebarData = [
     {
         title: 'Search',
         path: '/admin/Search',
-        icon: <BiIcons.BiTask />
+        icon: <BiIcons.BiSearch />
     },
     {
         title: 'About',

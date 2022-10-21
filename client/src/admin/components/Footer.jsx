@@ -1,14 +1,15 @@
 import React from 'react';
 import CopyrightOutlinedIcon from '@mui/icons-material/CopyrightOutlined';
+import "./Footer.css";
 
 function Footer() {
     return (
         <div className='main-footer'>
             <div className='bottom-row'>
-                <p className='call'>
-                    <h3 className='bottom'><CopyrightOutlinedIcon className='copyright'/>:{new Date().getFullYear()}|Project Managemnet System | ALL Rights Reserved</h3>
+                <h1 className='call'>
+                    <h0 className='fbottom'><CopyrightOutlinedIcon className='copyright'/>:{new Date().getFullYear()}|Project Managemnet System | ALL Rights Reserved</h0>
 
-                </p>
+                </h1>
 
             </div>
 

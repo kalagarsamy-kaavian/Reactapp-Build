@@ -9,9 +9,10 @@
     justify-content: center;
     align-items: center;
     min-height: 20vh;
-    position: relative;
-    padding-top: 20vh;
-    padding-left: 10vh;
+    position: static;
+    padding-top: 10vh;
+    padding-left: 50vh;
+    left:150px;
 
 }
 /* Pms style */

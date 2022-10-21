@@ -1,4 +1,4 @@
-.SidebarLink {
+/* /* .SidebarLink {
   display: flex;
   color: #e1e9fc;
   justify-content: space-between;
@@ -35,8 +35,8 @@
   background: #0080ff;
   cursor: pointer;
 
-}
-.Nav {
+} */
+/* .Nav {
 	  background: #0000ff;
 	  height: 80px;
 	  display: flex;
@@ -65,15 +65,8 @@
 	  top: 0;
 	  transition: 350ms;
 	  z-index: 10;
-}
-.titlename {
-  color: azure;
-  float: right;
-  padding-left: 80px;
-  font:bold;   
-  font-size: large;
+} */
 
-}
 
 .search {
   padding-left: 5px;
@@ -83,47 +76,14 @@
   background:#4848c0;
   cursor: pointer;
 }
-.img {
-  padding-left: 147px;
-}
+
 
 /* .ToolBar {
   color:rgb(16, 5, 225);
 } */
-.header {
-  background: #0000ff;
 
-  @media screen and (max-width:1100px) {
-    font-size:1.5rem !important;
-    margin-right: 1em;
-    margin-left:1em;
 
-    
-  }
-}
 
-.admin {
-  font-size:medium;
-  display: flex;
-  padding-left: 0px;
-}
-.Adminlogo {
-  padding-right: 0;
-  display: flex;
-}
-
-.main-footer {
-  color:#fdfafd;
-  background: #0000ff;
-  position: sticky;
-  top: 93vh;
-  
-}
-
-.call {
-  padding-left: 520px;
-  
-}
 .page-container {
   display: flex;
   flex-direction: column;
@@ -134,12 +94,7 @@
   flex: 1;
 }
 
-.bottom-row {
-  display: flex;
-  height: 65px;
-  align-items: center;
-  font:lighter
-}
+
 .home {
   font-size: medium;
 }
@@ -154,17 +109,14 @@
   background: #0000ff;
 }
 
-.copyright {
-  display: flex;
 
-}
 
 /* .header-wrap {
   background: #0000ff;
   position: ;
 } */
 
-.pushable {
+/* .pushable {
   background: rgb(5, 1, 47);
   border-radius: 8px;
   border: none;
@@ -189,110 +141,22 @@
 }
 .btn {
   font-size: large;
-}
-
-.bottom {
-  display: flex;
-}
-
-.heading {
-  width: 104%;
-  padding-left: 730px;
-  font-size: xx-large;
-  background:aqua;
-  color: #e30808;
-  -webkit-text-stroke: 0.1vw #e30808;;
-
-}
+} */
 
 
 
-.intro {
-  font-style: oblique;
-  /* padding-top: 20px; */
-  background: maroon;
-  color: #e1e9fc;
-  width: fit-content;
-  border-style:double;
-  border-color: #00040d;
-}
 
-.list {
-  padding-top: 20px;
-  padding-left: 130px;
-  font-style: oblique;
-  color: #00040d;
-  width: fit-content;
-}
 
-.para {
-  padding-top: 20px;
-  font-style: oblique;
-  /* background: maroon; */
-  
-}
 
-.texts {
-  float: right;
-  padding-right: 130px;
-}
 
-.blueteam {
-  /* padding-left: 140px; */
-  justify-content: center;
-  
-  /* background:aqua; */
-  width: fit-content;
+
+
+
+
+
+
+
+
+
+
  
-  display: flex;
-  
-}
-
-h25 {
-  font-size: 4vw;
-  color: aqua;
-  -webkit-text-stroke: 0.12vw rgba(101, 141, 210, 0);
-  position: relative;
-  text-transform: uppercase;
-}
-
-h25::before{
-  content: attr(data-text);
-  position: absolute;
-  top: 0%;
-  left: 0%;
-  width: 0%;
-  height: 100%;
-  color: #0000ff;
-  -webkit-text-stroke: 0vw aquamarine;
-  border-right: 0px solid #0000ff;
-  overflow: hidden;
-  animation: animate 6s linear infinite;
-}
-
-@keyframes animate {
-  0%
-  {
-    width: 0%;
-  }
-  70%
-  {
-    width: 100%;
-  }
-  
-}
-
-
-
-.about_wrap {
-  background-image:url(https://trbahadurpur.com/wp-content/uploads/2021/01/background-19.jpg) ;
-  background-size: cover;
-  height: 100vh;
-  margin-top: 0px;
-  font-size: 50px;
-  background-repeat: no-repeat;
-  font-size: large;
-
-}
-
-

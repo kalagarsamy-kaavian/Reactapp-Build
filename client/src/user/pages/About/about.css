@@ -1,0 +1,94 @@
+.heading {
+    border-top-width: 20px;
+    padding-left: 730px;
+    /* width:fit-content; */
+    font-size: large;
+    background: rgb(0, 34, 255);
+    color: #e30808;
+    -webkit-text-stroke: 0.1vw #e30808;
+}
+
+.about_wrap {
+    background-image: url(https://trbahadurpur.com/wp-content/uploads/2021/01/background-19.jpg);
+    background-size:cover;
+    height: 100vh;
+    margin-top: 0px;
+    font-size: 50px;
+    background-repeat: no-repeat;
+    font-size: large;
+
+}
+
+.texts {
+    float: right;
+    padding-right: 130px;
+}
+
+.blueteam {
+    /* padding-left: 140px; */
+    justify-content: center;
+
+    /* background:aqua; */
+    width: fit-content;
+
+    display: flex;
+
+}
+
+.intro {
+    font-style: oblique;
+    /* padding-top: 20px; */
+    /* background: maroon; */
+    color: black;
+    width: fit-content;
+    /* border-style: double; */
+    /* border-color: #00040d; */
+}
+
+.list {
+    padding-top: 20px;
+    padding-left: 130px;
+    font-style: oblique;
+    color: #00040d;
+    width: fit-content;
+}
+
+.para {
+    padding-top: 20px;
+    font-style: oblique;
+    /* background: maroon; */
+
+}
+
+h2 {
+    font-size: 4vw;
+    color: aqua;
+    -webkit-text-stroke: 0.12vw rgba(101, 141, 210, 0);
+    position: relative;
+    text-transform: uppercase;
+}
+
+h2::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 0%;
+    height: 100%;
+    color: #0000ff;
+    -webkit-text-stroke: 0vw aquamarine;
+    border-right: 0px solid #0000ff;
+    overflow: hidden;
+    animation: animate 6s linear infinite;
+}
+
+@keyframes animate {
+    0% {
+        width: 0%;
+    }
+
+    70% {
+        width: 100%;
+    }
+
+}

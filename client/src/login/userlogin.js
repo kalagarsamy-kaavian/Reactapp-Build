@@ -4,7 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import bgimg from './bbb.svg'
 import avatarimg from './pic.svg';
-import waveimg from './wavee.png'
+// import waveimg from './wavee.png'
 import './Tllogin.css';
 import{Icon} from 'react-icons-kit'
 import {eyeOff} from 'react-icons-kit/feather/eyeOff'
@@ -59,7 +59,7 @@ export default function Userlogin() {
             })
     }
     return (<div>
-        <img class="wave" src={waveimg} />
+        {/* <img class="wave" src={waveimg} /> */}
         <div class="container">
             <div class="img">
                 <img src={bgimg} />

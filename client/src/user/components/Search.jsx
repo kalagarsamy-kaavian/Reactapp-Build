@@ -1,5 +1,6 @@
 import * as CgIcons from "react-icons/cg";
 import React from 'react';
+import "./search.css";
 // import Button from "@mui/material/Button";
 
 function Search() {

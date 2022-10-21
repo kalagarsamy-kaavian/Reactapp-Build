@@ -1,0 +1,44 @@
+.uptable {
+    border: 3px solid black;
+    width: fit-content;
+    background: blue;
+}
+.updateoverall{
+    padding-left: 600px;
+    padding-top: 75px;
+    
+}
+/* .head{
+    width: 100%;
+    background: #000a12;
+    color: white;
+    padding: 10px 0px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+} */
+.upbtn {
+    background: blue;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    color: white;
+}
+.upbtn:hover{
+    background: rgb(57, 57, 160);
+}
+tbody td{
+    display: flex;
+    font-size: large;
+    color: white;
+}
+tbody input{
+    padding-top: 10px;
+    padding-left: 150px;
+}
+thead h2{
+    font-size: large;
+    align-items: center;
+    padding-left: 70px;
+}

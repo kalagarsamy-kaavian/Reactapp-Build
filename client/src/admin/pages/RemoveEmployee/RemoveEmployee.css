@@ -1,0 +1,20 @@
+.rem {
+    padding-left: 500px;
+    padding-top: 100px;
+    
+}
+
+.deltabel {
+    width: fit-content;
+    border: 3px solid black;
+}
+
+.delbtn {
+    font-size: large;
+    border: 2px solid blue;
+    background: blue;
+}
+.delbtn:hover {
+    background: rgb(55, 55, 209);
+    color: white;
+}

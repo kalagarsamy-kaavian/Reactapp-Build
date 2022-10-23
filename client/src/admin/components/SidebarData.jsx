@@ -21,22 +21,6 @@ export const SidebarData = [
         icon: <AssignmentIndOutlinedIcon />,
         // iconClosed: <RiIcons.RiArrowDownSFill />,
         // iconOpened: <RiIcons.RiArrowUpSFill />,
-
-
-        subNav: [
-            {
-                title: 'Completed',
-                path: '/admin/ProjectStatus/Completed',
-                icon: <FaIcons.FaRegThumbsUp />,
-                cName: 'sub-nav'
-            },
-            {
-                title: 'OnProcess',
-                path: '/admin/ProjectStatus/OnProcess',
-                icon: <EngineeringOutlinedIcon />,
-                cName: 'sub-nav'
-            },
-        ]
     },
     {
         title: 'UpdateEmpoyee',

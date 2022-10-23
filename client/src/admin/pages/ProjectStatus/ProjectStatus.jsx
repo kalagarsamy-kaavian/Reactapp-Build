@@ -33,6 +33,7 @@ export default function Projectstatus() {
             .then(res => res.json())
             .then(datas => {
                 setTodo(datas)
+                console.log(datas)
             })
         // fetch('http://localhost:3002/special').then(res=>res.json()).then(data=>(setDrop(data)))
     }, [data]);

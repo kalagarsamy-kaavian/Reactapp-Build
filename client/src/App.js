@@ -17,7 +17,6 @@ import Assign from './admin/pages/ProjectStatus/assign';
 import Teamdetail from './admin/pages/ProjectStatus/teamdetails';
 import Rmemplist from './admin/pages/RemoveEmployee/RemoveEmployee';
 
-
 import User from './user/pages/user';
 import Homepa from './user/pages/Home/Home';
 import History from './user/pages/ProjectHistory/ProjectHistory';
@@ -43,29 +42,29 @@ function App() {
          
           <Routes>
             <Route path='/' element={<Userlogin />}></Route>
-          <Route path='/user' element={<UserSessionRoute element={User} />}></Route>
-           <Route path='/Home' element={<Homepa />}></Route>
-            <Route path='/ProjectHistory' element={<History />}></Route>
-            <Route path='/PersonelDetails' element={<Employee/>}></Route>
-            <Route path='/update'element={<Update/>}></Route>
-            <Route path='/About' element={<About/>}></Route>
+            <Route path='/user' element={<UserSessionRoute element={User} />}>
+            <Route path='/user/Home' element={<Homepa />}></Route>
+            <Route path='/user/ProjectHistory' element={<History />}></Route>
+            <Route path='/user/PersonelDetails' element={<Employee/>}></Route>
+            <Route path='/user/update'element={<Update/>}></Route>
+            <Route path='/user/About' element={<About/>}></Route>
             <Route path='/user/LogOut' element={<LogOut/>}></Route>
-            
-
+            </Route>
             {/* admin sidebar */}
             
-            <Route path='/admin' element={<UserSessionRoute element={Admin} />}> </Route>
+            <Route path='/admin' element={<UserSessionRoute element={Admin} />}>
             <Route path='/admin/Home' element={<Home />}></Route>
-            <Route path='/admin/ProjectStatus' element={<ProjectStatus />}></Route>
-            <Route path='/todo/:Teamname' element={<Teamdetail/>}></Route>
-            <Route path='/assign/:Teamname' element={<Assign/>}></Route>
+             <Route path='/admin/ProjectStatus' element={<Projectstatus />}></Route>
+            <Route path='/admin/todo/:Teamname' element={<Teamdetail/>}></Route>
+            <Route path='/admin/assign/:Teamname' element={<Assign/>}></Route>
             <Route path='/admin/UpdateEmployee' element={<Emplist/>}></Route>
-            {/* <Route path='/admin/RemoveEmployee' element={<RemoveEmployee />}></Route> */}
+          
             <Route path='/admin/About' element={<About/>}></Route>
             <Route path='/admin/Search' element={<Search/>}></Route>
             <Route path='/admin/RemoveEmployee' element={<Rmemplist/>}></Route>
             <Route path='/admin/LogOut' element={<LogOut />}></Route>
-           
+             
+            </Route>
           </Routes>
         </BrowserRouter>
         

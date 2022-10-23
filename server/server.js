@@ -62,7 +62,7 @@ app.get('/update', (req, res) => {
 app.patch('/update', (req, res) => {
     const { updateStatus } = req.body;
     console.log(updateStatus);
-    newModel.updateMany({ Teamname: updateStatus }, { $set: { Projectstatus: "ONGOING" }}).then(updateStatus => {
+    newModel.updateMany({ Teamname: updateStatus }, { $set: { Projectstatus: "COMPLETED" }}).then(updateStatus => {
         res.json(updateStatus);
     })
 })
@@ -90,7 +90,7 @@ app.post("/api/todo", (req, res) => {
    
     if(data==='Completed')
     {
-    newModel.find({$and:[{"Empstatus":"Team Leader"},{"Projectstatus":"Completed"}]}).then(data => {
+    newModel.find({$and:[{"Empstatus":"Team Leader"},{"Projectstatus":"COMPLETED"}]}).then(data => {
         res.json(data);
     })
     }
@@ -101,6 +101,7 @@ app.post("/api/todo", (req, res) => {
     else{
     newModel.find({"Empstatus":"Team Leader"}).then(todoItem=>res.json(todoItem))
 }})
+
 app.post('/details/:Teamname',(req,res)=>{
    
    
@@ -109,7 +110,7 @@ app.post('/details/:Teamname',(req,res)=>{
    
     newModel.find({"Teamname":Teamname}).then(data=>res.json(data))
 })
-app.post('/assignwork/:firstname/:secondname/:thirdname/:fourthname/:fifthname/:title/:platform/:TeamName/:Descrip/:start/:end/:duration',(req,res)=>{
+app.post('/assignwork/:firstid/:firstname/:secondid/:secondname/:thirdid/:thirdname/:fourthid/:fourthname/:fifthid/:fifthname/:title/:platform/:TeamName/:Descrip/:start/:end/:duration',(req,res)=>{
    
     // const{}=req.body;
     const{firstid,firstname,secondid,secondname,thirdid,thirdname,fourthid,fourthname,fifthid,fifthname,title,platform,TeamName,Descrip,start,end,duration}=req.params;
@@ -117,7 +118,7 @@ app.post('/assignwork/:firstname/:secondname/:thirdname/:fourthname/:fifthname/:
      console.log(title)
      console.log(secondname)
  
-    newModel.create([{"Empid":firstid,"Empname":firstname,"Teamname":TeamName,"Projectname":title,"Projectstatus":"Ongoing","Platform":platform,"Empstatus":"TEAM LEADER","Description":Descrip,"Startingdate":start,"Endingdate":end,"Duration":duration},
+    newModel.create([{"Empid":firstid,"Empname":firstname,"Teamname":TeamName,"Projectname":title,"Projectstatus":"Ongoing","Platform":platform,"Empstatus":"Team Leader","Description":Descrip,"Startingdate":start,"Endingdate":end,"Duration":duration},
 {"Empid":secondid,"Empname":secondname,"Teamname":TeamName,"Projectname":title,"Platform":platform,"Projectstatus":"Ongoing","Empstatus":"MEMBER","Description":Descrip,"Startingdate":start,"Endingdate":end,"Duration":duration},
 {"Empid":thirdid,"Empname":thirdname,"Teamname":TeamName,"Projectname":title,"Platform":platform,"Projectstatus":"Ongoing","Empstatus":"MEMBER","Description":Descrip,"Startingdate":start,"Endingdate":end,"Duration":duration},
 {"Empid":fourthid,"Empname":fourthname,"Teamname":TeamName,"Projectname":title,"Platform":platform,"Projectstatus":"Ongoing","Empstatus":"MEMBER","Description":Descrip,"Startingdate":start,"Endingdate":end,"Duration":duration},

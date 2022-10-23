@@ -9,6 +9,7 @@ function Update() {
     },[])
 
     function UpdateStatusfn(Teamname) {
+       console.log(updateStatus)
         fetch(`http://localhost:3002/Update`, { method: "PATCH", body: JSON.stringify({ updateStatus }), headers: { 'content-type': 'application/json' } })
     }
     // window.alert("Updated Sucessfully");

@@ -9,7 +9,7 @@ export default function Rmemplist(){
 	const  [data,setData]=useState('')
 	console.log(data)
 	function del(){
-	fetch(`http://localhost:3001/emprecord`,{method:'delete',body:JSON.stringify({data}),headers:{'content-type':'application/json'}}).then(data=>console.log(data));
+	fetch(`http://localhost:3002/emprecord`,{method:'delete',body:JSON.stringify({data}),headers:{'content-type':'application/json'}}).then(data=>console.log(data));
 }
 
 	return <div className='rem'><table className='deltabel'>

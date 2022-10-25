@@ -14,20 +14,21 @@ export default function Employee(){
     fetch("http://localhost:3002/employeedetail",{method:"post",body:JSON.stringify({id}),headers:{'content-type':"application/json"}})
     .then(res=>res.json())
     .then(data=>setItems(data));
+    console.log(id)
 },[id])
-         if(!localStorage.getItem('data')){
-        navigate('/');
-           }
+    //      if(!localStorage.getItem('data')){
+    //     navigate('/');
+    //        }
 
-    useEffect(()=>{
+    // useEffect(()=>{
         
-      },[logout])
+    //   },[logout])
 
-    const logoutPage=()=>{
-        // e.preventDefault();
-        localStorage.removeItem('data');
-        setLogout(true);
-    }
+    // const logoutPage=()=>{
+    //     // e.preventDefault();
+    //     localStorage.removeItem('data');
+    //     setLogout(true);
+    // }
     
 return<div><table border="5px">
         <tr>
@@ -60,7 +61,7 @@ return<div><table border="5px">
         <div className="Link">
         {/* <Link to={"/history"}>VIEW HISTORY</Link> */}
         </div>
-         <button onClick={logoutPage}>LOGOUT</button>
-         <Link to={"/update"}>Update Project Status</Link>
+         {/* <button onClick={logoutPage}>LOGOUT</button> */}
+         {/* <Link to={"/update"}>Update Project Status</Link> */}
          </div>  
         }

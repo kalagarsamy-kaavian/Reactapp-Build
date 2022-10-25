@@ -20,13 +20,50 @@ app.get('/login',(req,res)=>{
     res.send(fs.readFileSync('./login.html',{encoding:'utf-8'}))
 })
 
+// app.delete('/emprecord',(req,res)=>{
+// 	const data=req.body;
+//     console.log(data.data);
+//     newEmployee.deleteOne({"Empid": data.data}).then(data=>res.json(data));
+//     console.log('deleted')
+// })
+
+app.patch('/complete/:Teamname', (req, res) => {
+    const { Teamname} = req.params;
+    console.log(Teamname)
+    //console.log(id);
+   newModel.updateMany({Teamname:Teamname}, { $set: { Projectstatus: "COMPLETED" }}).then(updateStatus => {
+       res.json(updateStatus);
+   console.log('Btn updated')
+   })
+})
+
+app.post('/olist/:id',(req,res)=>{
+    const {id}=req.params;
+    // console.log(id)
+    newModel.find({$and:[{Empid:id},{Projectstatus:'Ongoing'}]}).then(data=>res.json(data))
+})
+
+app.post('/visible/:id',(req,res)=>{
+    const {id}=req.params;
+     console.log(id)
+    newModel.find({$and:[{Empid:id},{Projectstatus:'Ongoing'}]}).then(data=>{
+        let[first]=data;
+        console.log(first.Empstatus)
+        res.json(first.Empstatus)
+    })
+})
+
+app.get('/id',(req,res)=>{
+    newEmployee.distinct('Empid').then(data=>{res.send(data)})
+    });
+//Delete filter
 app.delete('/emprecord',(req,res)=>{
 	const data=req.body;
     console.log(data.data);
     newEmployee.deleteOne({"Empid": data.data}).then(data=>res.json(data));
+    newUser.deleteOne({"Empid":data.data}).then(data=>res.json(data));
     console.log('deleted')
 })
-
 
 app.post('/login',async(req,res)=>{
     const{user,pass}=req.body;   
@@ -50,7 +87,8 @@ app.post("/employeedetail",async(req,res)=>{
     const{id}=req.body;
     // const db=getDB();
     // const collection=db.collection("details");
-    await newEmployee.find({Empid:id}).then(data=>res.send(data))
+    console.log(id)
+    await newEmployee.find({Empid:id}).then(data=>res.json(data))
 
 })
 app.get('/update', (req, res) => {
@@ -58,7 +96,13 @@ app.get('/update', (req, res) => {
         res.json(updateStatus);
     });
 });
-
+app.delete('/emprecord',(req,res)=>{
+	const data=req.body;
+    console.log(data.data);
+    newEmployee.deleteOne({"Empid": data.data}).then(data=>res.json(data));
+    newUser.deleteOne({"Empid":data.data}).then(data=>res.json(data));
+    console.log('deleted')
+})
 app.patch('/update', (req, res) => {
     const { updateStatus } = req.body;
     console.log(updateStatus);
@@ -127,6 +171,59 @@ app.post('/assignwork/:firstid/:firstname/:secondid/:secondname/:thirdid/:thirdn
 })
 
 
+app.post('/emprecord',(req,res)=>{
+	const {mem,memt,memr,memf,meme,pn,tn,d,start,end,pco,es,descr,pt}=req.body;
+    console.log('input')
+	console.log('Inserted');
+	// const db=getdb();
+	// const collection=  db.collection('project');
+	newModel.create([{"Empname":mem,"Projectname":pn,"Teamname":tn,"Duration":d,"Startingdate":start,"Endingdate":end,"Projectstatus":pco,"Empstatus":es,"Description":descr,"Platform":pt},
+    {"Empname":memt,"Projectname":pn,"Teamname":tn,"Duration":d,"Startingdate":start,"Endingdate":end,"Projectstatus":pco,"Empstatus":es,"Description":descr,"Platform":pt},
+    {"Empname":memr,"Projectname":pn,"Teamname":tn,"Duration":d,"Startingdate":start,"Endingdate":end,"Projectstatus":pco,"Empstatus":es,"Description":descr,"Platform":pt},
+    {"Empname":memf,"Projectname":pn,"Teamname":tn,"Duration":d,"Startingdate":start,"Endingdate":end,"Projectstatus":pco,"Empstatus":es,"Description":descr,"Platform":pt},
+    {"Empname":meme,"Projectname":pn,"Teamname":tn,"Duration":d,"Startingdate":start,"Endingdate":end,"Projectstatus":pco,"Empstatus":es,"Description":descr,"Platform":pt}]);
+	//console.log();
+})
+app.get('/assignspecial',(req,res)=>{
+   
+    newModel.distinct('Projectstatus').then(todoSpecial=>{
+        res.json(todoSpecial);
+    })
+  
+})
+app.get('/assignname',(req,res)=>{
+    newModel.distinct('Empname',{"Projectstatus":"COMPLETED"}).then(data=>{res.send(data)})
+    });
+    app.post('/assignemprecord',(req,res)=>{
+        const {mem,memt,memr,memf,meme,pn,tn,d,start,end,pco,es,descr,pt}=req.body;
+        console.log('input')
+        console.log('Inserted');
+        // const db=getdb();
+        // const collection=  db.collection('project');
+        newModel.create([{"Empname":mem,"Projectname":pn,"Teamname":tn,"Duration":d,"Startingdate":start,"Endingdate":end,"Projectstatus":pco,"Empstatus":es,"Description":descr,"Platform":pt},
+        {"Empname":memt,"Projectname":pn,"Teamname":tn,"Duration":d,"Startingdate":start,"Endingdate":end,"Projectstatus":pco,"Empstatus":es,"Description":descr,"Platform":pt},
+        {"Empname":memr,"Projectname":pn,"Teamname":tn,"Duration":d,"Startingdate":start,"Endingdate":end,"Projectstatus":pco,"Empstatus":es,"Description":descr,"Platform":pt},
+        {"Empname":memf,"Projectname":pn,"Teamname":tn,"Duration":d,"Startingdate":start,"Endingdate":end,"Projectstatus":pco,"Empstatus":es,"Description":descr,"Platform":pt},
+        {"Empname":meme,"Projectname":pn,"Teamname":tn,"Duration":d,"Startingdate":start,"Endingdate":end,"Projectstatus":pco,"Empstatus":es,"Description":descr,"Platform":pt}]);
+        //console.log();
+    })
+
+
+app.get('/empaddid', (req,res) => {
+    newEmployee.distinct('Empid').then(Empid => res.json(Empid));
+});
+
+app.post('/empaddsearch', async(req,res) => {
+    const {Empid} = req.body;
+    await newEmployee.find({Empid:Empid}).then(data => {
+        res.send(data)});
+});
+app.put('/empaddupdate',async(req,res) => {
+    const {Empid,name1,dob,phone1,location1} =req.body;
+    const up = await newEmployee.updateOne({Empid:Empid},{$set:{
+        Empname:name1,DOB:dob,Contact:phone1,location:location1}})
+    console.log(up);
+});
 
 
 app.get('/special',(req,res)=>{

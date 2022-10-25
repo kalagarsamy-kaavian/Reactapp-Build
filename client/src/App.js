@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css'
+//import './App.css'
 import { BrowserRouter, Routes, Route,Navigate } from 'react-router-dom'
 import ProjectStatus from './admin/pages/ProjectStatus/ProjectStatus';
 import Home from './admin/pages/Home/Home';
@@ -16,6 +16,9 @@ import Projectstatus from './admin/pages/ProjectStatus/ProjectStatus';
 import Assign from './admin/pages/ProjectStatus/assign';
 import Teamdetail from './admin/pages/ProjectStatus/teamdetails';
 import Rmemplist from './admin/pages/RemoveEmployee/RemoveEmployee';
+import Assigned from './admin/pages/Assign/assigned';
+
+
 
 import User from './user/pages/user';
 import Homepa from './user/pages/Home/Home';
@@ -23,6 +26,7 @@ import History from './user/pages/ProjectHistory/ProjectHistory';
 import Employee from './user/pages/PersonelDetails/PersonelDetails';
 import Update from './user/pages/PersonelDetails/update';
 import Search from './admin/pages/Search/Search';
+import Updateemp from './admin/pages/RewriteEmployee/update';
 //import Emplist from './admin/RemoveEmployee/RemoveEmployee';
 
 function UserSessionRoute({ element: Component, ...rest }) {
@@ -57,8 +61,9 @@ function App() {
              <Route path='/admin/ProjectStatus' element={<Projectstatus />}></Route>
             <Route path='/admin/todo/:Teamname' element={<Teamdetail/>}></Route>
             <Route path='/admin/assign/:Teamname' element={<Assign/>}></Route>
-            <Route path='/admin/UpdateEmployee' element={<Emplist/>}></Route>
-          
+            <Route path='/admin/AddEmployee' element={<Emplist/>}></Route>
+            <Route path='/admin/UpdateEmployee' element={<Updateemp/>}></Route>
+            <Route path='/admin/assigned' element={<Assigned/>}></Route>
             <Route path='/admin/About' element={<About/>}></Route>
             <Route path='/admin/Search' element={<Search/>}></Route>
             <Route path='/admin/RemoveEmployee' element={<Rmemplist/>}></Route>

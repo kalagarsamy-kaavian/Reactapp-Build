@@ -48,7 +48,7 @@ export default function History() {
                     </tr>
                 ))}
             </table>
-            <button onClick={logoutPage}>LOGOUT</button>
+            {/* <button onClick={logoutPage}>LOGOUT</button> */}
         </div>
     </div>
 }

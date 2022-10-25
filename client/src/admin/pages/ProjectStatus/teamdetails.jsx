@@ -20,7 +20,7 @@ const navigate=useNavigate();
         }
         else{
            
-           navigate(`/assign/${first.Teamname}`)
+           navigate(`/admin/assign/${first.Teamname}`)
         }
     }
     return(<div className='teamtabel'><table>

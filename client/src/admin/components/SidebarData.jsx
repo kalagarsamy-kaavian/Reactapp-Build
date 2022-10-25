@@ -23,6 +23,16 @@ export const SidebarData = [
         // iconOpened: <RiIcons.RiArrowUpSFill />,
     },
     {
+        title: 'AddEmpoyee',
+        path: '/admin/AddEmployee',
+        icon: <BiIcons.BiTask />
+    },
+    {
+        title: 'Assign',
+        path: '/admin/assigned',
+        icon: <BiIcons.BiTask />
+    },
+    {
         title: 'UpdateEmpoyee',
         path: '/admin/UpdateEmployee',
         icon: <BiIcons.BiTask />

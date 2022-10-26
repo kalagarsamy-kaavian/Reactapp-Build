@@ -14,8 +14,8 @@ import "./Header.css";
 
 
 function Header() {
-    return (<div className='header'>
-        <AppBar position='static'>
+    return (<div className='mainheader'>
+        <AppBar position='static' className='header'>
 
             <Toolbar>
                 {/* <IconButton
@@ -30,7 +30,7 @@ function Header() {
                 <h1 className='hadmin'>ADMIN<AccountCircleOutlinedIcon className='Adminlogo' /></h1>
                 {/* <img className='admin'src={adminsc} alt='adminlogo'></img> */}
                 <img className='himg' src={logo} alt="logo"></img>
-                <Typography className='htitlename' variant='h6' component="div" sx={{ flexGrow: 1 }}>Project Management System</Typography>
+                <Typography className='htitlename' fontWeight="bolder" color="white" paddingRight="50px"  sx={{ flexGrow: 1 }}>Project Management System</Typography>
                 {/* <Search /> */}
                 <LogOutbtn />
             </Toolbar>

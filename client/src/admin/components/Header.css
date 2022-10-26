@@ -1,33 +1,41 @@
 .header {
-    background: #0e0ef3;
+    background-color: #37caec;
+    background:#37caec;
+    color:#37caec;
 
     @media screen and (max-width:1100px) {
         font-size: 1.5rem !important;
         margin-right: 1em;
         margin-left: 1em;
+        
     }
 }
 
 .hadmin {
+    /* background-color: #37caec; */
     font-size: medium;
     display: flex;
     padding-left: 0px;
+    width: fit-content;
 }
 
 .Adminlogo {
     padding-right: 0;
     display: flex;
+    /* background-color: #37caec; */
 }
 
 .himg {
-    padding-left: 147px;
+    /* padding-left: 147px; */
+    /* background-color: #37caec; */
 }
 
-.htitlename {
-    color: rgb(0, 0, 0);
-    float: right;
-    padding-left: 100px;
-    font: bold;
-    font-size: xx-large;
-
+.mainheader {
+    padding: 20px;
+    background-color: #37caec;
+}
+.header {
+    padding: 0%;
+    width: 0%;
+    /* background:#37caec; */
 }

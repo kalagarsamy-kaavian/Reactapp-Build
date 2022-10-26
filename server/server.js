@@ -374,7 +374,7 @@ app.post('/search', (req, res) => {
 	}
 });
 
- demo
+ 
 app.get('/tlcount',(req,res)=>{
     // newModel.count({Projectstatus:"Ongoing"}).then(res=>res.json).then(data=>res.send(data));
     newModel.count({"Empstatus":"Team Leader"}).then(data=>res.json(data));  
@@ -390,7 +390,7 @@ app.get('/tlcomplete',(req,res)=>{
     // newModel.count({Projectstatus:"Ongoing"}).then(res=>res.json).then(data=>res.send(data));
     newModel.count({"Empstatus":"Team Leader","Projectstatus":"COMPLETED"}).then(data=>res.json(data));  
 })
- master
+ 
 // for any other request, serve HTML in DIT environment (cloud env)
 if (NODE_ENV === 'DIT') {
     const indexHTMLContent = fs.readFileSync(path.join(__dirname + '/../client/build/index.html'), 'utf8');

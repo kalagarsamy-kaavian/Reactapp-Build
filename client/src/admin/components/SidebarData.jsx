@@ -21,22 +21,16 @@ export const SidebarData = [
         icon: <AssignmentIndOutlinedIcon />,
         // iconClosed: <RiIcons.RiArrowDownSFill />,
         // iconOpened: <RiIcons.RiArrowUpSFill />,
-
-
-        subNav: [
-            {
-                title: 'Completed',
-                path: '/admin/ProjectStatus/Completed',
-                icon: <FaIcons.FaRegThumbsUp />,
-                cName: 'sub-nav'
-            },
-            {
-                title: 'OnProcess',
-                path: '/admin/ProjectStatus/OnProcess',
-                icon: <EngineeringOutlinedIcon />,
-                cName: 'sub-nav'
-            },
-        ]
+    },
+    {
+        title: 'AddEmpoyee',
+        path: '/admin/AddEmployee',
+        icon: <BiIcons.BiTask />
+    },
+    {
+        title: 'Assign',
+        path: '/admin/assigned',
+        icon: <BiIcons.BiTask />
     },
     {
         title: 'UpdateEmpoyee',

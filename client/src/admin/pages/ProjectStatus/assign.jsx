@@ -16,18 +16,16 @@ export default function Assign()
     const [duration,setDuration]=useState("")
 
     function update(){
-      console.log(title)
-      console.log(platform)
-      // console.log(EmpTeamname.TeamName)
-      console.log(get);
+     
+     
        let [first,second,third,fourth,fifth]=get;
-       console.log(get)
-       console.log(first.Empname)
+   
       
       fetch(`http://localhost:3002/assignwork/${first.Empid}/${first.Empname}/${second.Empid}/${second.Empname}/${third.Empid}/${third.Empname}/${fourth.Empid}/${fourth.Empname}/${fifth.Empid}/${fifth.Empname}/${title}/${platform}/${TeamName}/${Descrip}/${start}/${end}/${duration}`,{
         method:"post",
        
         headers:{'content-type':'application/json'}})
+        console.log(get);
     }
     //   fetch(`http://localhost:3002/assignwork`,{
     //     method:"post",

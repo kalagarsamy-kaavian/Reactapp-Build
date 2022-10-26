@@ -9,22 +9,22 @@ import * as FcIcons from "react-icons/fc";
 export const SidebarData = [
     {
         title: 'Home',
-        path: '/Home',
+        path: '/user/Home',
         icon: <AiIcons.AiFillHome />,
     },
     {
         title: 'ProjectHistory',
-        path: '/ProjectHistory',
+        path: '/user/ProjectHistory',
         icon: <BsIcons.BsClockHistory />,
     },
     {
         title: 'PersonelDetails',
-        path: '/PersonelDetails',
+        path: '/user/PersonelDetails',
         icon: <FcIcons.FcViewDetails />
     },
     {
         title: 'About',
-        path: '/About',
+        path: '/user/About',
         icon: <InfoOutlinedIcon/>
     },
 ];

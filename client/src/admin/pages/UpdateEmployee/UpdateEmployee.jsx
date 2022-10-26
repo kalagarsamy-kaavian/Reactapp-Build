@@ -21,8 +21,10 @@ export default function Emplist() {
     // const [esr,setEsr]=useState("");
     // const [er,setEr]=useState("");
     function func() {
-        fetch(`http://localhost:3001/emprecord`, { method: 'post', body: JSON.stringify({ pass, input, dob, con, loc, doj, exp, speo, spet, sper, pt }), headers: { 'content-type': 'application/json' } })
-
+        if(pass&& input&&dob&& con&& loc&& doj&& exp&& speo&& spet&& sper&& pt)
+        fetch(`http://localhost:3002/emprecord`, { method: 'post', body: JSON.stringify({ pass, input, dob, con, loc, doj, exp, speo, spet, sper, pt }), headers: { 'content-type': 'application/json' } })
+       else
+       window.alert("Inserted")
     }
 
     // eslint-disable-next-line react/style-prop-object
@@ -47,7 +49,7 @@ export default function Emplist() {
         <tr><td>Specialized3</td><input type="text" onChange={(e) => setSper(e.target.value)} placeholder='EmpProjectStatus' required></input></tr>
         <tr><td>Platform</td><input type="text" onChange={(e) => setPt(e.target.value)} placeholder='Platform' required></input></tr>
         
-        </tbody><tr><button className='upbtn' onClick={func}><Link to={`/in`}><span>Insert</span></Link></button></tr>
+        </tbody><tr><button className='upbtn' onClick={func}><span>Insert</span></button></tr>
  {/* <tr><td>EmpSpecialized1</td><input type="text" onChange={(e)=>setEso(e.target.value)} placeholder='EmpSpecialized1' required></input></tr>
         <tr><td>EmpSpecialized2</td><input type="text" onChange={(e)=>setEst(e.target.value)} placeholder='EmpSpecialized2' required></input></tr>
         <tr><td>EmpSpecialized3</td><input type="text" onChange={(e)=>setEsr(e.target.value)} placeholder='EmpSpecialized3' required></input> </tr>

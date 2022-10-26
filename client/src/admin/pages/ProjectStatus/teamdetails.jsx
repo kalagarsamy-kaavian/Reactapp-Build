@@ -20,7 +20,7 @@ const navigate=useNavigate();
         }
         else{
            
-           navigate(`/assign/${first.Teamname}`)
+           navigate(`/admin/assign/${first.Teamname}`)
         }
     }
     return(<div className='teamtabel'><table>
@@ -45,7 +45,7 @@ const navigate=useNavigate();
              
              {/* <Link to={`/assign`}><button>ASSIGN</button></Link> */}
              
-             <button className='button' onClick={assign}><span>Assign</span></button>
+             {/* <button className='button' onClick={assign}><span>Assign</span></button> */}
                 </table></div> )             
                   
 }

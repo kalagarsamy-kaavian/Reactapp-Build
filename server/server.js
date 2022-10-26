@@ -24,13 +24,59 @@ app.get('/login',(req,res)=>{
     res.send(fs.readFileSync('./login.html',{encoding:'utf-8'}))
 })
 
-app.delete('/emprecord',(req,res)=>{
-	const data=req.body;
-    console.log(data.data);
-    newEmployee.deleteOne({"Empid": data.data}).then(data=>res.json(data));
-    console.log('deleted')
+// app.delete('/emprecord',(req,res)=>{
+// 	const data=req.body;
+//     console.log(data.data);
+//     newEmployee.deleteOne({"Empid": data.data}).then(data=>res.json(data));
+//     console.log('deleted')
+// })
+
+app.patch('/complete/:Teamname', (req, res) => {
+    const { Teamname} = req.params;
+    console.log(Teamname)
+    //console.log(id);
+   newModel.updateMany({Teamname:Teamname}, { $set: { Projectstatus: "COMPLETED" }}).then(updateStatus => {
+       res.json(updateStatus);
+   console.log('Btn updated')
+   })
 })
 
+// app.post('/olist/:id',(req,res)=>{
+//     const {id}=req.params;
+//     // console.log(id)
+//     newModel.find({$and:[{Empid:id},{Projectstatus:'Ongoing'}]}).then(data=>res.json(data))
+// })
+
+app.post('/olist/:id',(req,res)=>{
+    const {id}=req.params;
+     console.log(id)
+    newModel.find({$and:[{Empid:id},{Projectstatus:'Ongoing'}]}).then(data=>{
+        let[first]=data;
+       // console.log(first.Empstatus)
+        res.json(first.Empstatus)
+    })
+})
+app.post('/leaderteam/:id',(req,res)=>{
+    const {id}=req.params;
+     console.log(id)
+    newModel.find({$and:[{Empid:id},{Projectstatus:'Ongoing'}]}).then(data=>{
+        let[first]=data;
+        //console.log(first.Teamname)
+        res.json(first.Teamname)
+    })
+})
+
+app.get('/id',(req,res)=>{
+    newEmployee.distinct('Empid').then(data=>{res.send(data)})
+    });
+//Delete filter
+app.delete('/emprecord',async (req,res)=>{
+	const data=req.body;
+    console.log(data.data);
+   await newEmployee.deleteOne({"Empid": data.data}).then(data=>{return res.json(data)});
+   //await newUser.deleteOne({"Empid":data.data}).then(data=>{return res.json(data)});
+    console.log('deleted')
+})
 
 app.post('/login',async(req,res)=>{
     const{user,pass}=req.body;   
@@ -54,7 +100,8 @@ app.post("/employeedetail",async(req,res)=>{
     const{id}=req.body;
     // const db=getDB();
     // const collection=db.collection("details");
-    await newEmployee.find({Empid:id}).then(data=>res.send(data))
+    console.log(id)
+    await newEmployee.find({Empid:id}).then(data=>res.json(data))
 
 })
 app.get('/update', (req, res) => {
@@ -62,11 +109,17 @@ app.get('/update', (req, res) => {
         res.json(updateStatus);
     });
 });
-
+app.delete('/emprecord',(req,res)=>{
+	const data=req.body;
+    console.log(data.data);
+    newEmployee.deleteOne({"Empid": data.data}).then(data=>res.json(data));
+    newUser.deleteOne({"Empid":data.data}).then(data=>res.json(data));
+    console.log('deleted')
+})
 app.patch('/update', (req, res) => {
     const { updateStatus } = req.body;
     console.log(updateStatus);
-    newModel.updateMany({ Teamname: updateStatus }, { $set: { Projectstatus: "ONGOING" }}).then(updateStatus => {
+    newModel.updateMany({ Teamname: updateStatus }, { $set: { Projectstatus: "COMPLETED" }}).then(updateStatus => {
         res.json(updateStatus);
     })
 })
@@ -94,7 +147,7 @@ app.post("/api/todo", (req, res) => {
    
     if(data==='Completed')
     {
-    newModel.find({$and:[{"Empstatus":"Team Leader"},{"Projectstatus":"Completed"}]}).then(data => {
+    newModel.find({$and:[{"Empstatus":"Team Leader"},{"Projectstatus":"COMPLETED"}]}).then(data => {
         res.json(data);
     })
     }
@@ -105,6 +158,7 @@ app.post("/api/todo", (req, res) => {
     else{
     newModel.find({"Empstatus":"Team Leader"}).then(todoItem=>res.json(todoItem))
 }})
+
 app.post('/details/:Teamname',(req,res)=>{
    
    
@@ -113,23 +167,147 @@ app.post('/details/:Teamname',(req,res)=>{
    
     newModel.find({"Teamname":Teamname}).then(data=>res.json(data))
 })
-app.post('/assignwork/:firstname/:secondname/:thirdname/:fourthname/:fifthname/:title/:platform/:TeamName/:Descrip/:start/:end/:duration',(req,res)=>{
+
+
+
+app.get('/assignspecial',(req,res)=>{
    
-    // const{}=req.body;
-    const{firstid,firstname,secondid,secondname,thirdid,thirdname,fourthid,fourthname,fifthid,fifthname,title,platform,TeamName,Descrip,start,end,duration}=req.params;
-     console.log(firstname)
-     console.log(title)
-     console.log(secondname)
- 
-    newModel.create([{"Empid":firstid,"Empname":firstname,"Teamname":TeamName,"Projectname":title,"Projectstatus":"Ongoing","Platform":platform,"Empstatus":"TEAM LEADER","Description":Descrip,"Startingdate":start,"Endingdate":end,"Duration":duration},
-{"Empid":secondid,"Empname":secondname,"Teamname":TeamName,"Projectname":title,"Platform":platform,"Projectstatus":"Ongoing","Empstatus":"MEMBER","Description":Descrip,"Startingdate":start,"Endingdate":end,"Duration":duration},
-{"Empid":thirdid,"Empname":thirdname,"Teamname":TeamName,"Projectname":title,"Platform":platform,"Projectstatus":"Ongoing","Empstatus":"MEMBER","Description":Descrip,"Startingdate":start,"Endingdate":end,"Duration":duration},
-{"Empid":fourthid,"Empname":fourthname,"Teamname":TeamName,"Projectname":title,"Platform":platform,"Projectstatus":"Ongoing","Empstatus":"MEMBER","Description":Descrip,"Startingdate":start,"Endingdate":end,"Duration":duration},
-{"Empid":fifthid,"Empname":fifthname,"Teamname":TeamName,"Projectname":title,"Platform":platform,"Projectstatus":"Ongoing","Empstatus":"MEMBER","Description":Descrip,"Startingdate":start,"Endingdate":end,"Duration":duration}
-])
+    newModel.distinct('Projectstatus').then(todoSpecial=>{
+        res.json(todoSpecial);
+    })
+  
+})
+app.get('/assignname',(req,res)=>{
+    newModel.distinct('Empname',{"Projectstatus":"COMPLETED"}).then(data=>res.json(data))
+    .catch((err) =>{
+    })
+});
+app.post('/assignemprecord',(req,res)=>{
+	const {pass,passt,passr,passf,passe,mem,memt,memr,memf,meme,pn,tn,d,start,end,pco,es,descr,pt}=req.body;
+    console.log('input')
+	console.log('Inserted');
+	// const db=getdb();
+	// const collection=  db.collection('project');
+	newModel.create([{"Empid":pass,"Empname":mem,"Projectname":pn,"Teamname":tn,"Duration":d,"Startingdate":start,"Endingdate":end,"Projectstatus":pco,"Empstatus":es,"Description":descr,"Platform":pt},
+    {"Empid":passt,"Empname":memt,"Projectname":pn,"Teamname":tn,"Duration":d,"Startingdate":start,"Endingdate":end,"Projectstatus":pco,"Empstatus":es,"Description":descr,"Platform":pt},
+    {"Empid":passr,"Empname":memr,"Projectname":pn,"Teamname":tn,"Duration":d,"Startingdate":start,"Endingdate":end,"Projectstatus":pco,"Empstatus":es,"Description":descr,"Platform":pt},
+    {"Empid":passf,"Empname":memf,"Projectname":pn,"Teamname":tn,"Duration":d,"Startingdate":start,"Endingdate":end,"Projectstatus":pco,"Empstatus":es,"Description":descr,"Platform":pt},
+    {"Empid":passe,"Empname":meme,"Projectname":pn,"Teamname":tn,"Duration":d,"Startingdate":start,"Endingdate":end,"Projectstatus":pco,"Empstatus":es,"Description":descr,"Platform":pt}]);
+	//console.log();
 })
 
+    // app.post('/assignemprecord',(req,res)=>{
+    //     const {pass,passt,passr,passf,passe,mem,memt,memr,memf,meme,pn,tn,d,start,end,pco,es,descr,pt}=req.body;
+    //     console.log('input')
+    //     console.log(pass,passt,passr,passf,passe,mem,memt,memr,memf,meme,pn,tn,d,start,end,pco,es,descr,pt)
+    //     console.log('Inserted');
+    //     // const db=getdb();
+    //     // const collection=  db.collection('project');
+    //     newModel.create([{"Empid":pass,"Empname":mem,"Projectname":pn,"Teamname":tn,"Duration":d,"Startingdate":start,"Endingdate":end,"Projectstatus":pco,"Empstatus":"Team Leader","Description":descr,"Platform":pt},
+    //     {"Empid":passt,"Empname":memt,"Projectname":pn,"Teamname":tn,"Duration":d,"Startingdate":start,"Endingdate":end,"Projectstatus":pco,"Empstatus":"Member","Description":descr,"Platform":pt},
+    //     {"Empid":passr,"Empname":memr,"Projectname":pn,"Teamname":tn,"Duration":d,"Startingdate":start,"Endingdate":end,"Projectstatus":pco,"Empstatus":"Member","Description":descr,"Platform":pt},
+    //     {"Empid":passf,"Empname":memf,"Projectname":pn,"Teamname":tn,"Duration":d,"Startingdate":start,"Endingdate":end,"Projectstatus":pco,"Empstatus":"Member","Description":descr,"Platform":pt},
+    //     {"Empid":passe,"Empname":meme,"Projectname":pn,"Teamname":tn,"Duration":d,"Startingdate":start,"Endingdate":end,"Projectstatus":pco,"Empstatus":"Member","Description":descr,"Platform":pt}]);
+    //     //console.log();
+    // })
 
+// app.post('/pass',(req,res)=>{
+//     const{mem,memt,memr,memf,meme}=req.body;
+//     console.log(mem,memt,meme,memr,memf)
+//     console.log("check pass",mem)
+//     newEmployee.find({Empname:mem}).then(data=>{
+//         console.log(data)
+//         let [first]=data;
+//        console.log(data,"in pass query")
+//             //     let[first]=data;
+//                 let id=first.Empid;
+//                console.log(id);
+//                // res.json({id});
+//             })
+//             newEmployee.find({Empname:memt}).then(data=>{
+//                                 let[second]=data;
+//                                 let sid=second.Empid;
+//                                console.log(sid);
+//                                // res.json(sid);
+//                             })
+//                             newEmployee.find({Empname:memr}).then(data=>{
+//                                         let[three]=data;
+//                                         let tid=three.Empid
+//                                         console.log(tid);
+//                                       //  res.json(tid);
+//                                     })
+//                                     newEmployee.find({Empname:memf}).then(data=>{
+//                                                 let[four]=data;
+//                                                 let fid=four.Empid
+//                                               console.log(fid);
+//                                                // res.json(fid);
+//                                             })
+//                                             newEmployee.find({Empname:meme}).then(data=>{
+//                                                         let[five]=data;
+//                                                         let pid=five.Empid
+//                                                        console.log(pid);
+//                                                        // res.json(pid);
+//                                                     })
+//                                                     const a=[id,sid,tid,fid,pid]
+//                                                     console.log(a,"a")
+//                                                     res.json({})
+
+// })
+
+// app.post('/passt',(req,res)=>{
+//     const{memt}=req.body;
+//     console.log(memt)
+//     newEmployee.find({Empname:memt}).then(data=>{
+//                 let[second]=data;
+//                 let sid=second.Empid;
+//               //  console.log(second.Empid);
+//                 res.json(sid);
+//             })
+// })
+// app.post('/passr',(req,res)=>{
+//     const{memr}=req.body;
+//     newEmployee.find({Empname:memr}).then(data=>{
+//         let[three]=data;
+//         let tid=three.Empid
+//       //  console.log(three.Empid);
+//         res.json(tid);
+//     })
+// })
+// app.post('/passf',(req,res)=>{
+//     const{memf}=req.body;
+//     newEmployee.find({Empname:memf}).then(data=>{
+//         let[four]=data;
+//         let fid=four.Empid
+//        // console.log(four.Empid);
+//         res.json(fid);
+//     })
+// })
+// app.post('/passe',(req,res)=>{
+//     const{meme}=req.body;
+//     newEmployee.find({Empname:meme}).then(data=>{
+//         let[five]=data;
+//         let pid=five.Empid
+//       //  console.log(five.Empid);
+//         res.json(pid);
+//     })
+// })
+    
+
+app.get('/empaddid', (req,res) => {
+    newEmployee.distinct('Empid').then(Empid => res.json(Empid));
+});
+
+app.post('/empaddsearch', async(req,res) => {
+    const {Empid} = req.body;
+    await newEmployee.find({Empid:Empid}).then(data => {
+        res.send(data)});
+});
+app.put('/empaddupdate',async(req,res) => {
+    const {Empid,name1,dob,phone1,location1} =req.body;
+    const up = await newEmployee.updateOne({Empid:Empid},{$set:{
+        Empname:name1,DOB:dob,Contact:phone1,location:location1}})
+    console.log(up);
+});
 
 
 app.get('/special',(req,res)=>{
@@ -181,6 +359,8 @@ app.get('/platform', (req, res) => {
 	});
 });
 
+
+
 // filter in USerData
 app.post('/search', (req, res) => {
 	const { spc, empplatform } = req.body;
@@ -194,6 +374,23 @@ app.post('/search', (req, res) => {
 	}
 });
 
+ demo
+app.get('/tlcount',(req,res)=>{
+    // newModel.count({Projectstatus:"Ongoing"}).then(res=>res.json).then(data=>res.send(data));
+    newModel.count({"Empstatus":"Team Leader"}).then(data=>res.json(data));  
+})
+
+
+app.get('/tlongoing',(req,res)=>{
+    // newModel.count({Projectstatus:"Ongoing"}).then(res=>res.json).then(data=>res.send(data));
+    newModel.count({"Empstatus":"Team Leader","Projectstatus":"Ongoing"}).then(data=>res.json(data));  
+})
+
+app.get('/tlcomplete',(req,res)=>{
+    // newModel.count({Projectstatus:"Ongoing"}).then(res=>res.json).then(data=>res.send(data));
+    newModel.count({"Empstatus":"Team Leader","Projectstatus":"COMPLETED"}).then(data=>res.json(data));  
+})
+ master
 // for any other request, serve HTML in DIT environment (cloud env)
 if (NODE_ENV === 'DIT') {
     const indexHTMLContent = fs.readFileSync(path.join(__dirname + '/../client/build/index.html'), 'utf8');

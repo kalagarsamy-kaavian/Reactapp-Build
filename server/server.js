@@ -5,7 +5,11 @@ const newEmployee=require('./empscript');
 const newUser=require('./login');
 const app=express();
 const cors=require('cors');
+const path = require('path');
+const fs = require('fs');
 const bodyParser=require('body-parser');
+const NODE_ENV = process.env.NODE_ENV || 'DEV';
+
 app.use(cors({origin:'http://localhost:3000'}));
 app.use(bodyParser.json());
 mongoose.connect("mongodb+srv://blueTeam:o9T62uCK3dt5V078@db-kaavian-sys-cluster-in1-966a0c87.mongo.ondigitalocean.com/blueDB?tls=true&authSource=admin&replicaSet=db-kaavian-sys-cluster-in1",(err)=>{
@@ -370,6 +374,7 @@ app.post('/search', (req, res) => {
 	}
 });
 
+ demo
 app.get('/tlcount',(req,res)=>{
     // newModel.count({Projectstatus:"Ongoing"}).then(res=>res.json).then(data=>res.send(data));
     newModel.count({"Empstatus":"Team Leader"}).then(data=>res.json(data));  
@@ -385,6 +390,7 @@ app.get('/tlcomplete',(req,res)=>{
     // newModel.count({Projectstatus:"Ongoing"}).then(res=>res.json).then(data=>res.send(data));
     newModel.count({"Empstatus":"Team Leader","Projectstatus":"COMPLETED"}).then(data=>res.json(data));  
 })
+ master
 // for any other request, serve HTML in DIT environment (cloud env)
 if (NODE_ENV === 'DIT') {
     const indexHTMLContent = fs.readFileSync(path.join(__dirname + '/../client/build/index.html'), 'utf8');

@@ -385,6 +385,13 @@ app.get('/tlcomplete',(req,res)=>{
     // newModel.count({Projectstatus:"Ongoing"}).then(res=>res.json).then(data=>res.send(data));
     newModel.count({"Empstatus":"Team Leader","Projectstatus":"COMPLETED"}).then(data=>res.json(data));  
 })
+// for any other request, serve HTML in DIT environment (cloud env)
+if (NODE_ENV === 'DIT') {
+    const indexHTMLContent = fs.readFileSync(path.join(__dirname + '/../client/build/index.html'), 'utf8');
+    app.all('*', (req, res) => {
+      res.send(indexHTMLContent);
+    });
+}
 
 app.listen(3002, () => {
             console.log("Application is running.");

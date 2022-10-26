@@ -1,11 +1,15 @@
-.uptable {
+
+.uptable center {
     border: 3px solid black;
     width: fit-content;
-    background: blue;
+    background: #3dd9d6;
 }
 .updateoverall{
     padding-left: 600px;
-    padding-top: 75px;
+    padding-top: 50px;
+    /* display: flex;
+    overflow: scroll; */
+
     
 }
 /* .head{
@@ -18,20 +22,24 @@
     border-radius: 4px;
     font-weight: bold;
 } */
-.upbtn {
+/* .upbtn {
     background: blue;
     padding-left: 10px;
     padding-right: 10px;
+    padding: 20px;
     display: flex;
     color: white;
 }
 .upbtn:hover{
-    background: rgb(57, 57, 160);
-}
+    background: #37caec;
+    color: black;
+    cursor: pointer;
+    font-weight: bold;
+} */
 tbody td{
-    display: flex;
+    /* display: flex; */
     font-size: large;
-    color: white;
+    color: rgb(0, 0, 0);
 }
 tbody input{
     padding-top: 10px;
@@ -42,3 +50,49 @@ thead h2{
     align-items: center;
     padding-left: 70px;
 }
+
+.upbtn {
+    border-radius: 4px;
+    background-color: rgb(3, 95, 194);
+    border:none;
+    color: #000000;
+    text-align: center;
+    font-size: 18px;
+    padding: 20px;
+    width: 150px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+  }
+  
+  .upbtn span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  
+  .upbtn span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  
+  .upbtn:hover span {
+    padding-right: 25px;
+  }
+  
+  .upbtn:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+  .addempimg  img {
+    position: absolute;
+    left:400px;
+    top: 100px;
+    width:500px;
+    /* height:100px; */
+  }

@@ -7,7 +7,7 @@ export default function Teamdetail(){
 
 const navigate=useNavigate();
     useEffect(()=>{
-        fetch(`http://localhost:3002/api/todo/${Teamname}`,{method:'POST',headers:{'content-type':'application/json'}})
+        fetch(`${process.env.REACT_APP_SERVER_PREFIX}/${Teamname}`,{method:'POST',headers:{'content-type':'application/json'}})
         .then(res=>res.json())
         .then(data=>setItem(data));
        
@@ -45,7 +45,7 @@ const navigate=useNavigate();
              
              {/* <Link to={`/assign`}><button>ASSIGN</button></Link> */}
              
-             <button className='button' onClick={assign}><span>Assign</span></button>
+             {/* <button className='button' onClick={assign}><span>Assign</span></button> */}
                 </table></div> )             
                   
 }

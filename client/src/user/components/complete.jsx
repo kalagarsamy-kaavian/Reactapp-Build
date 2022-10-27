@@ -25,6 +25,7 @@ export default function Complete(){
 
   const id = localStorage.getItem('data');
   const [olist,setOlist]=useState([]);
+  const [team,setTeam]=useState([]);
    
    
  useEffect(()=>{
@@ -32,19 +33,22 @@ export default function Complete(){
   fetch(`http://localhost:3002/olist/${id}`,{method:"post",headers:{'content-type':'apllication/json'}})
   .then(res=>res.json())
   .then(data=>setOlist(data))
+  fetch(`http://localhost:3002/leaderteam/${id}`,{method:"post",headers:{'content-type':'apllication/json'}})
+  .then(res=>res.json())
+  .then(data=>setTeam(data))
  },[])
 
 
 
 
   function complete(){
-   
-    let [first]=olist;
-    
-    console.log(first.Teamname)
-    if(first.Empstatus=="Team Leader")
+   console.log(olist,"olist")
+   console.log(team,"team")
+    //let [first]=olist;
+   // console.log(first.Teamname)
+    if(olist==="Team Leader")
     {
-       fetch(`http://localhost:3002/complete/${first.Teamname}`, { method: "PATCH",headers: { 'content-type': 'application/json' } })
+       fetch(`http://localhost:3002/complete/${team}`, { method: "PATCH",headers: { 'content-type': 'application/json' } })
        alert('Updated successfully')
     }else{
         window.alert("There is no access")

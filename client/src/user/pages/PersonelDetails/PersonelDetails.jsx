@@ -9,14 +9,15 @@ export default function Employee() {
     const [logout, setLogout] = useState(false);
     const id = localStorage.getItem('data');
     const navigate = useNavigate();
-    useEffect(() => {
-        fetch("http://localhost:3002/employeedetail", { method: "post", body: JSON.stringify({ id }), headers: { 'content-type': "application/json" } })
-            .then(res => res.json())
-            .then(data => setItems(data));
-    }, [id])
-    if (!localStorage.getItem('data')) {
-        navigate('/');
-    }
+    useEffect(()=>{
+    fetch(`${process.env.REACT_APP_SERVER_PREFIX}/employeedetail`,{method:"post",body:JSON.stringify({id}),headers:{'content-type':"application/json"}})
+    .then(res=>res.json())
+    .then(data=>setItems(data));
+    console.log(id)
+},[id])
+    //      if(!localStorage.getItem('data')){
+    //     navigate('/');
+    //        }
 
     useEffect(() => {
 

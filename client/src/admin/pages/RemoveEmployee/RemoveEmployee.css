@@ -18,3 +18,13 @@
     background: rgb(55, 55, 209);
     color: white;
 }
+.deleteempimg img {
+    position: absolute;
+    right: 300px;
+    width: 500px;
+}
+
+.deloverall {
+    position: absolute;
+    left: 900px;
+}

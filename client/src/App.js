@@ -27,6 +27,7 @@ import Employee from './user/pages/PersonelDetails/PersonelDetails';
 import Update from './user/pages/PersonelDetails/update';
 import Search from './admin/pages/Search/Search';
 import Updateemp from './admin/pages/RewriteEmployee/update';
+import Empcomplete from './admin/pages/Dashboard/dashboard';
 //import Emplist from './admin/RemoveEmployee/RemoveEmployee';
 
 function UserSessionRoute({ element: Component, ...rest }) {
@@ -47,6 +48,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Userlogin />}></Route>
             <Route path='/user' element={<UserSessionRoute element={User} />}>
+            <Route path='/user/dashboard' element={<Empcomplete />}></Route>
             <Route path='/user/Home' element={<Homepa />}></Route>
             <Route path='/user/ProjectHistory' element={<History />}></Route>
             <Route path='/user/PersonelDetails' element={<Employee/>}></Route>

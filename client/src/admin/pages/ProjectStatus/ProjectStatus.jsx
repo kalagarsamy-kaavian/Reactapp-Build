@@ -51,7 +51,9 @@ export default function Projectstatus() {
             </tr>
         })}
     </table>
-
+    <div className='manimg'>
+        <img src='/images/man.svg'></img>
+    </div>
 
 
     </div>

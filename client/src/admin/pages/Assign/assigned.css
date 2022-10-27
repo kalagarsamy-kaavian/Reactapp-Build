@@ -4,11 +4,27 @@
 }
 .assigntaskimg img {
     position: absolute;
-    left: 470px;
+    left: 400px;
     top: 200px;
     width: 500px;
 }
 .updateoverall {
     position:absolute;
     right: 1100px;
+    
+}
+.nameemp {
+    font-size: large;
+    
+}
+select.selectemp {
+    position: absolute;
+    right: 100px;
+    
+}
+div.upheading tr h2 {
+   position: absolute;
+   top:-5px;
+   left:100px;
+   font-size: xx-large;
 }

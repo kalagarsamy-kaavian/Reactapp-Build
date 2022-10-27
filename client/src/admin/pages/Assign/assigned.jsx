@@ -197,7 +197,7 @@ export default function Emplist() {
     <div className='upheading'>
     <thead>
         <tr >
-            <h2>  Employee Form</h2>
+            <h2> PROJECT ASSIGN </h2>
         </tr><br></br>
     </thead>
     </div>
@@ -207,29 +207,29 @@ export default function Emplist() {
             <option value="" disablevalue>NAME</option>
             {name.map(val=><option>{val}</option>)}
         </select> */}
-        <label className="name">Name</label><h20> </h20>
-                <select value={mem} onChange={e => setMem(e.target.value)}>
-                    <option value="" disablevalue>TLNAME</option>
+        <label className="nameemp">Name</label><br></br>
+                <select className='selectemp'  value={mem} onChange={e => setMem(e.target.value)}>
+                    <option  value="" disablevalue>TLNAME</option>
                     {name.map(val => <option>{val}</option>)}
                 </select><br></br>
-                <label className="name">Name</label><h20> </h20>
-                <select value={memt} onChange={e => setMemt(e.target.value)}>
-                    <option value="" disablevalue>NAME</option>
+                <label className="nameemp">Name</label><br></br>
+                <select className='selectemp'  value={memt} onChange={e => setMemt(e.target.value)}>
+                    <option  value="" disablevalue>NAME</option>
                     {name.map(val => <option>{val}</option>)}
                 </select><br></br>
-                <label className="name">Name</label><h20> </h20>
-                <select value={memr} onChange={e => setMemr(e.target.value)}>
-                    <option value="" disablevalue>NAME</option>
+                <label className="nameemp">Name</label><br></br>
+                <select className='selectemp'  value={memr} onChange={e => setMemr(e.target.value)}>
+                    <option  value="" disablevalue>NAME</option>
                     {name.map(val => <option>{val}</option>)}
                 </select><br></br>
-                <label className="name">Name</label><h20> </h20>
-                <select value={memf} onChange={e => setMemf(e.target.value)}>
-                    <option value="" disablevalue>NAME</option>
+                <label className="nameemp">Name</label><br></br>
+                <select className='selectemp'  value={memf} onChange={e => setMemf(e.target.value)}>
+                    <option  value="" disablevalue>NAME</option>
                     {name.map(val => <option>{val}</option>)}
                 </select><br></br>
-                <label className="name">Name</label><h20> </h20>
-                <select value={meme} onChange={e => setMeme(e.target.value)}>
-                    <option value="" disablevalue>NAME</option>
+                <label className="nameemp">Name</label><br></br>
+                <select className='selectemp'  value={meme} onChange={e => setMeme(e.target.value)}>
+                    <option  value="" disablevalue>NAME</option>
                     {name.map(val => <option>{val}</option>)}
                 </select><br></br>
 
@@ -244,20 +244,20 @@ export default function Emplist() {
         <tr><td>Duration</td><input type="number"className="name" onChange={(e) => setD(e.target.value)} placeholder='Platform' required></input></tr>
         <tr><td>Starting Date</td><input type="text" className="name" onChange={(e) => setStart(e.target.value)} placeholder='EmpDOB' required></input></tr>
         <tr><td>Ending Date</td><input type="text" className="name" onChange={(e) => setEnd(e.target.value)} placeholder='EmpDOB' required></input></tr>
-        <tr><td>Project Status</td><label className="name">Name</label><h20> </h20>
-                <select value={pco} onChange={e => setPco(e.target.value)}>
+        <tr><td>Project Status</td><h20> </h20>
+                <select className='selectemp' value={pco} onChange={e => setPco(e.target.value)}>
                     <option value="" disablevalue>Status</option>
                     {spec.map(val => <option>{val}</option>)}
                 </select><br></br></tr>
         {/* <tr><td>Contact</td><input type="number" onChange={(e) => setCon(e.target.value)} placeholder='EmpPhoneNo' required></input> </tr> */}
-        <tr><td>Employee Status</td><input type="text" onChange={(e) => setEs(e.target.value)} placeholder='EmpLocation' required></input></tr>
-        <tr><td>Description</td><input type="text" onChange={(e) => setDescr(e.target.value)} placeholder='EmpDateOfJoining' required></input></tr>
+        <tr><td>Employee Status</td><input type="text" className='name' onChange={(e) => setEs(e.target.value)} placeholder='EmpLocation' required></input></tr>
+        <tr><td>Description</td><input type="text" className='name' onChange={(e) => setDescr(e.target.value)} placeholder='EmpDateOfJoining' required></input></tr>
 
         {/* <tr><td>Experience</td><input type="number" onChange={(e) => setExp(e.target.value)} placeholder='EmpExperience' required></input></tr>
         <tr><td>Specialized1</td><input type="text" onChange={(e) => setSpeo(e.target.value)} placeholder='EmpTeamName' required></input></tr>
         <tr><td>Specialized2</td><input type="text" onChange={(e) => setSpet(e.target.value)} placeholder='EmpProjectTitle' required></input></tr>
         <tr><td>Specialized3</td><input type="text" onChange={(e) => setSper(e.target.value)} placeholder='EmpProjectStatus' required></input></tr> */}
-        <tr><td>Platform</td><input type="text" onChange={(e) => setPt(e.target.value)} placeholder='Platform' required></input></tr>
+        <tr><td>Platform</td><input type="text" className='name' onChange={(e) => setPt(e.target.value)} placeholder='Platform' required></input></tr>
         
         
         </tbody><tr><button className='upbtn' onClick={func}><span>Insert</span></button></tr>

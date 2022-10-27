@@ -79,15 +79,34 @@ app.delete('/emprecord',async (req,res)=>{
     console.log('deleted')
 })
 
+// app.post('/login',async(req,res)=>{
+//     const{user,pass}=req.body;   
+//     // const db=getDB();
+//     // const collection=db.collection("userinfo");
+//     const use=await newUser.findOne({username:user})
+//     if(!use)
+//     {
+//         //  return res.json({invaliduser})
+//         console.log("invalid")
+//     }
+//     else if(pass===use.password){
+//         //res.cookie('Username',user);
+//         return res.send(use);
+//     }
+//     // else{
+//     //     const msg="INVALID USERNAME OR PSSWORD"
+//     //                 res.send(msg);
+//     // }
+// });  
 app.post('/login',async(req,res)=>{
     const{user,pass}=req.body;   
     // const db=getDB();
     // const collection=db.collection("userinfo");
     const use=await newUser.findOne({username:user})
+    console.log(user,pass)
     if(!use)
     {
-        //  return res.json({invaliduser})
-        console.log("invalid")
+         return res.send("invalid user")
     }
     else if(pass===use.password){
         //res.cookie('Username',user);
@@ -97,7 +116,8 @@ app.post('/login',async(req,res)=>{
     //     const msg="INVALID USERNAME OR PSSWORD"
     //                 res.send(msg);
     // }
-});  
+})
+
 app.post("/employeedetail",async(req,res)=>{
     const{id}=req.body;
     // const db=getDB();

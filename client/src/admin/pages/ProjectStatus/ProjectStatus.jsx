@@ -29,13 +29,13 @@ export default function Projectstatus() {
         // console.log(rating)
         // fetch(`http://localhost:3002/star/${rates}`,{method:"post",headers:{'content-type':'application/json'}})
         console.log(data)
-        fetch('http://localhost:3002/api/todo', { method: "post", body: JSON.stringify({ data }), headers: { 'content-type': 'application/json' } })
+        fetch(`${process.env.REACT_APP_SERVER_PREFIX}/api/todo', { method: "post", body: JSON.stringify({ data }), headers: { 'content-type': 'application/json' } })
             .then(res => res.json())
             .then(datas => {
                 setTodo(datas)
                 console.log(datas)
             })
-        // fetch('http://localhost:3002/special').then(res=>res.json()).then(data=>(setDrop(data)))
+        // fetch(`${process.env.REACT_APP_SERVER_PREFIX}/special').then(res=>res.json()).then(data=>(setDrop(data)))
     }, [data]);
     //return<table id="todo" border="20px" align="center"cellPadding="5px" cellSpacing="5px">
     return <div className="a-btn"><table className='ptable'>

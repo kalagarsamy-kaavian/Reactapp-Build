@@ -12,13 +12,13 @@ export default function Search() {
 
     //Fetch the data in Database display UI
     useEffect(() => {
-        fetch('http://localhost:3002/pms/Filter').then(res => res.json()).then(data => setItem(data));
-        fetch('http://localhost:3002/platform').then(res => res.json()).then(data => setPlatform(data));
+        fetch(`${process.env.REACT_APP_SERVER_PREFIX}/pms/Filter`).then(res => res.json()).then(data => setItem(data));
+        fetch(`${process.env.REACT_APP_SERVER_PREFIX}/platform`).then(res => res.json()).then(data => setPlatform(data));
 
     }, []);
     //Onsearch Function
     function onSearch() {
-        fetch('http://localhost:3002/search', {
+        fetch(`${process.env.REACT_APP_SERVER_PREFIX}/search`, {
             method: 'POST', body: JSON.stringify({ spc, empplatform }),
             headers: { 'content-type': 'application/json' }
         })

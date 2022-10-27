@@ -4,10 +4,10 @@ const NewSchema=new mongoose.Schema({
    
   Empid:String,
   Empname:String,
-  DOB:Date,
+  DOB:String,
   Contact:Number,
   location:String,
-  DOJ:Date,
+  DOJ:String,
   Experience:Number,
   Specialized1:String,
   Specialized2:String,

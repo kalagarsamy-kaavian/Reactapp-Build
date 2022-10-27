@@ -26,30 +26,34 @@ export default function History() {
         setLogout(true);
     }
 
-    return <div className='historyoverall'>
-        <div className='histroytable'>
-            <table border="5px" >
-                <tr><div className='tableheading'>
+    // return <div className='historyoverall'>
+        {/* <div className='histroytable'> */}
+            return <table border={1} class="center"> 
+                <thead>
+                <tr>
+                {/* <div className='tableheading'> */}
                     <th>PROJECT TITLE</th>
                     <th>TEAM NAME</th>
                     <th>PROJECT DURATION(in months)</th>
                     <th>PROJECT STARETED ON</th>
                     <th>PROJECT COMPLETED ON</th>
-                    <th>PROJECT STATUS</th></div>
+                    <th>PROJECT STATUS</th>
+                    {/* </div> */}
                 </tr>
+                </thead>
                 {item.map(({ Projectname, Teamname, Duration, Startingdate, Endingdate, Projectstatus }) => (
-                    <tr className='tabelheading'>
+                   <tr>
                         <td>{Projectname}</td>
                         <td>{Teamname}</td>
                         <td>{Duration}</td>
                         <td>{Startingdate}</td>
                         <td>{Endingdate}</td>
                         <td>{Projectstatus}</td>
-                    </tr>
+                    </tr> 
                 ))}
             </table>
             {/* <button onClick={logoutPage}>LOGOUT</button> */}
-        </div>
-    </div>
+        {/* </div> */}
+    // </div>
 }
 

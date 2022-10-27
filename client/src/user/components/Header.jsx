@@ -17,29 +17,22 @@ import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined
 function Header() {
 
     const id = localStorage.getItem('data');
-    return (
+    return (<div className='mainheader'>
         <AppBar className='header' position='static'>
 
             <Toolbar> 
-                {/* <IconButton
-                    size="large"
-                    edge="start"
-                    color='#0000ff'
-                    aria-label="menu"
-                    sx={{mr:2}}>
-                        
-                    </IconButton> */}
+               
 
                 <h1 className='huser'>USER<AccountCircleOutlinedIcon className='usericon'/></h1>    
                 <img className='himg' src={logo} alt="logo"></img>
-                <Typography className='htitlename' variant='h6' component="div" sx={{ flexGrow: 1 }}>Project Management System</Typography>
+                <Typography className='htitlename' variant='h6' component="div" sx={{ flexGrow: 1 }}><h1>Project Management System</h1></Typography>
                 {/* <Search /> */}
                 <LogOutbtn/>
              <Complete/>
                 
                 {/* <Button color="inherit">LogOut<BiLogOut className='logout'/></Button> */}
             </Toolbar>
-        </AppBar>
+        </AppBar></div>
     )
 }
 

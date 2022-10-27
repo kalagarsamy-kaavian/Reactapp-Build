@@ -1,107 +1,94 @@
-div h100 {
-    color: blue;
-    font-weight: bolder;
-    font-size: larger;
-}
-
-.blueteam{
-    animation: glitch 1s linear infinite;
-    font-size: xx-large;
-    color: blue;
-    
-  }
-  
-  @keyframes glitch{
-    2%,64%{
-      transform: translate(2px,0) skew(0deg);
-    }
-    4%,60%{
-      transform: translate(-2px,0) skew(0deg);
-    }
-    62%{
-      transform: translate(0,0) skew(5deg); 
-    }
-  }
-  
-  .blueteam:before,
-  .blueteam:after{
-    content: attr(title);
-    position: absolute;
-    left: 0;
-  }
-  
-  .blueteam:before{
-    animation: glitchTop 1s linear infinite;
-    clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
-    -webkit-clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
-  }
-  
-  @keyframes glitchTop{
-    2%,64%{
-      transform: translate(2px,-2px);
-    }
-    4%,60%{
-      transform: translate(-2px,2px);
-    }
-    62%{
-      transform: translate(13px,-1px) skew(-13deg); 
-    }
-  }
-  
-  .blueteam:after{
-    animation: glitchBotom 1.5s linear infinite;
-    clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
-    -webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
-  }
-  
-  @keyframes glitchBotom{
-    2%,64%{
-      transform: translate(-2px,0);
-    }
-    4%,60%{
-      transform: translate(-2px,0);
-    }
-    62%{
-      transform: translate(-22px,5px) skew(21deg); 
-    }
-  }
-
-.list li {
-    
-}
-.about_wrap{
-  font-family: 'Roboto';
-}
-/* .para h4 {
-  padding-right: 600px;
-} */
-.para {
-  font-size: medium;
-}
-
-/* .about_wrap
-{
-background-image: url(https://static.vecteezy.com/system/resources/previews/000/235/253/original/abstract-stylish-elegant-blue-wave-background-vector.jpg);
-position: static;
-top: -1%;
-bottom: 0;
-/* left: 45%;
-height: 100%;
-z-index: -1;
-} */
-
-@keyframes color {
-  0%   { background: #00ffff; }
-  20%  { background: #5bccec; }
-  40%  { background: #3bcfe6; }
-  60%  { background: #1d94fb; }
-  80%  { background: #07d6f1; }
-  100% { background: #00ffff; }
+.heading {
+    border-top-width: 20px;
+    padding-left: 730px;
+    /* width:fit-content; */
+    font-size: large;
+    background: rgb(0, 34, 255);
+    color: #e30808;
+    -webkit-text-stroke: 0.1vw #e30808;
 }
 
 .about_wrap {
-  background: #33CCCC;
-  animation: color 9s infinite linear;
-  text-align: center;
-  padding: 2em;
+    background-image: url(https://trbahadurpur.com/wp-content/uploads/2021/01/background-19.jpg);
+    background-size:cover;
+    height: 100vh;
+    margin-top: 0px;
+    font-size: 50px;
+    background-repeat: no-repeat;
+    font-size: large;
+
+}
+
+.texts {
+    float: right;
+    padding-right: 130px;
+}
+
+.blueteam {
+    /* padding-left: 140px; */
+    justify-content: center;
+
+    /* background:aqua; */
+    width: fit-content;
+
+    display: flex;
+
+}
+
+.intro {
+    font-style: oblique;
+    /* padding-top: 20px; */
+    /* background: maroon; */
+    color: black;
+    width: fit-content;
+    /* border-style: double; */
+    /* border-color: #00040d; */
+}
+
+.list {
+    padding-top: 20px;
+    padding-left: 130px;
+    font-style: oblique;
+    color: #00040d;
+    width: fit-content;
+}
+
+.para {
+    padding-top: 20px;
+    font-style: oblique;
+    /* background: maroon; */
+
+}
+
+h2 {
+    font-size: 4vw;
+    color: aqua;
+    -webkit-text-stroke: 0.12vw rgba(101, 141, 210, 0);
+    position: relative;
+    text-transform: uppercase;
+}
+
+h2::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 0%;
+    height: 100%;
+    color: #0000ff;
+    -webkit-text-stroke: 0vw aquamarine;
+    border-right: 0px solid #0000ff;
+    overflow: hidden;
+    animation: animate 6s linear infinite;
+}
+
+@keyframes animate {
+    0% {
+        width: 0%;
+    }
+
+    70% {
+        width: 100%;
+    }
+
 }

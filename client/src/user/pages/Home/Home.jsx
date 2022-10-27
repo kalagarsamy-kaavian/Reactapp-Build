@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import homeimg from './image1.svg';
-import waveimg from './wav.png'
+import waveimg from './wav.png';
+import welcome from './welcome.svg';
 import './Home.css';
 function Homepa() {
 
@@ -11,7 +12,7 @@ function Homepa() {
 		</div>
 
 		<div className="homesection">
-			<img class="wave" src={waveimg} />
+			{/* <img class="wel" src={welcome} /> */}
 			<div className="contentBox">
 				<h1> Learning Made Easy</h1>
 				<p>Project Management System is designed to help businesses and individuals track projects, tasks, and schedules. It's a great way to stay organized and ensure that your team remains on-task.It provides structure and control of the project environment so that the agreed activities will produce the right products or services to meet the customer's expectations.</p>
@@ -36,9 +37,13 @@ function Homepa() {
 				</div>
 
 			</div>
-			<div className="imgContainer">
-				<img src={homeimg} alt="home" />
-			</div>
-		</div></div>
+
+
+		</div>
+		<div className="imgContainer">
+			<img src={homeimg} alt="home" />
+		</div>
+		
+	</div>
 }
 export default Homepa;

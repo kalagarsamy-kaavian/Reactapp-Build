@@ -12,8 +12,8 @@
     min-height: 20vh;
     position: static;
     padding-top: 10vh;
-    padding-left: 10vh;
-    left: 150px;
+    padding-left: 80vh;
+    left: 200px;
 
 }
 
@@ -23,6 +23,7 @@
     color: rgb(19, 19, 19);
     transform: translate(-50%, -50%);
     font-size: 3em;
+
 }
 
 .pmshead h1:nth-child(1) {
@@ -55,7 +56,12 @@
     align-items: center;
     /* background-image: image(); */
 }
-
+.wel{
+    width: 80px;
+    height: 100px;
+    padding-bottom: 50px;
+    padding-left: 80px;
+}
 .contentBox {
     width: 40%;
     /* background-color: orange; */
@@ -67,11 +73,15 @@
     font-size: 2.5rem;
     color: #301934;
     text-align: left;
+    padding-right: 100px;
+
 }
 
 .contentBox p {
     font-size: 1.2rem;
     margin: 1em 0;
+    padding-right: 30px;
+    padding-left: 10px;
     word-spacing: 10px;
     font-family: 'Roboto';
     text-align: justify;
@@ -86,18 +96,21 @@
 }
 
 .wave {
-    position: fixed;
+    /* position: fixed; */
     top: -1%;
     bottom: 0;
     left: 45%;
-    height: 100%;
+    width: 70%;
+    height: 90%;
     z-index: -1;
 }
 
-.imgContainer {
-    padding-bottom: 100px;
-    padding-right: 100px;
-    /* padding-left: 30px; */
+.imgContainer img{
+    
+    position: absolute;
+    top: 150px;
+    left: 1050px ;
+    
 }
 
 

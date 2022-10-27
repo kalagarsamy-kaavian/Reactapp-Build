@@ -28,7 +28,7 @@ export default function History() {
 
     // return <div className='historyoverall'>
         {/* <div className='histroytable'> */}
-            return <table border={1} class="center"> 
+            return <div className='ph'><table  border={1} class="center"> 
                 <thead>
                 <tr>
                 {/* <div className='tableheading'> */}
@@ -54,6 +54,6 @@ export default function History() {
             </table>
             {/* <button onClick={logoutPage}>LOGOUT</button> */}
         {/* </div> */}
-    // </div>
+    </div>
 }
 

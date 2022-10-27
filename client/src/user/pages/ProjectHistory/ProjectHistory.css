@@ -1,28 +1,21 @@
-/* .historyoverall{
-    padding-left: 500px;
-    padding-top:300px;
-}
-.histroytable {
-
-}
-/* tr { display: block; float: left; }
-th, td { 
-  display: block;
-  text-align: left; 
-} */ 
-
 .center {
   margin-left: auto;
   margin-right: auto;
-   /* padding-top: 50px; */
  }
- table {
+.ph table {
   border-collapse: collapse;
   border-spacing: 0;
   width: 70%;
+  margin-right: 50%;
+  /* padding-left: 50%; */
+  margin-left: 20%;
   border: 1px solid #ddd;
   font-family: 'Roboto';
 }
+/* .ph{
+   margin-right: 50%; 
+  margin-left: 10%;} */
+ 
 thead{
   background-color: #3dd9d6;
 }

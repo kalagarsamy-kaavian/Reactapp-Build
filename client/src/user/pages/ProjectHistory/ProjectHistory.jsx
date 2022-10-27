@@ -9,7 +9,7 @@ export default function History() {
     const [item, setItems] = useState([]);
     const [logout, setLogout] = useState(false);
     useEffect(() => {
-        fetch(`${process.env.REACT_APP_SERVER_PREFIX}/employeehistory', { method: "post", body: JSON.stringify({ id }), headers: { 'content-type': 'application/json' } })
+        fetch(`${process.env.REACT_APP_SERVER_PREFIX}/employeehistory`, { method: "post", body: JSON.stringify({ id }), headers: { 'content-type': 'application/json' } })
             .then(res => res.json())
             .then(data => setItems(data));
         console.log(item);

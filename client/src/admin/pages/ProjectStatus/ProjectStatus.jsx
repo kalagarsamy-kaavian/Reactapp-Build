@@ -29,7 +29,7 @@ export default function Projectstatus() {
         // console.log(rating)
         // fetch(`http://localhost:3002/star/${rates}`,{method:"post",headers:{'content-type':'application/json'}})
         console.log(data)
-        fetch(`${process.env.REACT_APP_SERVER_PREFIX}/api/todo', { method: "post", body: JSON.stringify({ data }), headers: { 'content-type': 'application/json' } })
+        fetch(`${process.env.REACT_APP_SERVER_PREFIX}/api/todo`, { method: "post", body: JSON.stringify({ data }), headers: { 'content-type': 'application/json' } })
             .then(res => res.json())
             .then(datas => {
                 setTodo(datas)

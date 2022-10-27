@@ -395,6 +395,7 @@ app.get('/tlcomplete',(req,res)=>{
 // for any other request, serve HTML in DIT environment (cloud env)
 if (NODE_ENV === 'DIT') {
     const indexHTMLContent = fs.readFileSync(path.join(__dirname + '/../client/build/index.html'), 'utf8');
+    console.log('Index')
     app.all('*', (req, res) => {
       res.send(indexHTMLContent);
     });
@@ -403,4 +404,3 @@ if (NODE_ENV === 'DIT') {
 app.listen(3002, () => {
             console.log("Application is running.");
         });
-  

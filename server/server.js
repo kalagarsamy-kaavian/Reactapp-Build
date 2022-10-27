@@ -99,7 +99,7 @@ app.delete('/emprecord',async (req,res)=>{
 //     // }
 // });  
 app.post('/login',async(req,res)=>{
-    const{user,pass}=req.body;   
+    const {user,pass}=req.body;
     // const db=getDB();
     // const collection=db.collection("userinfo");
     const use=await newUser.findOne({username:user})
@@ -110,7 +110,7 @@ app.post('/login',async(req,res)=>{
     }
     else if(pass===use.password){
         //res.cookie('Username',user);
-        return res.send(use);
+        return res.json(use);
     }
     // else{
     //     const msg="INVALID USERNAME OR PSSWORD"

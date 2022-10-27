@@ -47,7 +47,7 @@ export default function Userlogin() {
                 console.log(data)
                 localStorage.setItem('data', data.Empid);
                 if (data.role === "User") {
-                    
+                    console.log(data);
                     setUse(data)
                     navigate(`/user/Home`)
                 }

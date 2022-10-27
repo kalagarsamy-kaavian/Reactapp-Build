@@ -7,9 +7,9 @@ export default function Empcomplete() {
     const [numbers,setNum]=useState(0);
     const [team,setTeam]=useState(0);
     useEffect(()=>{
-    fetch(`${process.env.REACT_APP_SERVER_PREFIX}/tlcomplete').then(res=>res.json()).then(data=>setCount(data));
-    fetch(`${process.env.REACT_APP_SERVER_PREFIX}/tlongoing').then(res=>res.json()).then(data=>setNum(data));
-    fetch(`${process.env.REACT_APP_SERVER_PREFIX}/tlcount').then(res=>res.json()).then(data=>setTeam(data));
+    fetch(`${process.env.REACT_APP_SERVER_PREFIX}/tlcomplete`).then(res=>res.json()).then(data=>setCount(data));
+    fetch(`${process.env.REACT_APP_SERVER_PREFIX}/tlongoing`).then(res=>res.json()).then(data=>setNum(data));
+    fetch(`${process.env.REACT_APP_SERVER_PREFIX}/tlcount`).then(res=>res.json()).then(data=>setTeam(data));
 })
     // return (<><div className='completecount' ><h2>COMPLETED     {counts}</h2></div><div className='ongoingcount'><h2>ONGOING       {numbers}</h2></div><div className='tlcount'><h2>Team       {team}</h2></div></>
     // )

@@ -54,16 +54,16 @@ app.post('/olist/:id',(req,res)=>{
     newModel.find({$and:[{Empid:id},{Projectstatus:'Ongoing'}]}).then(data=>{
         let[first]=data;
        // console.log(first.Empstatus)
-        res.json(first.Empstatus)
+       // res.json(first.Empstatus)
     })
 })
 app.post('/leaderteam/:id',(req,res)=>{
     const {id}=req.params;
      console.log(id)
     newModel.find({$and:[{Empid:id},{Projectstatus:'Ongoing'}]}).then(data=>{
-        let[first]=data;
+        let[first,...rest]=data;
         //console.log(first.Teamname)
-        res.json(first.Teamname)
+       // res.json(first.Teamname)
     })
 })
 

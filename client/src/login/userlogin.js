@@ -48,10 +48,10 @@ export default function Userlogin() {
                 if (data.role === "User") {
                     
                     setUse(data)
-                    navigate(`/user`)
+                    navigate(`/user/Home`)
                 }
                 else if (data.role === "Admin") {
-                    navigate("/admin")
+                    navigate("/admin/Home")
                 }
                 else  {
                 setMsg(msg)

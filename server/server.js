@@ -204,18 +204,24 @@ app.get('/assignname',(req,res)=>{
     .catch((err) =>{
     })
 });
-app.post('/assignemprecord',(req,res)=>{
-	const {pass,passt,passr,passf,passe,mem,memt,memr,memf,meme,pn,tn,d,start,end,pco,es,descr,pt}=req.body;
-    console.log('input')
-	console.log('Inserted');
-	// const db=getdb();
-	// const collection=  db.collection('project');
-	newModel.create([{"Empid":pass,"Empname":mem,"Projectname":pn,"Teamname":tn,"Duration":d,"Startingdate":start,"Endingdate":end,"Projectstatus":pco,"Empstatus":es,"Description":descr,"Platform":pt},
-    {"Empid":passt,"Empname":memt,"Projectname":pn,"Teamname":tn,"Duration":d,"Startingdate":start,"Endingdate":end,"Projectstatus":pco,"Empstatus":es,"Description":descr,"Platform":pt},
-    {"Empid":passr,"Empname":memr,"Projectname":pn,"Teamname":tn,"Duration":d,"Startingdate":start,"Endingdate":end,"Projectstatus":pco,"Empstatus":es,"Description":descr,"Platform":pt},
-    {"Empid":passf,"Empname":memf,"Projectname":pn,"Teamname":tn,"Duration":d,"Startingdate":start,"Endingdate":end,"Projectstatus":pco,"Empstatus":es,"Description":descr,"Platform":pt},
-    {"Empid":passe,"Empname":meme,"Projectname":pn,"Teamname":tn,"Duration":d,"Startingdate":start,"Endingdate":end,"Projectstatus":pco,"Empstatus":es,"Description":descr,"Platform":pt}]);
-	//console.log();
+// app.post('/assignemprecord',(req,res)=>{
+// 	const {pass,passt,passr,passf,passe,mem,memt,memr,memf,meme,pn,tn,d,start,end,pco,es,descr,pt}=req.body;
+//     console.log('input')
+// 	console.log('Inserted');
+// 	// const db=getdb();
+// 	// const collection=  db.collection('project');
+// 	newModel.create([{"Empid":pass,"Empname":mem,"Projectname":pn,"Teamname":tn,"Duration":d,"Startingdate":start,"Endingdate":end,"Projectstatus":pco,"Empstatus":es,"Description":descr,"Platform":pt},
+//     {"Empid":passt,"Empname":memt,"Projectname":pn,"Teamname":tn,"Duration":d,"Startingdate":start,"Endingdate":end,"Projectstatus":pco,"Empstatus":es,"Description":descr,"Platform":pt},
+//     {"Empid":passr,"Empname":memr,"Projectname":pn,"Teamname":tn,"Duration":d,"Startingdate":start,"Endingdate":end,"Projectstatus":pco,"Empstatus":es,"Description":descr,"Platform":pt},
+//     {"Empid":passf,"Empname":memf,"Projectname":pn,"Teamname":tn,"Duration":d,"Startingdate":start,"Endingdate":end,"Projectstatus":pco,"Empstatus":es,"Description":descr,"Platform":pt},
+//     {"Empid":passe,"Empname":meme,"Projectname":pn,"Teamname":tn,"Duration":d,"Startingdate":start,"Endingdate":end,"Projectstatus":pco,"Empstatus":es,"Description":descr,"Platform":pt}]);
+// 	//console.log();
+// })
+
+app.post('/frstid/:mem',(req,res)=>{
+    const{mem}=req.params;
+    console.log(mem);
+    
 })
 
     // app.post('/assignemprecord',(req,res)=>{

@@ -41,7 +41,7 @@ export default function Userlogin() {
     }
     function onsubmit() {
         //fetch(`http://localhost:3002/check`).then(res=>res.json()).then(data=>setCheck(data));
-        fetch('http://localhost:3002/login', { method: "post", body: JSON.stringify({ user, pass }), headers: { 'Content-type': 'application/json' } })
+        fetch(`${process.env.REACT_APP_SERVER_PREFIX}/login`, { method: "post", body: JSON.stringify({ user, pass }), headers: { 'Content-type': 'application/json' } })
             .then(res => res.json())
             .then(data => {
                 localStorage.setItem('data', data.Empid);

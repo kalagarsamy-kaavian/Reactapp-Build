@@ -37,8 +37,8 @@
 //     const [descr,setDescr]=useState("");
 //     const [spec,setSpec]=useState([]);
 //     useEffect(()=>{
-//         fetch('http://localhost:3002/assignname').then(res => res.json()).then(data => setName(data));
-//         fetch('http://localhost:3002/assignspecial').then(res => res.json()).then(data => setSpec(data));
+//         fetch(`${process.env.REACT_APP_SERVER_PREFIX}/assignname').then(res => res.json()).then(data => setName(data));
+//         fetch(`${process.env.REACT_APP_SERVER_PREFIX}/assignspecial').then(res => res.json()).then(data => setSpec(data));
 
       
         
@@ -182,12 +182,12 @@ export default function Emplist() {
     const [descr,setDescr]=useState("");
     const [spec,setSpec]=useState([]);
     useEffect(()=>{
-        fetch('http://localhost:3002/assignname').then(res => res.json()).then(data => setName(data));
-        fetch('http://localhost:3002/assignspecial').then(res => res.json()).then(data => setSpec(data));
+        fetch(`${process.env.REACT_APP_SERVER_PREFIX}/assignname`).then(res => res.json()).then(data => setName(data));
+        fetch(`${process.env.REACT_APP_SERVER_PREFIX}/assignspecial`).then(res => res.json()).then(data => setSpec(data));
     },[])
     function func() {
         //if(mem && memt && memr && memf && meme && pn && tn && d && start && end && pco && es && descr && pt)
-        fetch(`http://localhost:3002/assignemprecord`, { method: 'post', body: JSON.stringify({pass,passt,passr,passf,passe,mem,memt,memr,memf,meme,pn,tn,d,start,end,pco,es,descr,pt}), headers: { 'content-type': 'application/json' } })
+        fetch(`${process.env.REACT_APP_SERVER_PREFIX}/assignemprecord`, { method: 'post', body: JSON.stringify({pass,passt,passr,passf,passe,mem,memt,memr,memf,meme,pn,tn,d,start,end,pco,es,descr,pt}), headers: { 'content-type': 'application/json' } })
        //else
        //window.alert("Inserted")
     }

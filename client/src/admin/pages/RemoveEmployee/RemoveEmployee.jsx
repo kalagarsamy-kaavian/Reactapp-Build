@@ -72,10 +72,10 @@ export default function Rmemplist(){
 
 	//Fetch data from the db
 	useEffect(()=>{
-		fetch(`http://localhost:3002/id`).then(res=>res.json()).then(data=>setId(data));
+		fetch(`${process.env.REACT_APP_SERVER_PREFIX}/id`).then(res=>res.json()).then(data=>setId(data));
 	},[])
 		function deleteRec(){
-	fetch(`http://localhost:3002/emprecord`,{method:'delete',body:JSON.stringify({data}),headers:{'content-type':'application/json'}}).then(res=>res.json()).then(val=>setData(val));
+	fetch(`${process.env.REACT_APP_SERVER_PREFIX}/emprecord`,{method:'delete',body:JSON.stringify({data}),headers:{'content-type':'application/json'}}).then(res=>res.json()).then(val=>setData(val));
 }
 	return (<div className='deloverall'>
 		<h2>ID</h2>

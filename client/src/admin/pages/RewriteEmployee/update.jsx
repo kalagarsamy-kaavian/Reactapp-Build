@@ -9,11 +9,11 @@
 //     const [phone1,setPhone] = useState('');
 //     const [location1,setlocation1]=useState('');
 //     useEffect(() => {
-//         fetch('http://localhost:3002/empaddid').then(res => res.json()).then(data => setEmp(data));
+//         fetch(`${process.env.REACT_APP_SERVER_PREFIX}/empaddid').then(res => res.json()).then(data => setEmp(data));
 //     },[]);
 
 //     const submit = (e) => {
-//         fetch('http://localhost:3002/empaddsearch',{
+//         fetch(`${process.env.REACT_APP_SERVER_PREFIX}/empaddsearch',{
 //             method:'POST',
 //             body:JSON.stringify({Empid}),
 //             headers:{'content-type':'application/json'}
@@ -26,7 +26,7 @@
 
 //     const upemp = () => {
         
-//         fetch('http://localhost:3002/empaddupdate',{
+//         fetch(`${process.env.REACT_APP_SERVER_PREFIX}/empaddupdate',{
 //             method:'PUT',
 //             body:JSON.stringify({Empid,name1,dob,phone1,location1}),
 //             headers:{'content-type':'application/json'}
@@ -88,11 +88,11 @@ export default function Updateemp(){
     const [phone1,setPhone] = useState('');
     const [location1,setlocation1]=useState('');
     useEffect(() => {
-        fetch('http://localhost:3002/empaddid').then(res => res.json()).then(data => setEmp(data));
+        fetch(`${process.env.REACT_APP_SERVER_PREFIX}/empaddid`).then(res => res.json()).then(data => setEmp(data));
     },[]);
 
     const submit = (e) => {
-        fetch('http://localhost:3002/empaddsearch',{
+        fetch(`${process.env.REACT_APP_SERVER_PREFIX}/empaddsearch`,{
             method:'POST',
             body:JSON.stringify({Empid}),
             headers:{'content-type':'application/json'}
@@ -105,7 +105,7 @@ export default function Updateemp(){
 
     const upemp = () => {
         
-        fetch('http://localhost:3002/empaddupdate',{
+        fetch(`${process.env.REACT_APP_SERVER_PREFIX}/empaddupdate`,{
             method:'PUT',
             body:JSON.stringify({Empid,name1,dob,phone1,location1}),
             headers:{'content-type':'application/json'}

@@ -22,7 +22,7 @@ export default function Emplist() {
     // const [er,setEr]=useState("");
     function func() {
         if(pass&& input&&dob&& con&& loc&& doj&& exp&& speo&& spet&& sper&& pt)
-        fetch(`http://localhost:3002/emprecord`, { method: 'post', body: JSON.stringify({ pass, input, dob, con, loc, doj, exp, speo, spet, sper, pt }), headers: { 'content-type': 'application/json' } })
+        fetch(`${process.env.REACT_APP_SERVER_PREFIX}/emprecord`, { method: 'post', body: JSON.stringify({ pass, input, dob, con, loc, doj, exp, speo, spet, sper, pt }), headers: { 'content-type': 'application/json' } })
        else
        window.alert("Inserted")
     }

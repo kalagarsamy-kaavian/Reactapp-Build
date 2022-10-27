@@ -86,7 +86,8 @@ app.post('/login',async(req,res)=>{
     const use=await newUser.findOne({username:user})
     if(!use)
     {
-         return res.send("invalid user")
+        //  return res.json({invaliduser})
+        console.log("invalid")
     }
     else if(pass===use.password){
         //res.cookie('Username',user);

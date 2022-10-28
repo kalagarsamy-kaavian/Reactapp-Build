@@ -8,14 +8,13 @@ import "./About.css";
 
 function About() {
     return (<div className='about_wrap'>
-        {/* <img src={aboutimg} alt='aboutimg'></img> */}
-
-        <h100> ABOUT US </h100>
-        
-        <div className='texts'>
-            {/* <div className='blueteam'>
-                <h20 data-text="BLUETEAM.....">BLUETEAM.....</h20>
-            </div> */}
+       
+         <div className='aboutheading'>   
+         <h100> ABOUT US </h100>
+         </div>   
+         
+       {/* <div className='texts'>
+          
             <div className='blueteam'> Blue Team </div>
             
 
@@ -50,7 +49,37 @@ function About() {
                     <div><h7>THANK YOU</h7></div>
                 </div>
             </div>
-        </div >
+        </div > */}
+
+        <div>
+            <h21>Blue Team</h21>
+        </div>
+        <div className='para'>
+        <p className='p'>
+            Hello, This application was build by our team (Blue Team). 
+        </p>
+        <p className='p1'>
+            This application is used to maintain project management, and Employee details at the same time.<br></br>
+            You can use our application to create new project, check its status, add Employee details to the DataBase,<br></br>
+            also it can be Edit and delete those Details.<br></br> 
+        </p>
+        <p className='p2'>
+            TEAM LEADER:<br></br>
+            Divya Dharshini Murugan<br></br>
+            MEMBERS:<br></br>
+            Meenakshi<br></br>
+            Thangalakshmi<br></br>
+            Alagarsamy<br></br>
+            Bhoopesh kumar<br></br>
+        </p>
+        <p className='p3'>
+            Thank you for using our application, we hope it is useful and does its role without any problem.<br></br> 
+        </p>
+        <p className='p4'>THANK YOU</p>
+        </div>
+        <div className='aboutimg'>
+        <img src='/images/about.svg'></img>
+    </div>
         
     </div >
     )

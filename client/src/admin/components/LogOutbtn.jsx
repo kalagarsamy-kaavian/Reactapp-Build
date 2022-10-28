@@ -20,6 +20,7 @@
 // export default LogOutbtn;
 import React from 'react'
 import {useNavigate} from 'react-router-dom'
+import "./LogOutbtn.css";
 export default function LogOutbtn(){
   const navigate=useNavigate()
    
@@ -28,6 +29,6 @@ export default function LogOutbtn(){
    }
 
   return(
-    <button className='pushable' color="inherit" onClick={logout}><span className='front'>LogOut</span></button>
+    <button className='lpushable' color="inherit" onClick={logout}><span className='lfront'>LogOut</span></button>
   )
 }

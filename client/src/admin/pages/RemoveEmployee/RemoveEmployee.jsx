@@ -78,13 +78,13 @@ export default function Rmemplist(){
 	fetch(`${process.env.REACT_APP_SERVER_PREFIX}/emprecord`,{method:'delete',body:JSON.stringify({data}),headers:{'content-type':'application/json'}}).then(res=>res.json()).then(val=>setData(val));
 }
 	return (<div className='deloverall'>
-		<h2>ID</h2>
-		<label className='id'>EMPID</label>
-		<select value={data} onChange={e=>setData(e.target.value)}>
+		<h2>REMOVE EMPLOYEE</h2>
+		<label className='id'>EMPID : </label>
+		<select className='empidselect' value={data} onChange={e=>setData(e.target.value)}>
 		<option value="" disablevalue>EMPID</option>
 			{id.map(val=><option>{val}</option>)}
 		</select>
-		<button onClick={deleteRec}><AiFillDelete  /></button>
+		<button className='delbtn' onClick={deleteRec}><span><AiFillDelete  /></span></button>
 		<div className='deleteempimg'>
 			<img src='/images/deleteemp.svg'></img>
 		</div>

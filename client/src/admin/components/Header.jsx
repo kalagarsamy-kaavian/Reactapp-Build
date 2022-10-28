@@ -30,7 +30,7 @@ function Header() {
                 <h1 className='hadmin'>ADMIN<AccountCircleOutlinedIcon className='Adminlogo' /></h1>
                 {/* <img className='admin'src={adminsc} alt='adminlogo'></img> */}
                 <img className='himg' src={logo} alt="logo"></img>
-                <Typography className='htitlename' fontWeight="bolder" color="white" paddingRight="50px"  sx={{ flexGrow: 1 }}>Project Management System</Typography>
+                <Typography className='htitlename' fontWeight="bolder" color="white" paddingRight="50px"  sx={{ flexGrow: 1 }}><h1>Project Management System</h1></Typography>
                 {/* <Search /> */}
                 <LogOutbtn />
             </Toolbar>

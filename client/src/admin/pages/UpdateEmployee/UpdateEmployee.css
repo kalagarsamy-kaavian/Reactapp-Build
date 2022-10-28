@@ -5,8 +5,8 @@
     background: #3dd9d6;
 }
 .updateoverall{
-    padding-left: 600px;
-    padding-top: 50px;
+    padding-left: 500px;
+    padding-top: 10px;
     /* display: flex;
     overflow: scroll; */
 
@@ -91,7 +91,7 @@ thead h2{
   }
   .addempimg  img {
     position: absolute;
-    left:400px;
+    left:380px;
     top: 100px;
     width:500px;
     /* height:100px; */

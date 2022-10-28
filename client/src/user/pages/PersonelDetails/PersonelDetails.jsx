@@ -8,7 +8,7 @@ import Update from "./update";
 export default function Employee(){
     const[item,setItems]=useState([]);
     const [logout,setLogout]=useState(false);
-    const id=localStorage.getItem('data');
+    const id = localStorage.getItem('data');
     const navigate = useNavigate();
     useEffect(()=>{
     fetch(`${process.env.REACT_APP_SERVER_PREFIX}/employeedetail`,{method:"post",body:JSON.stringify({id}),headers:{'content-type':"application/json"}})

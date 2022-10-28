@@ -99,15 +99,16 @@ app.post('/login',async(req,res)=>{
     const {user,pass}=req.body;
     // const db=getDB();
     // const collection=db.collection("userinfo");
-    const use=await newEmployee.findOne({Empname:user});
-    console.log(user,pass)
+
+    const use=await newUser.findOne({username:user})
+    console.log(use)
     if(!use)
     {
          return res.status(404).send('invalid user')
     }
-    else {
+ else if(pass===use.password){
         //res.cookie('Username',user);
-        return res.json(use);
+        return res.send(use);
     }
     // else{
     //     const msg="INVALID USERNAME OR PSSWORD"

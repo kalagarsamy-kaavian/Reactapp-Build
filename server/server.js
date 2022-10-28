@@ -99,7 +99,7 @@ app.post('/login',async(req,res)=>{
     const {user,pass}=req.body;
     // const db=getDB();
     // const collection=db.collection("userinfo");
-    const use=await newEmployee.find({Empname:user})
+    const use=await newEmployee.findOne({Empname:user});
     console.log(user,pass)
     if(!use)
     {

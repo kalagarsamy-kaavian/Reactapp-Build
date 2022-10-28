@@ -57,7 +57,7 @@ export default function Complete(){
   
 
   return(
-    <button className='pushable' color="inherit" onClick={complete} ><span className='front' >Completed</span></button>
+    <button className='lpushable' color="inherit" onClick={complete} ><span className='lfront' >Completed</span></button>
   
     )
 }

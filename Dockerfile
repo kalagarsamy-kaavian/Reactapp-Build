@@ -2,7 +2,7 @@ FROM node:16-alpine
 
 # Set the working directory
 ENV NODE_ENV=${NODE_ENV:-DEV}
-ENV REACT_APP_SERVER_PREFIX=${REACT_APP_SERVER_PREFIX:-https://library-management-system-3iegf.ondigitalocean.app}
+ENV REACT_APP_SERVER_PREFIX=${REACT_APP_SERVER_PREFIX:-https://project-management-system-lnol8.ondigitalocean.app}
 
 WORKDIR /app
 
@@ -20,7 +20,7 @@ RUN cd /app/client && npm ci --without-ssl --insecure
 RUN cd /app/server && npm ci --without-ssl --insecure
 RUN cd /app/client && npm rebuild node-sass && npm run build
 
-EXPOSE 3002
+EXPOSE 3003
 
 # TODO: only dist and node_modules folders are needed after build
 # could delete these for smaller prod image

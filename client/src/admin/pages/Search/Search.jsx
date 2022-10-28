@@ -33,20 +33,20 @@ export default function Search() {
 
     return (<div class="searchcontainer">
         <div className="sheading">
-            <h1>Admin Filter</h1>
+            <h1>SEARCH</h1>
         </div>
         <div className="filteralign">
             <h2>
-                <label className="plat">Platform</label><h20> </h20>
-                <select value={empplatform} onChange={e => setEmpplatform(e.target.value)}>
+                <label className="plat">Platform : </label>
+                <select className="searchselect" value={empplatform} onChange={e => setEmpplatform(e.target.value)}>
                     <option value="" disablevalue>Platform</option>
                     {platform.map(plat => <option>{plat}</option>)}
                 </select>
             </h2>
             <h3>
 
-                <label>Specialized</label><h20> </h20>
-                <input placeholder="Search text.." value={spc} onChange={e => setSpc(e.target.value)} />
+                <label className="fill">Specialized : </label><h20> </h20>
+                <input className="searchbox" placeholder="Search text.." value={spc} onChange={e => setSpc(e.target.value)} />
 
             </h3>
             <h4><button className="searchbtn" onClick={onSearch}><span>FILTER</span></button></h4>

@@ -3,10 +3,12 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Update from "./update";
+
 import './PersonelDetails.css'
 export default function Employee() {
     const [item, setItems] = useState([]);
     const [logout, setLogout] = useState(false);
+
     const id = localStorage.getItem('data');
     const navigate = useNavigate();
     useEffect(()=>{

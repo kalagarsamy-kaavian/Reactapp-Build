@@ -20,10 +20,7 @@ mongoose.connect("mongodb+srv://blueTeam:o9T62uCK3dt5V078@db-kaavian-sys-cluster
     else{
         console.log("db error")
     }
-})
-app.get('/login',(req,res)=>{
-    res.send(fs.readFileSync('./login.html',{encoding:'utf-8'}))
-})
+});
 
 // app.delete('/emprecord',(req,res)=>{
 // 	const data=req.body;
@@ -79,16 +76,37 @@ app.delete('/emprecord',async (req,res)=>{
     console.log('deleted')
 })
 
+// app.post('/login',async(req,res)=>{
+//     const{user,pass}=req.body;   
+//     // const db=getDB();
+//     // const collection=db.collection("userinfo");
+//     const use=await newUser.findOne({username:user})
+//     if(!use)
+//     {
+//         //  return res.json({invaliduser})
+//         console.log("invalid")
+//     }
+//     else if(pass===use.password){
+//         //res.cookie('Username',user);
+//         return res.send(use);
+//     }
+//     // else{
+//     //     const msg="INVALID USERNAME OR PSSWORD"
+//     //                 res.send(msg);
+//     // }
+// });  
 app.post('/login',async(req,res)=>{
-    const{user,pass}=req.body;   
+    const {user,pass}=req.body;
     // const db=getDB();
     // const collection=db.collection("userinfo");
+
     const use=await newUser.findOne({username:user})
+    console.log(use)
     if(!use)
     {
-         return res.send("invalid user")
+         return res.status(404).send('invalid user')
     }
-    else if(pass===use.password){
+ else if(pass===use.password){
         //res.cookie('Username',user);
         return res.send(use);
     }
@@ -96,7 +114,8 @@ app.post('/login',async(req,res)=>{
     //     const msg="INVALID USERNAME OR PSSWORD"
     //                 res.send(msg);
     // }
-});  
+})
+
 app.post("/employeedetail",async(req,res)=>{
     const{id}=req.body;
     // const db=getDB();
@@ -183,18 +202,24 @@ app.get('/assignname',(req,res)=>{
     .catch((err) =>{
     })
 });
-app.post('/assignemprecord',(req,res)=>{
-	const {pass,passt,passr,passf,passe,mem,memt,memr,memf,meme,pn,tn,d,start,end,pco,es,descr,pt}=req.body;
-    console.log('input')
-	console.log('Inserted');
-	// const db=getdb();
-	// const collection=  db.collection('project');
-	newModel.create([{"Empid":pass,"Empname":mem,"Projectname":pn,"Teamname":tn,"Duration":d,"Startingdate":start,"Endingdate":end,"Projectstatus":pco,"Empstatus":es,"Description":descr,"Platform":pt},
-    {"Empid":passt,"Empname":memt,"Projectname":pn,"Teamname":tn,"Duration":d,"Startingdate":start,"Endingdate":end,"Projectstatus":pco,"Empstatus":es,"Description":descr,"Platform":pt},
-    {"Empid":passr,"Empname":memr,"Projectname":pn,"Teamname":tn,"Duration":d,"Startingdate":start,"Endingdate":end,"Projectstatus":pco,"Empstatus":es,"Description":descr,"Platform":pt},
-    {"Empid":passf,"Empname":memf,"Projectname":pn,"Teamname":tn,"Duration":d,"Startingdate":start,"Endingdate":end,"Projectstatus":pco,"Empstatus":es,"Description":descr,"Platform":pt},
-    {"Empid":passe,"Empname":meme,"Projectname":pn,"Teamname":tn,"Duration":d,"Startingdate":start,"Endingdate":end,"Projectstatus":pco,"Empstatus":es,"Description":descr,"Platform":pt}]);
-	//console.log();
+// app.post('/assignemprecord',(req,res)=>{
+// 	const {pass,passt,passr,passf,passe,mem,memt,memr,memf,meme,pn,tn,d,start,end,pco,es,descr,pt}=req.body;
+//     console.log('input')
+// 	console.log('Inserted');
+// 	// const db=getdb();
+// 	// const collection=  db.collection('project');
+// 	newModel.create([{"Empid":pass,"Empname":mem,"Projectname":pn,"Teamname":tn,"Duration":d,"Startingdate":start,"Endingdate":end,"Projectstatus":pco,"Empstatus":es,"Description":descr,"Platform":pt},
+//     {"Empid":passt,"Empname":memt,"Projectname":pn,"Teamname":tn,"Duration":d,"Startingdate":start,"Endingdate":end,"Projectstatus":pco,"Empstatus":es,"Description":descr,"Platform":pt},
+//     {"Empid":passr,"Empname":memr,"Projectname":pn,"Teamname":tn,"Duration":d,"Startingdate":start,"Endingdate":end,"Projectstatus":pco,"Empstatus":es,"Description":descr,"Platform":pt},
+//     {"Empid":passf,"Empname":memf,"Projectname":pn,"Teamname":tn,"Duration":d,"Startingdate":start,"Endingdate":end,"Projectstatus":pco,"Empstatus":es,"Description":descr,"Platform":pt},
+//     {"Empid":passe,"Empname":meme,"Projectname":pn,"Teamname":tn,"Duration":d,"Startingdate":start,"Endingdate":end,"Projectstatus":pco,"Empstatus":es,"Description":descr,"Platform":pt}]);
+// 	//console.log();
+// })
+
+app.post('/frstid/:mem',(req,res)=>{
+    const{mem}=req.params;
+    console.log(mem);
+    
 })
 
     // app.post('/assignemprecord',(req,res)=>{
@@ -395,12 +420,12 @@ app.get('/tlcomplete',(req,res)=>{
 // for any other request, serve HTML in DIT environment (cloud env)
 if (NODE_ENV === 'DIT') {
     const indexHTMLContent = fs.readFileSync(path.join(__dirname + '/../client/build/index.html'), 'utf8');
+    console.log('Index')
     app.all('*', (req, res) => {
       res.send(indexHTMLContent);
     });
 }
 
-app.listen(3002, () => {
+app.listen(3003, () => {
             console.log("Application is running.");
         });
-  

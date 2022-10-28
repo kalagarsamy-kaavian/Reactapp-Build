@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
-import './board.css'
-import { useState } from 'react';
+// import React, { useEffect } from 'react';
+// import './board.css'
+// import { useState } from 'react';
 
 export default function Empcomplete() {
     const [counts,setCount]=useState(0)
@@ -14,22 +14,22 @@ export default function Empcomplete() {
     // return (<><div className='completecount' ><h2>COMPLETED     {counts}</h2></div><div className='ongoingcount'><h2>ONGOING       {numbers}</h2></div><div className='tlcount'><h2>Team       {team}</h2></div></>
     // )
 
-    return (<div className='dash' border="2">
-        <tr className='head'>
-            <th colSpan="2">DETAILS</th>
-        </tr>
+//     return (<div className='dash' border="2">
+//         <tr className='head'>
+//             <th colSpan="2">DETAILS</th>
+//         </tr>
 
-        <div className='dashteam'>
-            <td>TEAMS</td><br></br>
-            <td>{team}</td>
-        </div>
-        <div className='completed'>
-            <td>COMPLETED</td><br></br>
-            <td>{counts}</td>
-        </div>
-        <div className='ongoing'>
-            <td>ONGOING</td><br></br>
-            <td>{numbers}</td>
-        </div>
-    </div>)
-}
+//         <div className='dashteam'>
+//             <td>TEAMS</td><br></br>
+//             <td>{team}</td>
+//         </div>
+//         <div className='completed'>
+//             <td>COMPLETED</td><br></br>
+//             <td>{counts}</td>
+//         </div>
+//         <div className='ongoing'>
+//             <td>ONGOING</td><br></br>
+//             <td>{numbers}</td>
+//         </div>
+//     </div>)
+// }

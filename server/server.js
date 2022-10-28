@@ -20,10 +20,7 @@ mongoose.connect("mongodb+srv://blueTeam:o9T62uCK3dt5V078@db-kaavian-sys-cluster
     else{
         console.log("db error")
     }
-})
-app.get('/login',(req,res)=>{
-    res.send(fs.readFileSync('./login.html',{encoding:'utf-8'}))
-})
+});
 
 // app.delete('/emprecord',(req,res)=>{
 // 	const data=req.body;

@@ -5,9 +5,7 @@ const newSchema=new mongoose.Schema({
   password:String,
   role:String,
   Empid:String
-},{collection:'userlogin'})
+},{collection:'userlogins'})
 
-const newUser=new mongoose.model("userlogin",newSchema)
-
-
+const newUser=new mongoose.model("userlogins",newSchema)
 module.exports=newUser;

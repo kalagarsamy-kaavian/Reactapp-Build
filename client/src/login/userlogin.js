@@ -44,9 +44,10 @@ export default function Userlogin() {
         fetch(`${process.env.REACT_APP_SERVER_PREFIX}/login`, { method: "post", body: JSON.stringify({ user, pass }), headers: { 'Content-type': 'application/json' } })
             .then(res => res.json())
             .then(data => {
+                console.log(data)
                 localStorage.setItem('data', data.Empid);
                 if (data.role === "User") {
-                    
+                    console.log(data);
                     setUse(data)
                     navigate(`/user/Home`)
                 }

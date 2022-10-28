@@ -30,10 +30,10 @@ export default function Complete(){
    
  useEffect(()=>{
   console.log(id)
-  fetch(`http://localhost:3002/olist/${id}`,{method:"post",headers:{'content-type':'apllication/json'}})
+  fetch(`${process.env.REACT_APP_SERVER_PREFIX}/olist/${id}`,{method:"post",headers:{'content-type':'apllication/json'}})
   .then(res=>res.json())
   .then(data=>setOlist(data))
-  fetch(`http://localhost:3002/leaderteam/${id}`,{method:"post",headers:{'content-type':'apllication/json'}})
+  fetch(`${process.env.REACT_APP_SERVER_PREFIX}/leaderteam/${id}`,{method:"post",headers:{'content-type':'apllication/json'}})
   .then(res=>res.json())
   .then(data=>setTeam(data))
  },[])

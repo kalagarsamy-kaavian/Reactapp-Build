@@ -198,6 +198,10 @@ export default function Emplist() {
        //window.alert("Inserted")
     }
 
+
+    // eslint-disable-next-line react/style-prop-object
+    return(<div className='updateoverall'><div className='uptable'><center><table><br></br>
+
      function func()
      {
         fetch(`${process.env.REACT_APP_SERVER_PREFIX}/test`,
@@ -218,6 +222,7 @@ export default function Emplist() {
         setEnd(" ");
      }
     return(<div className='updateoverall'><div className='uptable'> <center><table><br></br>
+
     <div className='upheading'>
     <thead>
         <tr >
@@ -228,7 +233,7 @@ export default function Emplist() {
         </tr><br></br>
     </thead>
     </div>
-    <tbody>        
+    <tbody className='assignbody'>        
 
         {/* <h2><label className='name'>NAME</label></h2>
         <select value={mem} onChange={e=>setMem(e.target.value)}>
@@ -259,9 +264,15 @@ export default function Emplist() {
                 <select className='selectemp'  value={meme} onChange={e => setMeme(e.target.value)}>
                     <option  value="" disablevalue>NAME</option>
                     {name.map(val => <option>{val}</option>)}
+
+                </select><br></br> 
+          {/* <tr><td>UserId</td><input type="text" className="name" onChange={(e) => setPass(e.target.value)} placeholder='Empid' required></input></tr> */}
+        {/* <tr><td>UserId</td><input type="text" className="name" onChange={(e) => setPass(e.target.value)} placeholder='Empid' required></input></tr>
+
                 </select><br></br>
 
         <tr><td>UserId</td><input type="text" className="name" onChange={(e) => setPass(e.target.value)} placeholder='Empid' required></input></tr>
+
         <tr><td>UserId</td><input type="text" className="name" onChange={(e) => setPasst(e.target.value)} placeholder='Empid' required></input></tr>
         <tr><td>UserId</td><input type="text" className="name" onChange={(e) => setPassr(e.target.value)} placeholder='Empid' required></input></tr>
         <tr><td>UserId</td><input type="text" className="name" onChange={(e) => setPassf(e.target.value)} placeholder='Empid' required></input></tr>

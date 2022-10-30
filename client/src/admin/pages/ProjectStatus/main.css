@@ -8,7 +8,7 @@
   color: white;
   background: #3dd9d6;
   border-radius: 10px;
-  /* position:relative; */
+  /* position:relative; */  
   /* right: 100px; */
   font-size: large;
   /* color: #fff; */
@@ -42,7 +42,7 @@
 }
 
 .teamtabel th:hover {
-  background: rgb(51, 10, 231);
+  background: #3dd9d6;
   color: white;
 }
 
@@ -243,8 +243,9 @@ select:hover {
 }
 .manimg img {
   position: absolute;
-  right: 900px;
-  bottom: 150px;
+
+  right: 720px;
+  bottom: 10px;
   width: 500px;
 }
 .teamadmin{

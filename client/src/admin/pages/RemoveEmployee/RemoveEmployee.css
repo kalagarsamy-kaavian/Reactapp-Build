@@ -1,87 +1,140 @@
-.rem {
-    padding-left: 500px;
-    padding-top: 100px;
-    
-}
+/* .rem {
+  padding-left: 500px;
+  padding-top: 100px;
+  
+} */
 
-.deltabel {
-    width: fit-content;
-    border: 3px solid black;
+table.deltabel {
+  width: fit-content;
+  border: 3px solid black;
 }
 
 /* .delbtn {
-    font-size: large;
-    border: 2px solid blue;
-    background: blue;
+  font-size: large;
+  border: 2px solid blue;
+  background: blue;
 }
 .delbtn:hover {
-    background: rgb(55, 55, 209);
-    color: white;
+  background: rgb(55, 55, 209);
+  color: white;
 } */
 .deleteempimg img {
-    position: absolute;
-    right: 150px;
-    width: 500px;
+  position: absolute;
+  left: 350px;
+  width: 500px;
 }
 
 /* div.deloverall {
-    position: absolute;
-    left: 900px;
-    
+  position: absolute;
+  left: 900px;
+  
 } */
 
 button.delbtn  {
-    position: absolute;
-    left: 690px;
-    top: 240px;
-    width: 100px;    
+  position: absolute;
+  left: 1190px;
+  top: 480px;
+  width: 100px;    
 }
 select.empidselect {
-    position: absolute;
-    left: 570px;
-    top: 260px;
+  position: absolute;
+  left: 1070px;
+  top: 260px;
 }
 label.id {
-  position: absolute;
-  top: 260px;
-  left: 490px;
+position: absolute;
+top: 260px;
+left: 990px;
 }
 .delbtn {
-    display: inline-block;
-    border-radius: 4px;
-    background-color: rgb(30, 95, 200);
-    border: none;
-    color: #000000;
-    text-align: center;
-    font-size: 18px;
-    padding: 20px;
-    width: 150px;
-    transition: all 0.5s;
-    cursor: pointer;
-    margin: 5px;
-  }
+  display: inline-block;
+  border-radius: 4px;
+  background-color: rgb(30, 95, 200);
+  border: none;
+  color: #000000;
+  text-align: center;
+  font-size: 18px;
+  padding: 10px;
+  width: 150px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.delbtn span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.delbtn span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.delbtn:hover span {
+  padding-right: 25px;
+}
+
+.delbtn:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+.deltable {
+  position: absolute;
+  width: fit-content;
+  left: 600px;
+  top: 200px;
+}
+.sbtn {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: rgb(30, 95, 200);
+  border: none;
+  color: #000000;
+  text-align: center;
+  font-size: 18px;
+  padding: 10px;
+  width: 100px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.sbtn span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.sbtn span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.sbtn:hover span {
+  padding-right: 25px;
+}
+
+.sbtn:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+button.sbtn {
+  position: absolute;
+  left: 1190px;
+  top: 240px;
+}
+/* tr.ttr{
   
-  .delbtn span {
-    cursor: pointer;
-    display: inline-block;
-    position: relative;
-    transition: 0.5s;
-  }
-  
-  .delbtn span:after {
-    content: '\00bb';
-    position: absolute;
-    opacity: 0;
-    top: 0;
-    right: -20px;
-    transition: 0.5s;
-  }
-  
-  .delbtn:hover span {
-    padding-right: 25px;
-  }
-  
-  .delbtn:hover span:after {
-    opacity: 1;
-    right: 0;
-  }
+} */

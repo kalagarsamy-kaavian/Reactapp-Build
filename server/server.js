@@ -9,6 +9,7 @@ const path = require('path');
 const fs = require('fs');
 const bodyParser=require('body-parser');
 const NODE_ENV = process.env.NODE_ENV || 'DEV';
+const bcrypt = require('bcrypt');
 
 app.use('/static', express.static(path.join(__dirname + '/../client/build/static')));
 app.use(cors({origin:'http://localhost:3000'}));
@@ -107,6 +108,13 @@ app.delete('/emprecord',async (req,res)=>{
     console.log('deleted')
 })
 
+app.post('/empdelsearch', async(req,res) => {
+    const {data} = req.body;
+    await newEmployee.find({Empid:data}).then(data => {
+        res.send(data)});
+        console.log(data);
+});
+
 // app.post('/login',async(req,res)=>{
 //     const{user,pass}=req.body;   
 //     // const db=getDB();
@@ -153,15 +161,20 @@ app.post('/login',async(req,res)=>{
     // const db=getDB();
     // const collection=db.collection("userinfo");
     const use=await newUser.findOne({username:user})
-    // console.log(use)
+
+    console.log(use);
     if(use) {
         const validPassword = await bcrypt.compare(body.pass, use.password);
-        if (validPassword) {
-            res.status(200).json({ message: "valid password"});
-            console.log(use);
-            return res.send(use);
-        } else {
+        console.log(body.pass, "pass1");
+        console.log(use.password,"pass2");
+        console.log(validPassword, "pass3")
+        if (!validPassword) {
             res.status(400).json({ error: "Invalid password"});
+            
+        } else {
+            // res.status(200).json({ message: "valid password"});
+            // console.log(use);
+            return res.json(use);
         }
     } else {
         res.status(401).json({ error: "User does not exist" });
@@ -210,14 +223,26 @@ app.post("/employeehistory",async(req,res)=>{
     // const collection=db.collection("employeehistory");
     await newModel.find({Empid:id}).then(data=>res.send(data))
 })
-app.post('/emprecord',(req,res)=>{
-	const {pass,input,dob,con,loc,doj,exp,speo,spet,sper,pt}=req.body;
+app.post('/emprecord', async(req,res)=>{
+	const {pass,input,dob,con,loc,doj,exp,speo,spet,sper,pt, role, password}=req.body;
+    const body = {input, password};
+    console.log(body);
     console.log('input')
 	console.log('Inserted');
-	// const db=getdb();
+    if(!(body.input && body.password)) {
+        return res.status(400).send({ error:"data format error"});
+    }
+    const user = new newUser(body);
+    // const salt = await bcrypt.gensalt(6);
+    user.password = await bcrypt.hash(user.password, 10);
+    console.log(user);
+	// // const db=getdb();
 	// const collection=  db.collection('project');
+    // user.save().then((doc) => res.status(201).send(doc));
 	newEmployee.create({"Empid":pass,"Empname":input,"DOB":dob,"Contact":con,"location":loc,"DOJ":doj,"Experience":exp,"Specialized1":speo,"Specialized2":spet,"Specialized3":sper,"Platform":pt});
-	//console.log();
+	// //console.log();
+    newUser.create({"username":input,"password":user.password, "role":role, "Empid":pass});
+    console.log(password);
 })
 
 

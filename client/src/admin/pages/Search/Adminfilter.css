@@ -5,9 +5,13 @@
     padding-left: 410px;
     /* border-radius: 5px 5px 0 0; */
     overflow: hidden;
+    margin-top: -100px;
+    margin-bottom: 150px;
+    margin-left: -200px;
+    margin-right: 300px;
 }
 .searchtable thead tr{
-    background-color: #009879;
+    background-color: #3dd9d6;
     color: #000000;
     text-align: left;
     font-weight: bold;
@@ -25,7 +29,7 @@
     background:blue;
     color: #dddddd;
 } */
-.searchtable tbody tr:nth-of-type(even){
+/* .searchtable tbody tr:nth-of-type(even){
     background-color: #f3f3f3;
 }
 .searchtable tbody tr:nth-last-of-type{
@@ -34,7 +38,7 @@
 .searchtable tbody tr.active-row{
     font-weight: bold;
     color: #009879;
-}
+} */
 /* .Atable table {
     font-family: sans-serif;
     width:max-content;

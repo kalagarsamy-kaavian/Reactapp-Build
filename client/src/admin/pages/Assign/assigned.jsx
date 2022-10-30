@@ -83,8 +83,6 @@ export default function Emplist() {
                 <select value={meme} onChange={e => setMeme(e.target.value)}>
                     <option value="" disablevalue>Choose a Member</option>
                     {name.map(val => <option>{val}</option>)}
-                </select><br></br><br></br>
-                </div>
 
         <tr><td>Project Name</td><input type="text" className="name" onChange={(e) => setPn(e.target.value)} required></input></tr><br></br>
         <tr><td>Team Name</td><input type="text" className="name" onChange={(e) => setTn(e.target.value)} required></input></tr><br></br>

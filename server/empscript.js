@@ -12,7 +12,8 @@ const NewSchema=new mongoose.Schema({
   Specialized1:String,
   Specialized2:String,
   Specialized3:String,
-  Platform:String
+  Platform:String,
+  Rating:String
 },{collection:'employeenew'})
 
 const newEmployee=new mongoose.model("employeenew",NewSchema)

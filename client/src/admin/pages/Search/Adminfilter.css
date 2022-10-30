@@ -47,29 +47,35 @@
     position: static;
     table-layout: fixed;
    
-
 }
-
 .Atable table th {
     background: rgb(15, 15, 15);
     color: #fff;
     column-gap: 10px;
-
-
-
 }
-
 .Atable table th,
 td {
     font-size: 1.4rem;
     
 }
-
 .Atable table tbody {
     background-color: #eee;
     color: rgb(57, 57, 57);
-
 } */
+
+label.plat {
+    position: absolute ;
+    top: 220px;
+    left: 1010px;
+}
+/* .searchselect {
+} */
+label.fill{
+    position: absolute;
+    top: 275px;
+    left: 250px;
+}
+
 
 label.plat {
     position: absolute ;
@@ -84,6 +90,7 @@ label.fill{
     top: 275px;
     left: 250px;
 }
+
 
 .filteralign h3 {
     display: flex;

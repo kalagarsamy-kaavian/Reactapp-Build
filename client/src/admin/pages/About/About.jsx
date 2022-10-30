@@ -17,7 +17,6 @@ function About() {
           
             <div className='blueteam'> Blue Team </div>
             
-
             <div className='intro'>
                 <h3>Hello, We,The Blue Team has build this application. <br></br> </h3>
                 <h3>It has many usable Features that make things convinient for the accesser.<br></br></h3>
@@ -38,7 +37,6 @@ function About() {
                 <h5>We Created this application(PMS) to make Assigning,checking details about both<br></br></h5>
                 <h5>Employee and project.It will make the Process lot easier and help to maintain<br></br></h5>
                 <h5>the record and details orderly.</h5>
-
                 <div className='para2'>
                     <p>The Jorney:<br></br>
                         Even though this is a mini project, This is our first Project as a Team.<br></br>

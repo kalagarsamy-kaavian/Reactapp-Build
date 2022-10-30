@@ -1,18 +1,20 @@
 .name {
     font-size: large;
-    
+    border-radius: 6px;
+    width:240px;
 }
 .assigntaskimg img {
     position: absolute;
+
     left: 300px;
+
     top: 200px;
     width: 500px;
 }
 .updateoverall {
     position:absolute;
     right: 1100px;
-    
-    
+
 }
 .nameemp {
     font-size: large;
@@ -29,6 +31,7 @@ div.upheading tr h2 {
    left:100px;
    font-size: xx-large;
 }
+
 
 /* tbody.assignbody {
     position: absolute;

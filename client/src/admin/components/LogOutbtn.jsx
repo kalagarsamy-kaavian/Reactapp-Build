@@ -25,6 +25,7 @@ export default function LogOutbtn(){
   const navigate=useNavigate()
    
    function logout(){
+    localStorage.removeItem('data');
      navigate('/')
    }
 

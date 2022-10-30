@@ -3,7 +3,10 @@ import React from 'react';
 import { BrowserRouter, Routes, Route,Navigate } from 'react-router-dom'
 import ProjectStatus from './admin/pages/ProjectStatus/ProjectStatus';
 import Home from './admin/pages/Home/Home';
+
+//import Emplist from './admin/pages/UpdateEmployee/UpdateEmployee';
 import Emplist from './admin/pages/UpdateEmployee/UpdateEmployee';
+import RateEmp from './admin/pages/Rating/Rating';
 // import RemoveEmployee from './admin/RemoveEmployee/RemoveEmployee';
 // import OnProcess from './admin/pages/ProjectStatus/OnProcess';
 import Footer from './admin/components/Footer';
@@ -17,7 +20,7 @@ import Assign from './admin/pages/ProjectStatus/assign';
 import Teamdetail from './admin/pages/ProjectStatus/teamdetails';
 import Rmemplist from './admin/pages/RemoveEmployee/RemoveEmployee';
 import Assigned from './admin/pages/Assign/assigned';
-
+import Emplistadd from './admin/pages/UpdateEmployee/UpdateEmployee';
 
 
 import User from './user/pages/user';
@@ -27,7 +30,8 @@ import Employee from './user/pages/PersonelDetails/PersonelDetails';
 import Update from './user/pages/PersonelDetails/update';
 import Search from './admin/pages/Search/Search';
 import Updateemp from './admin/pages/RewriteEmployee/update';
-
+import Empcomplete from './admin/pages/Dashboard/dashboard';
+import { IoMailOpen } from 'react-icons/io5';
 //import Emplist from './admin/RemoveEmployee/RemoveEmployee';
 
 function UserSessionRoute({ element: Component, ...rest }) {
@@ -61,13 +65,16 @@ function App() {
             <Route path='/admin' element={<UserSessionRoute element={Admin} />}>
             <Route path='/admin/Home' element={<Home />}></Route>
              <Route path='/admin/ProjectStatus' element={<Projectstatus />}></Route>
+             <Route path='/admin/AddEmployee' element={<Emplistadd/>}></Route>
             <Route path='/admin/todo/:Teamname' element={<Teamdetail/>}></Route>
             <Route path='/admin/assign/:Teamname' element={<Assign/>}></Route>
-            <Route path='/admin/AddEmployee' element={<Emplist/>}></Route>
-            <Route path='/admin/UpdateEmployee' element={<Updateemp/>}></Route>
+            <Route path='/admin/UpdateEmployee' element={<Emplistadd/>}></Route>
+            <Route path='/admin/RewriteEmployee' element={<Updateemp/>}></Route>
             <Route path='/admin/assigned' element={<Assigned/>}></Route>
+            <Route path='/admin/Rating' element={<RateEmp/>}></Route>
             <Route path='/admin/About' element={<About/>}></Route>
             <Route path='/admin/Search' element={<Search/>}></Route>
+            <Route path='/admin/Dashboard' element={<Empcomplete/>}></Route>
             <Route path='/admin/RemoveEmployee' element={<Rmemplist/>}></Route>
             <Route path='/admin/LogOut' element={<LogOut />}></Route>
              

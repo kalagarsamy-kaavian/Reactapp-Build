@@ -4,7 +4,7 @@ import * as AiIcons from 'react-icons/ai';
 import * as RiIcons from 'react-icons/ri';
 import * as BiIcons from "react-icons/bi";
 import * as Io5Icons from "react-icons/io5";
-
+import DashboardIcon from '@mui/icons-material/Dashboard';
 import { BsStar } from "react-icons/bs";
 
 import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
@@ -71,7 +71,7 @@ export const SidebarData = [
     {
         title: 'Dashboard',
         path: '/admin/Dashboard',
-        icon: <UpgradeIcon />
+        icon: <DashboardIcon />
     },
     {
         title: 'About',

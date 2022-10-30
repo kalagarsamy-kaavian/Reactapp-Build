@@ -123,6 +123,7 @@
 }
 
 .countshsad .teamshsad td{
+    border-radius: 20px;
     row-gap: 30px;
     padding: 50px;
     padding-right: 6rem;
@@ -131,6 +132,7 @@
 }
 
 .countshsad .completehsad td{
+    border-radius: 20px;
     padding-right: 6rem;
     row-gap: 30px;
     padding: 50px;
@@ -138,6 +140,7 @@
     background-color:#3dd9d6;
 }
 .countshsad .ongoinghsad td{
+    border-radius: 20px;
     overflow-y: hidden;
     row-gap: 40px;
     padding-right: 6rem;

@@ -51,8 +51,9 @@ center {
 float: right;
 position: absolute;
 left: 900px;
+}
 
-form.updateform {
+form .updateform {
     background: #3dd9d6;
     border: 3px solid black;
     position: absolute;
@@ -155,7 +156,8 @@ right: 750px;
   right: 0;
 }
 
-    display: inline-block;
+
+/* {    display: inline-block;
     border-radius: 4px;
     background-color: rgb(3, 95, 194);
     border: none;
@@ -170,7 +172,7 @@ right: 750px;
     position: absolute;
     bottom: -300px;
     right: 80px;
-  }
+  } */
   
   .updateformbtn span {
     cursor: pointer;
@@ -225,12 +227,12 @@ position: absolute;
 right:400px;
 
 width:500px;
+}
 
 table.table1 {
   border: 2px solid black;
   position: absolute;
   top: 70px;
-
 }
 button.findbtn {
   position: absolute;

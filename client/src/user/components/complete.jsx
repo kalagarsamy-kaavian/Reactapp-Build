@@ -24,12 +24,12 @@ import {useState, useEffect } from 'react';
 export default function Complete(){
 
   const id = localStorage.getItem('data');
-  const [olist,setOlist]=useState([]);
-  const [team,setTeam]=useState([]);
+  const [olist,setOlist]=useState('');
+  const [team,setTeam]=useState('');
    
    
  useEffect(()=>{
-  console.log(id)
+  //console.log(id)
   fetch(`${process.env.REACT_APP_SERVER_PREFIX}/olist/${id}`,{method:"post",headers:{'content-type':'apllication/json'}})
   .then(res=>res.json())
   .then(data=>setOlist(data))
@@ -48,7 +48,7 @@ export default function Complete(){
    // console.log(first.Teamname)
     if(olist==="Team Leader")
     {
-       fetch(`http://localhost:3002/complete/${team}`, { method: "PATCH",headers: { 'content-type': 'application/json' } })
+      fetch(`${process.env.REACT_APP_SERVER_PREFIX}/remcomplete/${team}`, { method: "PATCH",headers: { 'content-type': 'application/json' } })
        alert('Updated successfully')
     }else{
         window.alert("There is no access")

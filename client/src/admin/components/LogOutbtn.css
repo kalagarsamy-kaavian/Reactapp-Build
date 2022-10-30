@@ -1,0 +1,23 @@
+.lpushable {
+    background: rgb(5, 1, 47);
+    border-radius: 8px;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    outline-offset: 4px;
+    
+  }
+  .lfront {
+    display: block;
+    padding: 12px 42px;
+    border-radius: 12px;
+    font-size: 0.5rem;
+    background: rgb(30, 95, 200);
+    color: white;
+    transform: translateY(-6px);
+    font-size: small;
+  }
+  
+  .pushable:active .front {
+    transform: translateY(-2px);
+  }

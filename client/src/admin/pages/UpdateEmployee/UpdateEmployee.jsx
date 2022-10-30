@@ -4,7 +4,7 @@ import { useState } from 'react';
 import "./UpdateEmployee.css"
 import { Link } from 'react-router-dom';
 
-export default function Emplist() {
+export default function Emplistadd() {
     const [pass, setPass] = useState("")
     const [input, setInput] = useState("")
     const [dob, setDob] = useState("");
@@ -28,11 +28,11 @@ export default function Emplist() {
     }
 
     // eslint-disable-next-line react/style-prop-object
-    return(<div className='updateoverall'><div className='uptable'> <center><table><br></br>
+    return(<div className='updateoverall'><div className='uptable'> <center><table className='addemptable'><br></br>
     <div className='upheading'>
     <thead>
         <tr >
-            <h2>  Employee Form</h2>
+            <h2>  ADD EMPLOYEE</h2>
         </tr><br></br>
     </thead>
     </div>
@@ -56,5 +56,5 @@ export default function Emplist() {
         <tr><td>EmpRole</td><input type="text" onChange={(e)=>setEr(e.target.value)} placeholder='EmpRole' required></input></tr>
         */}
        
-    </table></center></div></div>
+    </table></center></div><div className='addempimg'><img src='/images/addemp.svg'></img></div></div>
 )}

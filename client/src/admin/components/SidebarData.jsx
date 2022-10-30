@@ -4,9 +4,11 @@ import * as AiIcons from 'react-icons/ai';
 import * as RiIcons from 'react-icons/ri';
 import * as BiIcons from "react-icons/bi";
 import * as Io5Icons from "react-icons/io5";
-import EngineeringOutlinedIcon from '@mui/icons-material/EngineeringOutlined';
+import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
 import AssignmentIndOutlinedIcon from '@mui/icons-material/AssignmentIndOutlined';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
+import UpgradeIcon from '@mui/icons-material/Upgrade';
 
 
 export const SidebarData = [
@@ -23,19 +25,19 @@ export const SidebarData = [
         // iconOpened: <RiIcons.RiArrowUpSFill />,
     },
     {
-        title: 'AddEmpoyee',
-        path: '/admin/AddEmployee',
-        icon: <BiIcons.BiTask />
+        title: 'AddEmployees',
+        path: '/admin/UpdateEmployee',
+        icon: <PersonAddAlt1Icon />
     },
     {
         title: 'Assign',
         path: '/admin/assigned',
-        icon: <BiIcons.BiTask />
+        icon: <AssignmentIndIcon />
     },
     {
         title: 'UpdateEmpoyee',
-        path: '/admin/UpdateEmployee',
-        icon: <BiIcons.BiTask />
+        path: '/admin/RewriteEmployee',
+        icon: <UpgradeIcon />
     },
     {
         title: 'RemoveEmployee',
@@ -48,9 +50,13 @@ export const SidebarData = [
         icon: <BiIcons.BiSearch />
     },
     {
+        title: 'Dashboard',
+        path: '/admin/Dashboard',
+        icon: <UpgradeIcon />
+    },
+    {
         title: 'About',
         path: '/admin/About',
         icon: <InfoOutlinedIcon/>
     }
 ];
-

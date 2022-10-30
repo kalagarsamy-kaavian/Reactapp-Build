@@ -1,20 +1,21 @@
 .searchtable{
     border-collapse: collapse;
-    margin: 25px 0;
+    /* margin: 25px 0; */
     font-size: 1.50em;
-    padding-left: 210px;
-    border-radius: 5px 5px 0 0;
+    padding-left: 410px;
+    /* border-radius: 5px 5px 0 0; */
     overflow: hidden;
 }
 .searchtable thead tr{
     background-color: #009879;
-    color: #ffffff;
+    color: #000000;
     text-align: left;
     font-weight: bold;
 }
 .searchtable th,
 .searchtable td{
-    padding: 12px 15px;
+    padding: 1px 2px;
+    border: 0.01px solid black;
 }
 .searchtable tbody{
     border-bottom: 1px solid #dddddd;
@@ -42,34 +43,88 @@
     position: static;
     table-layout: fixed;
    
-
 }
-
 .Atable table th {
     background: rgb(15, 15, 15);
     color: #fff;
     column-gap: 10px;
-
-
-
 }
-
 .Atable table th,
 td {
     font-size: 1.4rem;
     
 }
-
 .Atable table tbody {
     background-color: #eee;
     color: rgb(57, 57, 57);
-
 } */
 
-filter btn/
-.filteralign {
-    width: 100%;
-    column-gap: 100px;
-    display: flex;
-    padding-left: 470px;
+label.plat {
+    position: absolute ;
+    top: 220px;
+    left: 1010px;
 }
+/* .searchselect {
+} */
+label.fill{
+    position: absolute;
+    top: 275px;
+    left: 250px;
+}
+
+.filteralign h3 {
+    display: flex;
+    padding-left: 400px;
+}
+.searchbtn {
+    position: absolute;
+    top: 250px;
+    left: 690px;
+    background: #3dd9d6;
+}
+.searchbtn:hover {
+    background: #3dd9d6;
+}
+.filteralign h2 {
+    
+    padding-left: 500px;
+}
+.searchbtn {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: rgb(3, 95, 194);
+    border: none;
+    color: #000000;
+    text-align: center;
+    font-size: 18px;
+    padding: 20px;
+    width: 150px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+  }
+  
+  .searchbtn span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  
+  .searchbtn span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  
+  .searchbtn:hover span {
+    padding-right: 25px;
+  }
+  
+  .searchbtn:hover span:after {
+    opacity: 1;
+    right: 0;
+  }

@@ -9,7 +9,7 @@
     border: 3px solid black;
 }
 
-.delbtn {
+/* .delbtn {
     font-size: large;
     border: 2px solid blue;
     background: blue;
@@ -17,14 +17,71 @@
 .delbtn:hover {
     background: rgb(55, 55, 209);
     color: white;
-}
+} */
 .deleteempimg img {
     position: absolute;
-    right: 300px;
+    right: 150px;
     width: 500px;
 }
 
-.deloverall {
+/* div.deloverall {
     position: absolute;
     left: 900px;
+    
+} */
+
+button.delbtn  {
+    position: absolute;
+    left: 690px;
+    top: 240px;
+    width: 100px;    
 }
+select.empidselect {
+    position: absolute;
+    left: 570px;
+    top: 260px;
+}
+label.id {
+  position: absolute;
+  top: 260px;
+  left: 490px;
+}
+.delbtn {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: rgb(30, 95, 200);
+    border: none;
+    color: #000000;
+    text-align: center;
+    font-size: 18px;
+    padding: 20px;
+    width: 150px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+  }
+  
+  .delbtn span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  
+  .delbtn span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  
+  .delbtn:hover span {
+    padding-right: 25px;
+  }
+  
+  .delbtn:hover span:after {
+    opacity: 1;
+    right: 0;
+  }

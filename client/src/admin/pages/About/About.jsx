@@ -8,17 +8,15 @@ import "./About.css";
 
 function About() {
     return (<div className='about_wrap'>
-        {/* <img src={aboutimg} alt='aboutimg'></img> */}
-
-        <h100> ABOUT US </h100>
-        
-        <div className='texts'>
-            {/* <div className='blueteam'>
-                <h20 data-text="BLUETEAM.....">BLUETEAM.....</h20>
-            </div> */}
+       
+         <div className='aboutheading'>   
+         <h100> ABOUT US </h100>
+         </div>   
+         
+       {/* <div className='texts'>
+          
             <div className='blueteam'> Blue Team </div>
             
-
             <div className='intro'>
                 <h3>Hello, We,The Blue Team has build this application. <br></br> </h3>
                 <h3>It has many usable Features that make things convinient for the accesser.<br></br></h3>
@@ -39,7 +37,6 @@ function About() {
                 <h5>We Created this application(PMS) to make Assigning,checking details about both<br></br></h5>
                 <h5>Employee and project.It will make the Process lot easier and help to maintain<br></br></h5>
                 <h5>the record and details orderly.</h5>
-
                 <div className='para2'>
                     <p>The Jorney:<br></br>
                         Even though this is a mini project, This is our first Project as a Team.<br></br>
@@ -50,7 +47,37 @@ function About() {
                     <div><h7>THANK YOU</h7></div>
                 </div>
             </div>
-        </div >
+        </div > */}
+
+        <div>
+            <h21>Blue Team</h21>
+        </div>
+        <div className='para'>
+        <p className='p'>
+            Hello, This application was build by our team (Blue Team). 
+        </p>
+        <p className='p1'>
+            This application is used to maintain project management, and Employee details at the same time.<br></br>
+            You can use our application to create new project, check its status, add Employee details to the DataBase,<br></br>
+            also it can be Edit and delete those Details.<br></br> 
+        </p>
+        <p className='p2'>
+            TEAM LEADER:<br></br>
+            Divya Dharshini Murugan<br></br>
+            MEMBERS:<br></br>
+            Meenakshi<br></br>
+            Thangalakshmi<br></br>
+            Alagarsamy<br></br>
+            Bhoopesh kumar<br></br>
+        </p>
+        <p className='p3'>
+            Thank you for using our application, we hope it is useful and does its role without any problem.<br></br> 
+        </p>
+        <p className='p4'>THANK YOU</p>
+        </div>
+        <div className='aboutimg'>
+        <img src='/images/about.svg'></img>
+    </div>
         
     </div >
     )

@@ -15,14 +15,16 @@ export default function Emplist() {
     const [speo, setSpeo] = useState("");
     const [spet, setSpet] = useState("");
     const [sper, setSper] = useState("");
+    const [password, setPassword] = useState("");
     const [pt, setPt] = useState("");
+    const [role, setRole] = useState("");
     // const [eso,setEso]=useState("");
     // const [est,setEst]=useState("");
     // const [esr,setEsr]=useState("");
     // const [er,setEr]=useState("");
     function func() {
         if(pass&& input&&dob&& con&& loc&& doj&& exp&& speo&& spet&& sper&& pt)
-        fetch(`${process.env.REACT_APP_SERVER_PREFIX}/emprecord`, { method: 'post', body: JSON.stringify({ pass, input, dob, con, loc, doj, exp, speo, spet, sper, pt }), headers: { 'content-type': 'application/json' } })
+        fetch(`${process.env.REACT_APP_SERVER_PREFIX}/emprecord`, { method: 'post', body: JSON.stringify({ pass, input, dob, con, loc, doj, exp, speo, spet, sper, pt, password }), headers: { 'content-type': 'application/json' } })
        else
        window.alert("Inserted")
     }
@@ -38,6 +40,7 @@ export default function Emplist() {
     </div>
     <tbody>        
         <tr><td>UserId</td><input type="text" onChange={(e) => setPass(e.target.value)} placeholder='Empid' required></input></tr>
+        <tr><td>Password</td><input type="password" onChange={(e) => setPassword(e.target.value)} placeholder="password" required></input></tr>
         <tr><td>UserName</td><input type="text" onChange={(e) => setInput(e.target.value)} placeholder='EmpName' required></input></tr>
         <tr><td>DOB</td><input type="date" onChange={(e) => setDob(e.target.value)} placeholder='EmpDOB' required></input></tr>
         <tr><td>Contact</td><input type="number" onChange={(e) => setCon(e.target.value)} placeholder='EmpPhoneNo' required></input> </tr>
@@ -48,7 +51,7 @@ export default function Emplist() {
         <tr><td>Specialized2</td><input type="text" onChange={(e) => setSpet(e.target.value)} placeholder='EmpProjectTitle' required></input></tr>
         <tr><td>Specialized3</td><input type="text" onChange={(e) => setSper(e.target.value)} placeholder='EmpProjectStatus' required></input></tr>
         <tr><td>Platform</td><input type="text" onChange={(e) => setPt(e.target.value)} placeholder='Platform' required></input></tr>
-        
+        <tr><td>Role</td><input type="text" onChange={(e) => setRole(e.target.value)} placeholder='Role' required></input></tr>
         </tbody><tr><button className='upbtn' onClick={func}><span>Insert</span></button></tr>
  {/* <tr><td>EmpSpecialized1</td><input type="text" onChange={(e)=>setEso(e.target.value)} placeholder='EmpSpecialized1' required></input></tr>
         <tr><td>EmpSpecialized2</td><input type="text" onChange={(e)=>setEst(e.target.value)} placeholder='EmpSpecialized2' required></input></tr>

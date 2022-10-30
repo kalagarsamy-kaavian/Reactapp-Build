@@ -47,7 +47,7 @@ export default function Projectstatus() {
         </select>
         {todo.map(item => {
             return <tr>
-                <td className='pteamname'><Link to={`/admin/todo/${item.Teamname}`}>{item.Teamname}Team<h7><GroupsIcon /></h7></Link></td>
+                <td className='pteamname'><Link to={`/admin/todo/${item.Teamname}`}><span className='temanadmin'>{item.Teamname}</span>Team<h7><GroupsIcon /></h7></Link></td>
             </tr>
         })}
     </table>

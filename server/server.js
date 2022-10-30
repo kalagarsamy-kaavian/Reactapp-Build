@@ -21,7 +21,17 @@ mongoose.connect("mongodb+srv://blueTeam:o9T62uCK3dt5V078@db-kaavian-sys-cluster
         console.log("db error")
     }
 });
-
+app.put('/test',async (req,res)=>{
+    const{mem,memt,memr,memf,meme,pn,tn,d,start,end,pco,es,descr,pt}=req.body;
+    const test= await newEmployee.find({$or:[{Empname:mem},{Empname:memt},{Empname:memr},{Empname:memf},{Empname:meme}]})
+    let [frst,scnd,third,fourth,fifth]=test;
+    newModel.create([{"Empid":frst.Empid,"Empname":frst.Empname,"Projectname":pn,"Teamname":tn,"Duration":d,"Startingdate":start,"Endingdate":end,"Projectstatus":"Ongoing","Empstatus":"Team Leader","Description":descr,"Platform":pt},
+        {"Empid":scnd.Empid,"Empname":scnd.Empname,"Projectname":pn,"Teamname":tn,"Duration":d,"Startingdate":start,"Endingdate":end,"Projectstatus":"Ongoing","Empstatus":"Member","Description":descr,"Platform":pt},
+        {"Empid":third.Empid,"Empname":third.Empname,"Projectname":pn,"Teamname":tn,"Duration":d,"Startingdate":start,"Endingdate":end,"Projectstatus":"Ongoing","Empstatus":"Member","Description":descr,"Platform":pt},
+        {"Empid":fourth.Empid,"Empname":fourth.Empname,"Projectname":pn,"Teamname":tn,"Duration":d,"Startingdate":start,"Endingdate":end,"Projectstatus":"Ongoing","Empstatus":"Member","Description":descr,"Platform":pt},
+        {"Empid":fifth.Empid,"Empname":fifth.Empname,"Projectname":pn,"Teamname":tn,"Duration":d,"Startingdate":start,"Endingdate":end,"Projectstatus":"Ongoing","Empstatus":"Member","Description":descr,"Platform":pt}
+    ]);
+})
 // app.delete('/emprecord',(req,res)=>{
 // 	const data=req.body;
 //     console.log(data.data);
@@ -95,26 +105,55 @@ app.delete('/emprecord',async (req,res)=>{
 //     //                 res.send(msg);
 //     // }
 // });  
+// app.post('/login',async(req,res)=>{
+//     const {user,pass}=req.body;
+//     // const db=getDB();
+//     // const collection=db.collection("userinfo");
+
+//     const use=await newUser.findOne({username:user})
+//     console.log(use)
+//     if(!use)
+//     {
+//          return res.status(404).send('invalid user')
+//     }
+//  else if(pass===use.password){
+//         //res.cookie('Username',user);
+//         return res.send(use);
+//     }
+//     // else{
+//     //     const msg="INVALID USERNAME OR PSSWORD"
+//     //                 res.send(msg);
+//     // }
+// })
 app.post('/login',async(req,res)=>{
     const {user,pass}=req.body;
+    const body = { user, pass};
+    console.log(body);
     // const db=getDB();
     // const collection=db.collection("userinfo");
-
     const use=await newUser.findOne({username:user})
-    console.log(use)
-    if(!use)
-    {
-         return res.status(404).send('invalid user')
+    // console.log(use)
+    if(use) {
+        const validPassword = await bcrypt.compare(body.pass, use.password);
+        if (validPassword) {
+            res.status(200).json({ message: "valid password"});
+            console.log(use);
+            return res.send(use);
+        } else {
+            res.status(400).json({ error: "Invalid password"});
+        }
+    } else {
+        res.status(401).json({ error: "User does not exist" });
     }
- else if(pass===use.password){
-        //res.cookie('Username',user);
-        return res.send(use);
-    }
+
+
+
+
     // else{
     //     const msg="INVALID USERNAME OR PSSWORD"
     //                 res.send(msg);
     // }
-})
+});
 
 app.post("/employeedetail",async(req,res)=>{
     const{id}=req.body;

@@ -42,8 +42,8 @@ export default function Emplist() {
         <tr><td>UserId</td><input type="text" onChange={(e) => setPass(e.target.value)} placeholder='Empid' required></input></tr>
         <tr><td>Password</td><input type="password" onChange={(e) => setPassword(e.target.value)} placeholder="password" required></input></tr>
         <tr><td>UserName</td><input type="text" onChange={(e) => setInput(e.target.value)} placeholder='EmpName' required></input></tr>
-        <tr><td>DOB</td><input type="date" onChange={(e) => setDob(e.target.value)} placeholder='EmpDOB' required></input></tr>
-        <tr><td>Contact</td><input type="number" onChange={(e) => setCon(e.target.value)} placeholder='EmpPhoneNo' required></input> </tr>
+        <tr><td>DOB</td><input type="date"  onChange={(e) => setDob(e.target.value)} placeholder='EmpDOB' required></input></tr>
+        <tr><td>Contact</td><input type="number" maxLength="10" onChange={(e) => setCon(e.target.value)} placeholder='EmpPhoneNo' required></input> </tr>
         <tr><td>Location</td><input type="text" onChange={(e) => setLoc(e.target.value)} placeholder='EmpLocation' required></input></tr>
         <tr><td>DOJ</td><input type="date" onChange={(e) => setDoj(e.target.value)} placeholder='EmpDateOfJoining' required></input></tr>
         <tr><td>Experience</td><input type="number" onChange={(e) => setExp(e.target.value)} placeholder='EmpExperience' required></input></tr>

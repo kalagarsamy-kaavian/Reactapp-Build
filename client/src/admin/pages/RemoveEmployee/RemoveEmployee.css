@@ -1,10 +1,10 @@
-.rem {
+/* .rem {
   padding-left: 500px;
   padding-top: 100px;
   
-}
+} */
 
-.deltabel {
+table.deltabel {
   width: fit-content;
   border: 3px solid black;
 }
@@ -20,7 +20,7 @@
 } */
 .deleteempimg img {
   position: absolute;
-  right: 150px;
+  left: 350px;
   width: 500px;
 }
 
@@ -32,19 +32,19 @@
 
 button.delbtn  {
   position: absolute;
-  left: 690px;
-  top: 280px;
+  left: 1190px;
+  top: 480px;
   width: 100px;    
 }
 select.empidselect {
   position: absolute;
-  left: 570px;
+  left: 1070px;
   top: 260px;
 }
 label.id {
 position: absolute;
 top: 260px;
-left: 490px;
+left: 990px;
 }
 .delbtn {
   display: inline-block;
@@ -85,10 +85,11 @@ left: 490px;
   opacity: 1;
   right: 0;
 }
-table.deltable {
+.deltable {
   position: absolute;
-  left: 350px;
-  top: 300px;
+  width: fit-content;
+  left: 600px;
+  top: 200px;
 }
 .sbtn {
   display: inline-block;
@@ -131,5 +132,9 @@ table.deltable {
 }
 button.sbtn {
   position: absolute;
-  left: 690px;
+  left: 1190px;
+  top: 240px;
 }
+/* tr.ttr{
+  
+} */

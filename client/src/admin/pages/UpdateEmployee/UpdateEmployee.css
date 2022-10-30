@@ -1,8 +1,10 @@
 
 .uptable center {
     border: 3px solid black;
-    width: fit-content;
+    /* width: fit-content; */
     background: #3dd9d6;
+    padding-right: 150px;
+
 }
 .updateoverall{
     padding-left: 500px;

@@ -86,21 +86,21 @@ export default function Rmemplist(){
 
 	return (<div className='deloverall'>
 		<h2>REMOVE EMPLOYEE</h2>
-		<label className='id'>EMPID : </label>
+		<label className='id'>EMPID : </label>	
 		<select className='empidselect' value={data} onChange={e=>setData(e.target.value)}>
 		<option value="" disablevalue>EMPID</option>
 			{id.map(val=><option>{val}</option>)}
 		</select>
 		<button className='sbtn' onClick={search}><span>search</span></button>
 		<table className='deltable'>
-			<tr>
+			<tr className='ttr'>
 				<th>Name</th>
 				<th>DOB</th>
 				<th>Contact</th>
 				<th>Location</th>
 			</tr>
 			{info.map(({Empname,DOB,Contact,location})=> (
-				<tr>
+				<tr className='ttr'>
 					<td>{Empname}</td>
 					<td>{DOB}</td>
 					<td>{Contact}</td>

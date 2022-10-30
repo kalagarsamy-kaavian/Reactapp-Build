@@ -4,13 +4,14 @@
 }
 .assigntaskimg img {
     position: absolute;
-    left: 400px;
+    left: 300px;
     top: 200px;
     width: 500px;
 }
 .updateoverall {
     position:absolute;
     right: 1100px;
+    
     
 }
 .nameemp {
@@ -19,7 +20,7 @@
 }
 select.selectemp {
     position: absolute;
-    right: 100px;
+    /* right: 100px; */
     
 }
 div.upheading tr h2 {
@@ -28,3 +29,7 @@ div.upheading tr h2 {
    left:100px;
    font-size: xx-large;
 }
+
+/* tbody.assignbody {
+    position: absolute;
+} */

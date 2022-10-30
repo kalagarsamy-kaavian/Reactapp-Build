@@ -1,5 +1,15 @@
-
 .uptable center {
+
+  border: 3px solid black;
+  width: fit-content;
+  background: #3dd9d6;
+}
+.updateoverall{
+  padding-left: 500px;
+  padding-top: 10px;
+  /* display: flex;
+  overflow: scroll; */
+
     border: 3px solid black;
     width: 700px;
     background: #3dd9d6;
@@ -12,49 +22,101 @@
     /* display: flex;
     overflow: scroll; */
 
-    
+
+  
 }
 /* .head{
-    width: 100%;
-    background: #000a12;
-    color: white;
-    padding: 10px 0px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    font-weight: bold;
+  width: 100%;
+  background: #000a12;
+  color: white;
+  padding: 10px 0px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
 } */
 /* .upbtn {
-    background: blue;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding: 20px;
-    display: flex;
-    color: white;
+  background: blue;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding: 20px;
+  display: flex;
+  color: white;
 }
 .upbtn:hover{
-    background: #37caec;
-    color: black;
-    cursor: pointer;
-    font-weight: bold;
+  background: #37caec;
+  color: black;
+  cursor: pointer;
+  font-weight: bold;
 } */
 tbody td{
-    /* display: flex; */
-    font-size: large;
-    color: rgb(0, 0, 0);
+  /* display: flex; */
+  font-size: large;
+  color: rgb(0, 0, 0);
 }
 tbody input{
+
+  padding-top: 10px;
+  padding-left: 150px;
+
     padding-top: 5px;
 
    
+
 }
 thead h2{
-    font-size: large;
-    align-items: center;
-    padding-left: 70px;
+  font-size: large;
+  align-items: center;
+  padding-left: 70px;
 }
 
 .upbtn {
+
+  border-radius: 4px;
+  background-color: rgb(3, 95, 194);
+  border:none;
+  color: #000000;
+  text-align: center;
+  font-size: 18px;
+  padding: 20px;
+  width: 150px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.upbtn span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.upbtn span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.upbtn:hover span {
+  padding-right: 25px;
+}
+
+.upbtn:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+.addempimg  img {
+  position: absolute;
+  left:380px;
+  top: 100px;
+  width:500px;
+  /* height:100px; */
+}
+
     border-radius: 4px;
     background-color: rgb(3, 95, 194);
     border:none;

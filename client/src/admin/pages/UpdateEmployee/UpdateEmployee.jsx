@@ -4,7 +4,7 @@ import { useState } from 'react';
 import "./UpdateEmployee.css"
 import { Link } from 'react-router-dom';
 
-export default function Emplist() {
+export default function Emplistadd() {
     const [pass, setPass] = useState("")
     const [input, setInput] = useState("")
     const [dob, setDob] = useState("");

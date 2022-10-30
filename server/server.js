@@ -21,6 +21,26 @@ mongoose.connect("mongodb+srv://blueTeam:o9T62uCK3dt5V078@db-kaavian-sys-cluster
         console.log("db error")
     }
 });
+
+
+app.get('/tlcount',(req,res)=>{
+    // newModel.count({Projectstatus:"Ongoing"}).then(res=>res.json).then(data=>res.send(data));
+    newModel.count({"Empstatus":"Team Leader"}).then(data=>res.json(data));  
+})
+
+
+app.get('/ongoing',(req,res)=>{
+    // newModel.count({Projectstatus:"Ongoing"}).then(res=>res.json).then(data=>res.send(data));
+    newModel.count({"Empstatus":"Team Leader","Projectstatus":"Ongoing"}).then(data=>res.json(data));  
+})
+
+app.get('/complete',(req,res)=>{
+    // newModel.count({Projectstatus:"Ongoing"}).then(res=>res.json).then(data=>res.send(data));
+    newModel.count({"Empstatus":"Team Leader","Projectstatus":"COMPLETED"}).then(data=>res.json(data));  
+})
+
+
+
 app.put('/test',async (req,res)=>{
     const{mem,memt,memr,memf,meme,pn,tn,d,start,end,pco,es,descr,pt}=req.body;
     const test= await newEmployee.find({$or:[{Empname:mem},{Empname:memt},{Empname:memr},{Empname:memf},{Empname:meme}]})
@@ -32,6 +52,7 @@ app.put('/test',async (req,res)=>{
         {"Empid":fifth.Empid,"Empname":fifth.Empname,"Projectname":pn,"Teamname":tn,"Duration":d,"Startingdate":start,"Endingdate":end,"Projectstatus":"Ongoing","Empstatus":"Member","Description":descr,"Platform":pt}
     ]);
 })
+
 // app.delete('/emprecord',(req,res)=>{
 // 	const data=req.body;
 //     console.log(data.data);
@@ -368,10 +389,29 @@ app.post('/empaddsearch', async(req,res) => {
         res.send(data)});
 });
 app.put('/empaddupdate',async(req,res) => {
-    const {Empid,name1,dob,phone1,location1} =req.body;
-    const up = await newEmployee.updateOne({Empid:Empid},{$set:{
-        Empname:name1,DOB:dob,Contact:phone1,location:location1}})
-    console.log(up);
+    const {Empid,nname,dob,phone1,location1} =req.body;
+    console.log(location1);
+    const up = await newEmployee.updateOne({Empid:Empid},{$set:{Empname:nname,DOB:dob,Contact:phone1,location:location1}})
+    // if(nname)
+    // {
+    //     await newEmployee.updateOne({Empid:Empid},{$set:{Empname:nname}})
+    // }
+    // else if(dob)
+    // {
+    //     await newEmployee.updateOne({Empid:Empid},{$set:{DOB:dob}})
+    // }
+    // else if(phone1)
+    // {
+    //     await newEmployee.updateOne({Empid:Empid},{$set:{Contact:phone1}})
+    // }
+    // else if(location1)
+    // {
+    //     await newEmployee.updateOne({Empid:Empid},{$set:{location:location1}})
+    // }
+    // else{
+    //     await newEmployee.update({Empid:Empid},{$set:[{Empname:nname,DOB:dob,Contact:phone1,location:location1}]})
+    // }
+    //console.log(up);
 });
 
 

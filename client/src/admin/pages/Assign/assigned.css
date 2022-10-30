@@ -5,13 +5,15 @@
 }
 .assigntaskimg img {
     position: absolute;
-    left: 900px;
+
+    left: 400px;
     top: 200px;
     width: 500px;
 }
 .updateoverall {
     position:absolute;
     right: 1100px;
+
 }
 .nameemp {
     font-size: large;

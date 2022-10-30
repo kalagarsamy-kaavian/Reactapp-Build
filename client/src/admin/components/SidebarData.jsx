@@ -4,6 +4,7 @@ import * as AiIcons from 'react-icons/ai';
 import * as RiIcons from 'react-icons/ri';
 import * as BiIcons from "react-icons/bi";
 import * as Io5Icons from "react-icons/io5";
+import { BsStar } from "react-icons/bs";
 import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
 import AssignmentIndOutlinedIcon from '@mui/icons-material/AssignmentIndOutlined';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
@@ -18,14 +19,14 @@ export const SidebarData = [
         icon: <AiIcons.AiFillHome />,
     },
     {
-        title: 'ProjectStatus',
+        title: 'Project Status',
         path: '/admin/ProjectStatus',
         icon: <AssignmentIndOutlinedIcon />,
         // iconClosed: <RiIcons.RiArrowDownSFill />,
         // iconOpened: <RiIcons.RiArrowUpSFill />,
     },
     {
-        title: 'AddEmployee',
+        title: 'Add Employee',
         path: '/admin/AddEmployee',
         icon: <PersonAddAlt1Icon />
     },
@@ -35,15 +36,21 @@ export const SidebarData = [
         icon: <AssignmentIndIcon />
     },
     {
-        title: 'UpdateEmpoyee',
+        title: 'Update Empolyee',
         path: '/admin/UpdateEmployee',
         icon: <UpgradeIcon />
     },
     {
-        title: 'RemoveEmployee',
+        title: 'Remove Employee',
         path: '/admin/RemoveEmployee',
         icon: <Io5Icons.IoPersonRemove />
     },
+    {
+        title: 'Rate Employee',
+        path: '/admin/Rating',
+        icon: <BsStar/>
+    },
+
     {
         title: 'Search',
         path: '/admin/Search',

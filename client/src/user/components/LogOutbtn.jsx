@@ -6,7 +6,9 @@ export default function LogOutbtn(){
   const navigate=useNavigate()
    
    function logout(){
+    localStorage.removeitem('data');
      navigate('/')
+
    }
 
   return(

@@ -79,7 +79,7 @@ export default function Emplist() {
                 <select className='selectemp'  value={meme} onChange={e => setMeme(e.target.value)}>
                     <option  value="" disablevalue>NAME</option>
                     {name.map(val => <option>{val}</option>)}
-                </select><br></br> */}
+                </select><br></br> 
           {/* <tr><td>UserId</td><input type="text" className="name" onChange={(e) => setPass(e.target.value)} placeholder='Empid' required></input></tr> */}
         {/* <tr><td>UserId</td><input type="text" className="name" onChange={(e) => setPass(e.target.value)} placeholder='Empid' required></input></tr>
         <tr><td>UserId</td><input type="text" className="name" onChange={(e) => setPasst(e.target.value)} placeholder='Empid' required></input></tr>

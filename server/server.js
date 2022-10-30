@@ -416,6 +416,26 @@ app.get('/tlcomplete',(req,res)=>{
     // newModel.count({Projectstatus:"Ongoing"}).then(res=>res.json).then(data=>res.send(data));
     newModel.count({"Empstatus":"Team Leader","Projectstatus":"COMPLETED"}).then(data=>res.json(data));  
 })
+app.get('/empid1', async(req,res) => {
+    await newEmployee.distinct('Empid').then(Empid => res.json(Empid));
+    });
+    app.post('/search1', async(req,res) => {
+             const {Empid} = req.body;
+             await newEmployee.find({Empid:Empid}).then(data => {
+                 res.send(data)});
+         });
+     app.put('/rateemp',async(req,res) => {
+             const {Empid,value} =req.body;
+             console.log(Empid);
+             const str=value.toString()
+             console.log(str);
+                     const up = await newEmployee.updateOne({Empid:Empid},{$set:{Rating:str}})
+                     // const up1= await newUser.updateOne({Empid:Empid},{$set:{username:name1}})
+                     console.log(up);
+                     //console.log(up1);
+                     // const up2 = await newModel.updateOne({Empid:Empid},{$set:{Empname:name1}})
+                     // console.log(up2);
+                 });
  
 // for any other request, serve HTML in DIT environment (cloud env)
 if (NODE_ENV === 'DIT') {

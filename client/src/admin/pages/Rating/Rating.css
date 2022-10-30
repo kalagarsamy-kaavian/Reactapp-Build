@@ -1,0 +1,48 @@
+div.ratingimg img {
+    position: absolute;
+    left: 600px;
+    top: 250px ;
+
+}
+div.starimage img{
+    position:absolute;
+    width:500px;
+    right:360px;
+    bottom:10px;
+    top:100px;
+
+}
+div.Ratinghead{
+    position:absolute;
+    top:10px;
+    right: 150px; 
+    width:300px;  
+}
+span.ratingsearch{
+    position:absolute;
+    top:100px;
+    right:250px;
+}
+div.ratedropdown{
+    position:absolute;
+    top:100px;
+    right:490px;
+}
+div.ratetable{
+    position:relative;
+    left:80px;
+
+} 
+div.rating{
+    position:relative;
+    top:20px;
+    right:70px;
+}
+body{
+    overflow: hidden;
+}
+h2.ratehere{
+    position:relative;
+    top:-30px;
+    right:150px;
+}

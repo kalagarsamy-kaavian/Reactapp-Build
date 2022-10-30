@@ -4,7 +4,7 @@
 const mongoose=require('mongoose')
 
 const NewSchema=new mongoose.Schema({
-  Empid:{type:String,unique:true,index:true,required:true},
+  Empid:String,
   Empname:String,
   Projectname:String,
   Teamname:String,

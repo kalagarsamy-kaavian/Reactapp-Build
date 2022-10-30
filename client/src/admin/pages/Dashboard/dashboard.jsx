@@ -3,6 +3,7 @@ import './dashboard.css'
 import { useState } from 'react';
 
 export default function Empcomplete() {
+
     const [counts, setCount] = useState(0)
     const [numbers, setNum] = useState(0);
     const [team, setTeam] = useState(0);

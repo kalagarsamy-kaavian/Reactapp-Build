@@ -1,9 +1,11 @@
 .name {
     font-size: large;
-    
+    border-radius: 6px;
+    width:240px;
 }
 .assigntaskimg img {
     position: absolute;
+
     left: 400px;
     top: 200px;
     width: 500px;
@@ -11,7 +13,7 @@
 .updateoverall {
     position:absolute;
     right: 1100px;
-    
+
 }
 .nameemp {
     font-size: large;
@@ -27,4 +29,8 @@ div.upheading tr h2 {
    top:-5px;
    left:100px;
    font-size: xx-large;
+}
+.assignclassselect{
+    position:relative;
+    right:70px;
 }

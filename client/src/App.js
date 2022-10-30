@@ -3,7 +3,10 @@ import React from 'react';
 import { BrowserRouter, Routes, Route,Navigate } from 'react-router-dom'
 import ProjectStatus from './admin/pages/ProjectStatus/ProjectStatus';
 import Home from './admin/pages/Home/Home';
+
 //import Emplist from './admin/pages/UpdateEmployee/UpdateEmployee';
+import Emplist from './admin/pages/UpdateEmployee/UpdateEmployee';
+import RateEmp from './admin/pages/Rating/Rating';
 // import RemoveEmployee from './admin/RemoveEmployee/RemoveEmployee';
 // import OnProcess from './admin/pages/ProjectStatus/OnProcess';
 import Footer from './admin/components/Footer';
@@ -68,6 +71,7 @@ function App() {
             <Route path='/admin/UpdateEmployee' element={<Emplistadd/>}></Route>
             <Route path='/admin/RewriteEmployee' element={<Updateemp/>}></Route>
             <Route path='/admin/assigned' element={<Assigned/>}></Route>
+            <Route path='/admin/Rating' element={<RateEmp/>}></Route>
             <Route path='/admin/About' element={<About/>}></Route>
             <Route path='/admin/Search' element={<Search/>}></Route>
             <Route path='/admin/Dashboard' element={<Empcomplete/>}></Route>

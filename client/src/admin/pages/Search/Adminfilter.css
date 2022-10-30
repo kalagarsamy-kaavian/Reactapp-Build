@@ -72,6 +72,22 @@ label.fill{
     left: 250px;
 }
 
+
+label.plat {
+    position: absolute ;
+    top: 220px;
+    left: 1010px;
+}
+/* .searchselect {
+
+} */
+label.fill{
+    position: absolute;
+    top: 275px;
+    left: 250px;
+}
+
+
 .filteralign h3 {
     display: flex;
     padding-left: 400px;

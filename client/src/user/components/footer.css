@@ -1,35 +1,11 @@
-.main-footer {
-    color: #0c0b0a;
-    background: #0000ff;
-    position:fixed;
-    padding-right: 600px;
-    top: 93vh;
-    
-}
-/* .footer{
-    font-size: large;
-} */
-
-.call {
-    padding-left: 580px;
-
-}
-
-.bottom-row {
-    display: flex;
-    height: 65px;
-    align-items: center;
-    font: lighter;
-    background: #0000ff;
-    width: fit-content;
-}
-
-.copyright {
-    display: flex;
-
-}
-
-.fbottom {
-    display: flex;
-    font-size: small;
+.footer {
+    margin-top: 1rem;
+    text-align: center;
+    padding: 1rem;
+    background-color: #37caec;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    font-family: 'Roboto';
 }

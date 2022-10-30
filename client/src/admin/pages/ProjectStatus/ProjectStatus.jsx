@@ -35,7 +35,7 @@ export default function Projectstatus() {
                 setTodo(datas)
                 console.log(datas)
             })
-        // fetch(`${process.env.REACT_APP_SERVER_PREFIX}/special').then(res=>res.json()).then(data=>(setDrop(data)))
+        // fetch(`${process.env.REACT_APP_SERVER_PREFIX}/special`).then(res=>res.json()).then(data=>(setDrop(data)))
     }, [data]);
     //return<table id="todo" border="20px" align="center"cellPadding="5px" cellSpacing="5px">
     return <div className="a-btn"><table className='ptable'>
@@ -47,7 +47,7 @@ export default function Projectstatus() {
         </select>
         {todo.map(item => {
             return <tr>
-                <td className='pteamname'><Link to={`/admin/todo/${item.Teamname}`}>{item.Teamname}Team<h7><GroupsIcon /></h7></Link></td>
+                <td className='pteamname'><Link to={`/admin/todo/${item.Teamname}`}><span className='temanadmin'>{item.Teamname}</span>Team<h7><GroupsIcon /></h7></Link></td>
             </tr>
         })}
     </table>

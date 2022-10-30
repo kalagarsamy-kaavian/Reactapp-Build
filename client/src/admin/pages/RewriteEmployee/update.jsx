@@ -151,6 +151,7 @@ export default function Updateemp(){
                     <th> LOCATION</th>
                 </tr> */}
                 {details.map(({Empname,DOB,Contact,location}) => (
+
                     // <tr>
                     //     <td>{Empname}</td>
                     //     <td>{DOB}</td>
@@ -168,6 +169,28 @@ export default function Updateemp(){
                 <input type='text' name='location1' defaultValue={location} onChange={(e)=>setlocation1(e.target.value)}></input>
         </form>
         ))}
+
+                    <tr>
+                        <td>{Empname}</td>
+                        <td>{DOB}</td>
+                        <td>{Contact}</td>
+                        <td>{location}</td>
+                    </tr>
+                ))}
+
+            </table>
+            <form className='updateform'>                
+                <span className='t1'>Name</span>
+                <input type='text' value={name1} onChange={(e) => setName(e.target.value)} /><br></br>
+                <span className='t2'>DOB</span>
+                <input type='text' value={dob} onChange={(e) => setdob(e.target.value)} /><br></br>
+                <span className='t3'>Contact</span>
+                <input type='text' value={phone1} onChange={(e) => setPhone(e.target.value)} /><br></br>
+                <span className='t4'>Location</span>
+                <input type='text' value={location1} onChange={(e) => setlocation1(e.target.value)} /><br></br>
+                
+        </form>
+
         <button className='updateformbtn' id='update' onClick={upemp}><span>UPDATE</span></button>
         <div className='updateimg'>
             <img src='/images/updateimg.svg'></img>

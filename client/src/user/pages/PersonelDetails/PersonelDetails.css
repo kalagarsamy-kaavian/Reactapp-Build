@@ -1,0 +1,296 @@
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 70%;
+  
+  border: 1px solid #ddd;
+  font-family: 'Roboto';
+  margin-top: 90px;
+  margin-bottom: 40px;
+}
+thead{
+  background-color: #3dd9d6;
+}
+th, td {
+  text-align: left;
+  padding: 1px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+.containerrate{
+  width:100%;
+  height: 100vh;
+  background:#222;
+  display:flex;
+  align-items:center;
+  justify-content: center;
+}
+.skills h2{
+  font-weight: 400;
+  letter-spacing: 1px;
+  margin-top:40px;
+  margin-bottom: 5px;
+  color:rgb(13, 13, 13);
+  font-size:16px;
+}
+.skills{
+  position:relative;
+  left:20px;
+}
+.progress-bar{
+  background:black;
+  width:150px;
+  height:10px;
+  border-radius:5px;
+  position:relative;
+  left:770px;
+  top:110px;
+}
+.progress-bar .raterating{
+  height:10px;
+  border-radius: 5px;
+  width:0%;
+  animation:html 1s linear forwards;
+}
+.progress-bar div span{
+  height:40px;
+
+  width:40px;
+  border-radius: 50%;
+background:#222;
+float:right;
+margin-top:-15px;
+margin-right:-20px;
+color:#fff;
+display:flex;
+align-items:center;
+justify-content: center;
+}
+.raterating{
+  background: #30b9d6;
+  width:100%;
+}
+.raterating span{
+  border:4px solid #30b9d6;
+ 
+}
+@keyframes html{
+  100%{
+      width: 100%;
+  }
+}
+.claps{
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+ font-size: large;
+ position:relative;
+ top:100px;
+}
+.three{
+  position:relative;
+  right:30px;
+  font-size: 30px;
+}
+.three2{
+  position:relative;
+  left:60px;
+  font-size: 30px;
+}
+.three1{
+  position:relative;
+  top: 50px;
+  left:20px;
+  font-size: 30px;
+}
+.threestar{
+  position:relative;
+  top:70px;
+}
+/* .rateh21{
+  position:relative;
+  right:200px;
+  top:200px;
+} */
+
+
+.G1 {
+  transform: translate(10px, 85px) rotate(-30deg);
+  position :relative;
+  right:30px;
+  top:50px;
+  font-family: jokerman;
+  font-size:40px;
+}
+
+.e1 {
+  transform: translate(13px, 60px) rotate(-25deg);
+  position :relative;
+  right:30px;
+  top:50px;
+  font-family: jokerman;
+  font-size:40px;
+}
+
+.e2 {
+  transform: translate(6px, 40px) rotate(-20deg);
+  position :relative;
+  right:20px;
+  top:50px;
+  font-family: jokerman;
+  font-size:40px;
+}
+
+.k1 {
+  transform: translate(3px, 23px) rotate(-15deg);
+  position :relative;
+ right:10px;
+  top:50px;
+  font-family: jokerman;
+  font-size:40px;
+}
+
+.s1 {
+  transform: translate(2px, 14px) rotate(-10deg);
+  position :relative;
+  left:10px;
+  top:50px;
+  font-family: jokerman;
+  font-size:40px;
+}
+
+.f {
+  transform: translate(1px, 8px) rotate(-5deg);
+  position :relative;
+ left:30px;
+  top:65px;
+  font-family: jokerman;
+  font-size:40px;
+}
+
+.o {
+  transform: translate(0px, 5px) rotate(0deg);
+  position :relative;
+ left:40px;
+  top:85px;
+  font-family: jokerman;
+  font-size:40px;
+}
+
+.r {
+  transform: translate(-1px, 8px) rotate(5deg);
+  position :relative;
+  left:50px;
+   top:105px;
+   font-family: jokerman;
+   font-size:40px;
+}
+
+.G2 {
+  transform: translate(-2px, 14px) rotate(10deg);
+  position :relative;
+  left:60px;
+   top:120px;
+   font-family: jokerman;
+   font-size:40px;
+}
+
+.rateurrate{
+  font-family: jokerman;
+}
+span {
+  display: inline-block;
+}
+.four1{
+  position:relative;
+  right:30px;
+  bottom:28px;
+  font-size: 30px;
+}
+.four2{
+  position:relative;
+  right:10px;
+  top:20px;
+  font-size: 30px;
+}
+.four3{
+  position:relative;
+  left:30px;
+  top:20px;
+  font-size: 30px;
+}
+.four4{
+  position:relative;
+  bottom: 27px;
+  left:50px;
+  font-size: 30px;
+}
+.fourstar{
+  position:relative;
+  top:70px;
+}
+.two1{
+  position:relative;
+  left:10px;
+  bottom:20px;
+  font-size: 30px;
+}
+.two2{
+  position:relative;
+  bottom: 20px;
+  left:40px;
+  font-size: 30px;
+}
+.twostar{
+  position:relative;
+  top:70px;
+}
+.one1{
+  position:relative;
+  bottom: 20px;
+  left:20px;
+  font-size: 30px;
+}
+.onestar{
+  position:relative;
+  top:70px;
+}
+.five1{
+  position:relative;
+  right:30px;
+  bottom:28px;
+  font-size: 30px;
+}
+.five2{
+  position:relative;
+  right:30px;
+  top:30px;
+  font-size: 30px;
+}
+.five3{
+  position:relative;
+  left:20px;
+  top:50px;
+  font-size: 30px;
+}
+.five4{
+  position:relative;
+  top: 25px;
+  left:60px;
+  font-size: 30px;
+}
+.five5{
+  position:relative;
+  bottom: 30px;
+  left:70px;
+  font-size: 30px;
+}
+.fivestar{
+  position:relative;
+  top:40px;
+  right:30px;
+}
+.personaldetailstable{
+  table-layout: fixed;
+  position:relative;
+  left:350px;
+}

@@ -243,7 +243,11 @@ select:hover {
 }
 .manimg img {
   position: absolute;
-  right: 100px;
-  bottom: 10px;
+  right: 900px;
+  bottom: 150px;
   width: 500px;
+}
+.teamadmin{
+  font-size: 22px;
+  
 }

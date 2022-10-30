@@ -1,8 +1,10 @@
 
 .uptable center {
     border: 3px solid black;
-    width: fit-content;
+    width: 700px;
     background: #3dd9d6;
+    position:relative;
+    right:100px;
 }
 .updateoverall{
     padding-left: 500px;
@@ -42,8 +44,9 @@ tbody td{
     color: rgb(0, 0, 0);
 }
 tbody input{
-    padding-top: 10px;
-    padding-left: 150px;
+    padding-top: 5px;
+
+   
 }
 thead h2{
     font-size: large;

@@ -61,9 +61,9 @@ app.put('/test',async (req,res)=>{
 //     console.log('deleted')
 // })
 
-app.patch('/complete/:Teamname', (req, res) => {
+app.patch('/remcomplete/:Teamname', (req, res) => {
     const { Teamname} = req.params;
-    console.log(Teamname)
+    console.log('remcomplete',Teamname)
     //console.log(id);
    newModel.updateMany({Teamname:Teamname}, { $set: { Projectstatus: "COMPLETED" }}).then(updateStatus => {
        res.json(updateStatus);
@@ -81,9 +81,9 @@ app.post('/olist/:id',(req,res)=>{
     const {id}=req.params;
      console.log(id)
     newModel.find({$and:[{Empid:id},{Projectstatus:'Ongoing'}]}).then(data=>{
-        let[first]=data;
-       // console.log(first.Empstatus)
-       // res.json(first.Empstatus)
+        let[first,...rest]=data;
+        
+         res.json(first.Empstatus)
     })
 })
 app.post('/leaderteam/:id',(req,res)=>{
@@ -92,11 +92,11 @@ app.post('/leaderteam/:id',(req,res)=>{
     newModel.find({$and:[{Empid:id},{Projectstatus:'Ongoing'}]}).then(data=>{
         let[first,...rest]=data;
         //console.log(first.Teamname)
-       // res.json(first.Teamname)
+        res.json(first.Teamname)
     })
 })
 
-app.get('/id',(req,res)=>{
+app.get('/remoid',(req,res)=>{
     newEmployee.distinct('Empid').then(data=>{res.send(data)})
     });
 //Delete filter
@@ -550,6 +550,6 @@ if (NODE_ENV === 'DIT') {
     });
 }
 
-app.listen(3003, () => {
+app.listen(3004, () => {
             console.log("Application is running.");
         });

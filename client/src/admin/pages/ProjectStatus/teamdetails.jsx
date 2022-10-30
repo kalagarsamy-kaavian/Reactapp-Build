@@ -7,7 +7,7 @@ export default function Teamdetail(){
 
 const navigate=useNavigate();
     useEffect(()=>{
-        fetch(`${process.env.REACT_APP_SERVER_PREFIX}/${Teamname}`,{method:'POST',headers:{'content-type':'application/json'}})
+        fetch(`${process.env.REACT_APP_SERVER_PREFIX}/details/${Teamname}`,{method:'POST',headers:{'content-type':'application/json'}})
         .then(res=>res.json())
         .then(data=>setItem(data));
        

@@ -5,10 +5,10 @@
     padding-left: 410px;
     /* border-radius: 5px 5px 0 0; */
     overflow: hidden;
-    margin-top: -100px;
-    margin-bottom: 150px;
-    margin-left: -200px;
-    margin-right: 300px;
+    margin-top: -50px;
+    margin-bottom: 100px;
+    margin-left: -100px;
+    margin-right: 200px;
 }
 .searchtable thead tr{
     background-color: #3dd9d6;
@@ -77,19 +77,6 @@ label.fill{
 }
 
 
-label.plat {
-    position: absolute ;
-    top: 220px;
-    left: 1010px;
-}
-/* .searchselect {
-
-} */
-label.fill{
-    position: absolute;
-    top: 275px;
-    left: 250px;
-}
 
 
 .filteralign h3 {
@@ -118,7 +105,7 @@ label.fill{
     text-align: center;
     font-size: 18px;
     padding: 20px;
-    width: 150px;
+    width: 106px;
     transition: all 0.5s;
     cursor: pointer;
     margin: 5px;

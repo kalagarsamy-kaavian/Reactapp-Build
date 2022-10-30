@@ -1,6 +1,6 @@
 button.starupdate  {
     position: absolute;
-    top: 40px;
+    top: 70px;
     width: 250px; 
     right:700px;
 }
@@ -48,14 +48,13 @@ button.starupdate  {
 }
 table.ratingtable{
   position:relative;
-  left:100px;
-  bottom:100px;
-
+  left:200px;
+  bottom:40px;
 }
 button.ratesearch  {
   position: absolute;
   top: -10px;
-  width: 100px; 
+  width: 65px; 
   right:-90px;
   left:-30px;
   height:50px;
@@ -83,8 +82,8 @@ button.ratesearch  {
 }
 .down-arrow {
   position: absolute;
-  top: calc(100vh - 430px);
-  left: calc(50% - 14px);
+  top: calc(108vh - 430px);
+  left: calc(30% - 14px);
   width: 0;
   height: 30px;
   border: 2px solid;

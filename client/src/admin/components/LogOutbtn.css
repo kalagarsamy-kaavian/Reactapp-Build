@@ -21,7 +21,7 @@
   .pushable:active .front {
     transform: translateY(-2px);
   }
-
+/* 
   background: rgb(5, 1, 47);
   border-radius: 8px;
   border: none;
@@ -29,7 +29,7 @@
   cursor: pointer;
   outline-offset: 4px;
   
-}
+} */
 .lfront {
   display: block;
   padding: 12px 42px;

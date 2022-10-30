@@ -73,10 +73,11 @@ export default function Rmemplist(){
 
 	//Fetch data from the db
 	useEffect(()=>{
-		fetch(`${process.env.REACT_APP_SERVER_PREFIX}/id`).then(res=>res.json()).then(data=>setId(data));
+		fetch(`${process.env.REACT_APP_SERVER_PREFIX}/remoid`).then(res=>res.json()).then(data=>setId(data));
 	},[])
 		function deleteRec(){
 	fetch(`${process.env.REACT_APP_SERVER_PREFIX}/emprecord`,{method:'delete',body:JSON.stringify({data}),headers:{'content-type':'application/json'}}).then(res=>res.json()).then(val=>setData(val));
+	alert('Deleted Successfully');
 }
 	const search = () => {
 		fetch(`${process.env.REACT_APP_SERVER_PREFIX}/empdelsearch`, {

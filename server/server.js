@@ -12,6 +12,8 @@ const NODE_ENV = process.env.NODE_ENV || 'DEV';
 const bcrypt = require('bcrypt');
 
 app.use('/static', express.static(path.join(__dirname + '/../client/build/static')));
+app.use('/images', express.static(path.join(__dirname + '/../client/build/images')));
+
 app.use(cors({origin:'http://localhost:3000'}));
 app.use(bodyParser.json());
 mongoose.connect("mongodb+srv://blueTeam:o9T62uCK3dt5V078@db-kaavian-sys-cluster-in1-966a0c87.mongo.ondigitalocean.com/blueDB?tls=true&authSource=admin&replicaSet=db-kaavian-sys-cluster-in1",(err)=>{

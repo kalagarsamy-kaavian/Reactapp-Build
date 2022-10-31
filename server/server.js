@@ -10,6 +10,8 @@ const fs = require('fs');
 const bodyParser=require('body-parser');
 const NODE_ENV = process.env.NODE_ENV || 'DEV';
 const bcrypt = require('bcrypt');
+const jwt = require("jsonwebtoken");
+const JWT_SECRET_KEY = "dmbjskkfjckmxkcjskdi";
 
 app.use('/static', express.static(path.join(__dirname + '/../client/build/static')));
 app.use('/images', express.static(path.join(__dirname + '/../client/build/images')));
@@ -156,6 +158,19 @@ app.post('/empdelsearch', async(req,res) => {
 //     //                 res.send(msg);
 //     // }
 // })
+app.post('/tokenDecode', async (req, res) => {
+    const { token } = req.body;
+    const { user } = jwt.verify(token,"dmbjskkfjckmxkcjskdi");
+
+    const userId = user.Empid;
+    const userRole = user.role;
+
+    await newUser.findOne({ $and: [{ Empid: userId }, { role: userRole }] })
+        .then((data) => {
+            return res.json(data);
+        })
+})
+    
 app.post('/login',async(req,res)=>{
     const {user,pass}=req.body;
     const body = { user, pass};
@@ -176,7 +191,8 @@ app.post('/login',async(req,res)=>{
         } else {
             // res.status(200).json({ message: "valid password"});
             // console.log(use);
-            return res.json(use);
+            const token = jwt.sign({ user: use },"dmbjskkfjckmxkcjskdi");
+            return res.json({token,use});
         }
     } else {
         res.status(401).json({ error: "User does not exist" });
@@ -192,11 +208,11 @@ app.post('/login',async(req,res)=>{
 });
 
 app.post("/employeedetail",async(req,res)=>{
-    const{id}=req.body;
+    const{Id}=req.body;
     // const db=getDB();
     // const collection=db.collection("details");
-    console.log(id)
-    await newEmployee.find({Empid:id}).then(data=>res.json(data))
+    console.log(Id)
+    await newEmployee.find({Empid:Id}).then(data=>res.json(data))
 
 })
 app.get('/update', (req, res) => {
@@ -220,10 +236,10 @@ app.patch('/update', (req, res) => {
 })
 
 app.post("/employeehistory",async(req,res)=>{
-    const {id}=req.body;
+    const {Id}=req.body;
     // const db=getDB();
     // const collection=db.collection("employeehistory");
-    await newModel.find({Empid:id}).then(data=>res.send(data))
+    await newModel.find({Empid:Id}).then(data=>res.send(data))
 })
 app.post('/emprecord', async(req,res)=>{
 	const {pass,input,dob,con,loc,doj,exp,speo,spet,sper,pt, role, password}=req.body;

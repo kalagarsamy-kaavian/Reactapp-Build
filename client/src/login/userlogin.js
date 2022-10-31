@@ -20,6 +20,8 @@ export default function Userlogin() {
     const[icon,setIcon]=useState(eyeOff);
     const[msg,setMsg]=useState("")
     const[verified,setVerified]=useState(false);
+    const[id,setid]=useState("");
+    const[role,setrole]=useState("");
     const navigate = useNavigate();
     // const[item,setItem]=useState([]);
     
@@ -45,13 +47,16 @@ export default function Userlogin() {
             .then(res => res.json())
             .then(data => {
                 console.log(data)
-                localStorage.setItem('data', data.Empid);
-                if (data.role === "User") {
+                localStorage.setItem('data', data.token);
+                setid(data.use.Empid);
+                setrole(data.use.role);
+
+                if (role === "User") {
                     console.log(data);
                     setUse(data)
                     navigate(`/user/Home`)
                 }
-                else if (data.role === "Admin") {
+                else if (role === "Admin") {
                     navigate("/admin/Home")
                 }
                 else  {

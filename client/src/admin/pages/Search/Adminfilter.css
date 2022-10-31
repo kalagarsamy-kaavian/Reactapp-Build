@@ -4,17 +4,24 @@
     font-size: 1.50em;
     padding-left: 410px;
     /* border-radius: 5px 5px 0 0; */
-    overflow: hidden;
+    overflow-y: auto;
     margin-top: -50px;
     margin-bottom: 100px;
     margin-left: -100px;
     margin-right: 200px;
+    
+}
+.searchdetails {
+    overflow-y: auto;
+
 }
 .searchtable thead tr{
     background-color: #3dd9d6;
     color: #000000;
     text-align: left;
     font-weight: bold;
+    overflow-y: auto;
+
 }
 .searchtable th,
 .searchtable td{

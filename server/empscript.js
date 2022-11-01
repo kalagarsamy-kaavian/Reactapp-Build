@@ -1,7 +1,6 @@
 const mongoose=require('mongoose')
 
 const NewSchema=new mongoose.Schema({
-   
   Empid:String,
   Empname:String,
   DOB:Date,

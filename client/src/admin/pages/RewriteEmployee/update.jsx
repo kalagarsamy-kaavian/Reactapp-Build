@@ -6,6 +6,7 @@ export default function Updateemp() {
     const [emp,setEmp] = useState([]);
         const [Empid,setEmpid] = useState('');
         const [details,setDetails]=useState([]);
+        //Variables that contains the newly changed values from the input box
         const [Empname,setName] = useState(''); 
         const [Dob,setDob]=useState('');
         const [Phone,setPhone]=useState('');

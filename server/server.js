@@ -377,7 +377,7 @@ app.get('/special', (req, res) => {
         res.json(todoSpecial);
     })
 
-})
+});
 
 
 app.post("/api/todo/:Teamname", (req, res) => {
@@ -432,7 +432,7 @@ app.post('/search', (req, res) => {
     console.log(typeof (emprating));
 
     newEmployee.find({ $or: [{ Specialized1: spc }, { Specialized2: spc }, { Specialized3: spc }, { Platform: empplatform }, { Rating: emprating }] }).then(data => res.json(data))
-
+})
 
 
 app.get('/tlcount', (req, res) => {
@@ -491,5 +491,5 @@ if (NODE_ENV === 'DIT') {
 
 
 app.listen(3004, () => {
-    console.log("Application is running.");
+    console.log("Application is running.")
 });

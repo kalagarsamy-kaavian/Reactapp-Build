@@ -77,7 +77,7 @@ export default function Updateemp() {
           </form>
 
           <br></br>
-          
+          <div className="updateimg"><img src="/images/updateimg.svg"></img></div>
           <span><button className="updateformbtn" id='update' onClick={upemp}>UPDATE</button></span>      
       </center>
     </body>

@@ -13,6 +13,7 @@
 }
 .searchdetails {
     overflow-y: auto;
+    /* cursor: not-allowed; */
 
 }
 .searchtable thead tr{
@@ -20,7 +21,8 @@
     color: #000000;
     text-align: left;
     font-weight: bold;
-    overflow-y: auto;
+    /* overflow-y: auto; */
+    overflow: auto;
 
 }
 .searchtable th,

@@ -21,7 +21,7 @@ import Teamdetail from './admin/pages/ProjectStatus/teamdetails';
 import Rmemplist from './admin/pages/RemoveEmployee/RemoveEmployee';
 import Assigned from './admin/pages/Assign/assigned';
 import Emplistaddnew from './admin/pages/UpdateEmployee/UpdateEmployee';
-
+import Acess from './user/pages/Acessdenied';
 
 import User from './user/pages/user';
 import Homepa from './user/pages/Home/Home';
@@ -51,6 +51,7 @@ function App() {
         <BrowserRouter>
          
           <Routes>
+            <Route path='/Accesdenied'element={<Acess/>}></Route>
             <Route path='/' element={<Userlogin />}></Route>
             <Route path='/user' element={<UserSessionRoute element={User} />}>
             

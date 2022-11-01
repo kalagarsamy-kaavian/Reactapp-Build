@@ -6,7 +6,7 @@ export default function Empcomplete() {
 
     const [counts, setCount] = useState(0)
     const [numbers, setNum] = useState(0);
-    const [list,setList]=useState(0);
+//     const [list,setList]=useState(0);
     const [team, setTeam] = useState(0);
     /**
      * the useEffect that fetch the API call from the backend and display that to the UI.

@@ -32,7 +32,7 @@ export default function Emplist() {
        const distinct=[...new Set(arr)];
        console.log(distinct,'distinct');
 
-       if(distinct.length==5){
+       if(distinct.length==5&&pn&&tn&&d&&start&&end&&descr&&pt){
         fetch(`${process.env.REACT_APP_SERVER_PREFIX}/test`,
             {
                 method: 'put', body: JSON.stringify({ mem, memt, memr, meme, memf, pn, tn, d, start, end, pco, es, descr, pt }),
@@ -41,7 +41,7 @@ export default function Emplist() {
         
         alert("NEW PROJECT IS ASSIGNED",tn);
        }else{
-        alert("Can't be assigned...!Only unique names can be assignesd")
+        alert("Can't be assigned...!Please select every value as unique")
        }
         setMem(" ");
         setMemt(" ");

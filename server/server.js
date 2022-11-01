@@ -10,10 +10,13 @@ const fs = require('fs');
 const bodyParser = require('body-parser');
 const NODE_ENV = process.env.NODE_ENV || 'DEV';
 const bcrypt = require('bcrypt');
+
+
 const jwt = require("jsonwebtoken");
 const JWT_SECRET_KEY = "dmbjskkfjckmxkcjskdi";
 // const LocalStorage= require('node-localstorage').LocalStorage;
 // global.localStorage=new LocalStorage('./scratch');
+
 
 app.use('/static', express.static(path.join(__dirname + '/../client/build/static')));
 
@@ -21,6 +24,7 @@ app.use('/images', express.static(path.join(__dirname + '/../client/build/images
 
 app.use(cors({ origin: 'http://localhost:3000' }));
 app.use(bodyParser.json());
+
 
 mongoose.connect("mongodb+srv://blueTeam:o9T62uCK3dt5V078@db-kaavian-sys-cluster-in1-966a0c87.mongo.ondigitalocean.com/blueDB?tls=true&authSource=admin&replicaSet=db-kaavian-sys-cluster-in1", (err) => {
   if (!err) {
@@ -50,45 +54,92 @@ mongoose.connect("mongodb+srv://blueTeam:o9T62uCK3dt5V078@db-kaavian-sys-cluster
 
  //Teamleadcount
 app.get('/tlcount', (req, res) => {
-  // newModel.count({Projectstatus:"Ongoing"}).then(res=>res.json).then(data=>res.send(data));
-  newModel.count({ "Empstatus": "Team Leader" }).then(data => res.json(data));
+
+    // newModel.count({Projectstatus:"Ongoing"}).then(res=>res.json).then(data=>res.send(data));
+    newModel.count({ "Empstatus": "Team Leader" }).then(data => res.json(data));
+
+
 })
 
 
 app.get('/ongoing', (req, res) => {
-  // newModel.count({Projectstatus:"Ongoing"}).then(res=>res.json).then(data=>res.send(data));
-  newModel.count({ "Empstatus": "Team Leader", "Projectstatus": "Ongoing" }).then(data => res.json(data));
+
+
+    // newModel.count({Projectstatus:"Ongoing"}).then(res=>res.json).then(data=>res.send(data));
+
+    newModel.count({ "Empstatus": "Team Leader", "Projectstatus": "Ongoing" }).then(data => res.json(data));
+
 })
 
 app.get('/complete', (req, res) => {
-  // newModel.count({Projectstatus:"Ongoing"}).then(res=>res.json).then(data=>res.send(data));
-  newModel.count({ "Empstatus": "Team Leader", "Projectstatus": "COMPLETED" }).then(data => res.json(data));
+    // newModel.count({Projectstatus:"Ongoing"}).then(res=>res.json).then(data=>res.send(data));
+
+    newModel.count({'Empstatus':'Team Leader','Projectstatus':'COMPLETED'}).then(data=>res.json(data));  
+
 })
 
 
+app.put('/test',async (req)=>{
+    try{
+    const{mem,memt,memr,memf,meme,pn,tn,d,start,end,descr,pt}=req.body;
+    const test= await newEmployee.find({$or:[{Empname:mem},{Empname:memt},{Empname:memr},{Empname:memf},{Empname:meme}]})
+    let [frst,scnd,third,fourth,fifth]=test;
+    
+    newModel.create([{'Empid':frst.Empid,'Empname':frst.Empname,'Projectname':pn,'Teamname':tn,'Duration':d,'Startingdate':start,'Endingdate':end,'Projectstatus':'Ongoing','Empstatus':'Team Leader','Description':descr,'Platform':pt},
+        {'Empid':scnd.Empid,'Empname':scnd.Empname,'Projectname':pn,'Teamname':tn,'Duration':d,'Startingdate':start,'Endingdate':end,'Projectstatus':'Ongoing','Empstatus':'Member','Description':descr,'Platform':pt},
+        {'Empid':third.Empid,'Empname':third.Empname,'Projectname':pn,'Teamname':tn,'Duration':d,'Startingdate':start,'Endingdate':end,'Projectstatus':'Ongoing','Empstatus':'Member','Description':descr,'Platform':pt},
+        {'Empid':fourth.Empid,'Empname':fourth.Empname,'Projectname':pn,'Teamname':tn,'Duration':d,'Startingdate':start,'Endingdate':end,'Projectstatus':'Ongoing','Empstatus':'Member','Description':descr,'Platform':pt},
+        {'Empid':fifth.Empid,'Empname':fifth.Empname,'Projectname':pn,'Teamname':tn,'Duration':d,'Startingdate':start,'Endingdate':end,'Projectstatus':'Ongoing','Empstatus':'Member','Description':descr,'Platform':pt}
 
-app.put('/test', async (req, res) => {
-  const { mem, memt, memr, memf, meme, pn, tn, d, start, end, pco, es, descr, pt } = req.body;
-  const test = await newEmployee.find({ $or: [{ Empname: mem }, { Empname: memt }, { Empname: memr }, { Empname: memf }, { Empname: meme }] })
-  let [frst, scnd, third, fourth, fifth] = test;
-  newModel.create([{ "Empid": frst.Empid, "Empname": frst.Empname, "Projectname": pn, "Teamname": tn, "Duration": d, "Startingdate": start, "Endingdate": end, "Projectstatus": "Ongoing", "Empstatus": "Team Leader", "Description": descr, "Platform": pt },
-  { "Empid": scnd.Empid, "Empname": scnd.Empname, "Projectname": pn, "Teamname": tn, "Duration": d, "Startingdate": start, "Endingdate": end, "Projectstatus": "Ongoing", "Empstatus": "Member", "Description": descr, "Platform": pt },
-  { "Empid": third.Empid, "Empname": third.Empname, "Projectname": pn, "Teamname": tn, "Duration": d, "Startingdate": start, "Endingdate": end, "Projectstatus": "Ongoing", "Empstatus": "Member", "Description": descr, "Platform": pt },
-  { "Empid": fourth.Empid, "Empname": fourth.Empname, "Projectname": pn, "Teamname": tn, "Duration": d, "Startingdate": start, "Endingdate": end, "Projectstatus": "Ongoing", "Empstatus": "Member", "Description": descr, "Platform": pt },
-  { "Empid": fifth.Empid, "Empname": fifth.Empname, "Projectname": pn, "Teamname": tn, "Duration": d, "Startingdate": start, "Endingdate": end, "Projectstatus": "Ongoing", "Empstatus": "Member", "Description": descr, "Platform": pt }
-  ]);
+
+    ]);
+    await newEmployee.updateMany(
+        { Empid: { $in: [frst.Empid, scnd.Empid, third.Empid, fourth.Empid, fifth.Empid] } },
+        { $set: { Projectstatus : 'Ongoing' } },
+        {multi: true}
+     )
+     await newEmployee.updateMany(
+        { Empid: frst.Empid  },
+        { $set: { Empstatus : 'Team Leader' } },
+     )
+     await newEmployee.updateMany(
+        { Empid: { $in: [ scnd.Empid, third.Empid, fourth.Empid, fifth.Empid] } },
+        { $set: { Empstatus : 'Member' } },
+        {multi: true}
+     )
+    }
+    catch(err){
+       console.log(err,'err')
+    }
+    
 })
+
+
+// app.delete('/emprecord',(req,res)=>{
+// 	const data=req.body;
+//     console.log(data.data);
+//     newEmployee.deleteOne({"Empid": data.data}).then(data=>res.json(data));
+//     console.log('deleted')
+// })
 
 
 app.patch('/remcomplete/:Teamname', (req, res) => {
-  const { Teamname } = req.params;
-  console.log('remcomplete', Teamname)
-  //console.log(id);
-  newModel.updateMany({ Teamname: Teamname }, { $set: { Projectstatus: "COMPLETED" } }).then(updateStatus => {
-    res.json(updateStatus);
-    console.log('Btn updated')
-  })
+    const { Teamname } = req.params;
+    console.log('remcomplete', Teamname)
+    //console.log(id);
+    newModel.updateMany({ Teamname: Teamname }, { $set: { Projectstatus: "COMPLETED" } }).then(updateStatus => {
+        res.json(updateStatus);
+        console.log('Btn updated')
+    })
+
 })
+
+
+// app.post('/olist/:id',(req,res)=>{
+//     const {id}=req.params;
+//     // console.log(id)
+//     newModel.find({$and:[{Empid:id},{Projectstatus:'Ongoing'}]}).then(data=>res.json(data))
+// })
 
 
 
@@ -102,17 +153,34 @@ app.post('/olist/:id', (req, res) => {
   })
 })
 app.post('/leaderteam/:id', (req, res) => {
-  const { id } = req.params;
-  console.log(id)
-  newModel.find({ $and: [{ Empid: id }, { Projectstatus: 'Ongoing' }] }).then(data => {
-    let [first, ...rest] = data;
-    res.json(first.Teamname)
-  })
+
+    const { id } = req.params;
+    console.log(id)
+    newModel.find({ $and: [{ Empid: id }, { Projectstatus: 'Ongoing' }] }).then(data => {
+        let [first, ...rest] = data;
+
+        //console.log(first.Teamname)
+        res.json(first.Teamname)
+    })
+
 })
 
 app.get('/remoid', (req, res) => {
   newEmployee.distinct('Empid').then(data => { res.send(data) })
 });
+
+//Delete filter
+
+app.delete('/emprecord',async (req,res)=>{
+	const data=req.body;
+    console.log(data.data);
+   await newEmployee.deleteOne({'Empid': data.data}).then(data=>{return res.json(data)});
+   //await newUser.deleteOne({"Empid":data.data}).then(data=>{return res.json(data)});
+    console.log('deleted')
+})
+
+
+
 
 
 app.post('/empdelsearch', async (req, res) => {
@@ -123,6 +191,48 @@ app.post('/empdelsearch', async (req, res) => {
   console.log(data);
 });
 
+
+
+
+// app.post('/login',async(req,res)=>{
+//     const{user,pass}=req.body;   
+//     // const db=getDB();
+//     // const collection=db.collection("userinfo");
+//     const use=await newUser.findOne({username:user})
+//     if(!use)
+//     {
+//         //  return res.json({invaliduser})
+//         console.log("invalid")
+//     }
+//     else if(pass===use.password){
+//         //res.cookie('Username',user);
+//         return res.send(use);
+//     }
+//     // else{
+//     //     const msg="INVALID USERNAME OR PSSWORD"
+//     //                 res.send(msg);
+//     // }
+// });  
+// app.post('/login',async(req,res)=>{
+//     const {user,pass}=req.body;
+//     // const db=getDB();
+//     // const collection=db.collection("userinfo");
+
+//     const use=await newUser.findOne({username:user})
+//     console.log(use)
+//     if(!use)
+//     {
+//          return res.status(404).send('invalid user')
+//     }
+//  else if(pass===use.password){
+//         //res.cookie('Username',user);
+//         return res.send(use);
+//     }
+//     // else{
+//     //     const msg="INVALID USERNAME OR PSSWORD"
+//     //                 res.send(msg);
+//     // }
+// })
 
 app.post('/tokenDecode', async (req, res) => {
   const { token } = req.body;
@@ -138,30 +248,35 @@ app.post('/tokenDecode', async (req, res) => {
     })
 })
 
-app.post('/login', async (req, res) => {
-  const { user, pass } = req.body;
-  const body = { user, pass };
+
+app.post('/login',async(req,res)=>{
+    const {user,pass}=req.body;
+    const body = { user, pass};
 
 
-  console.log(body);
-  // const db=getDB();
-  // const collection=db.collection("userinfo");
-  const use = await newUser.findOne({ username: user })
+    console.log(body);
+    // const db=getDB();
+    // const collection=db.collection("userinfo");
+    const use = await newUser.findOne({ username: user })
 
-  console.log(use);
-  if (use) {
-    const validPassword = await bcrypt.compare(body.pass, use.password);
-    console.log(body.pass, "pass1");
-    console.log(use.password, "pass2");
-    console.log(validPassword, "pass3")
-    if (!validPassword) {
-      res.status(400).json({ error: "Invalid password" });
+    console.log(use);
+    if (use) {
+        const validPassword = await bcrypt.compare(body.pass, use.password);
 
+        console.log(body.pass, "pass1");
+        console.log(use.password, "pass2");
+        console.log(validPassword, "pass3")
+        if (!validPassword) {
+            res.status(400).json({ error: "Invalid password" });
+
+        } else {
+            // res.status(200).json({ message: "valid password"});
+            // console.log(use);
+            const token = jwt.sign({ user: use },"dmbjskkfjckmxkcjskdi");
+            return res.json({token,use});
+        }
     } else {
-      // res.status(200).json({ message: "valid password"});
-      // console.log(use);
-      const token = jwt.sign({ user: use }, "dmbjskkfjckmxkcjskdi");
-      return res.json({ token, use });
+        res.status(401).json({ error: 'User does not exist' });
     }
   } else {
     res.status(401).json({ error: "User does not exist" });
@@ -169,12 +284,15 @@ app.post('/login', async (req, res) => {
 });
 
 
-app.post("/employeedetail", async (req, res) => {
-  const { Id } = req.body;
-  // const db=getDB();
-  // const collection=db.collection("details");
-  console.log(Id)
-  await newEmployee.find({ Empid: Id }).then(data => res.json(data))
+
+app.post("/employeedetail",async(req,res)=>{
+    const{Id}=req.body;
+
+    // const db=getDB();
+    // const collection=db.collection("details");
+    console.log(Id)
+    await newEmployee.find({Empid:Id}).then(data=>res.json(data))
+
 
 
 })
@@ -184,30 +302,39 @@ app.get('/update', (req, res) => {
   });
 });
 app.delete('/emprecord', (req, res) => {
-  const data = req.body;
-  console.log(data.data);
-  newEmployee.deleteOne({ "Empid": data.data }).then(data => res.json(data));
-  newUser.deleteOne({ "Empid": data.data }).then(data => res.json(data));
-  console.log('deleted')
+
+    const data = req.body;
+    console.log(data.data);
+
+    newEmployee.deleteOne({ "Empid": data.data }).then(data => res.json(data));
+    newUser.deleteOne({ "Empid": data.data }).then(data => res.json(data));
+
+    console.log('deleted')
 })
 app.patch('/update', (req, res) => {
-  const { updateStatus } = req.body;
-  console.log(updateStatus);
-  newModel.updateMany({ Teamname: updateStatus }, { $set: { Projectstatus: "COMPLETED" } }).then(updateStatus => {
-    res.json(updateStatus);
-  })
+    const { updateStatus } = req.body;
+    console.log(updateStatus);
+
+    newModel.updateMany({ Teamname: updateStatus }, { $set: { Projectstatus: "COMPLETED" } }).then(updateStatus => {
+
+        res.json(updateStatus);
+    })
 })
 
 
-app.post("/employeehistory", async (req, res) => {
-  const { Id } = req.body;
-  // const db=getDB();
-  // const collection=db.collection("employeehistory");
-  await newModel.find({ Empid: Id }).then(data => res.send(data))
+
+app.post("/employeehistory",async(req,res)=>{
+    const {Id}=req.body;
+
+    // const db=getDB();
+    // const collection=db.collection("employeehistory");
+    await newModel.find({Empid:Id}).then(data=>res.send(data))
+
 
 })
 
 app.post('/emprecord', async (req, res) => {
+
   console.log('Add');
   const { pass, input, dob, con, loc, doj, exp, speo, spet, sper, pt, role, password } = req.body;
   const body = { input, password };
@@ -261,6 +388,7 @@ app.post('/details/:Teamname', (req, res) => {
   console.log(Teamname)
 
   newModel.find({ "Teamname": Teamname }).then(data => res.json(data))
+
 })
 
 
@@ -272,10 +400,14 @@ app.get('/assignspecial', (req, res) => {
   })
 
 })
-app.get('/assignname', (req, res) => {
-  newModel.distinct('Empname', { "Projectstatus": "COMPLETED" }).then(data => res.json(data))
-    .catch((err) => {
-    })
+
+
+app.get('/assignname',(req,res)=>{
+    // newEmployee.distinct('Empname',{"Projectstatus":"COMPLETED"||""}).then(data=>res.json(data))
+   newEmployee.find ( { Projectstatus: { $in: ['COMPLETED', ''] } } ) .distinct('Empname').then(data=>res.json(data))
+
+
+
 });
 
 
@@ -290,8 +422,12 @@ app.post('/frstid/:mem', (req, res) => {
 
 
 
+
 app.get('/empaddid', (req, res) => {
-  newEmployee.distinct('Empid').then(Empid => res.json(Empid));
+
+
+    newEmployee.distinct('Empid').then(Empid => res.json(Empid));
+
 });
 
 app.post('/empaddsearch', async (req, res) => {
@@ -302,15 +438,19 @@ app.post('/empaddsearch', async (req, res) => {
     res.json(data)
   })
 });
+
 app.put('/empaddupdate', async (req, res) => {
-  const { Empid, Empname, Dob, Phone, Location } = req.body;
-  console.log('Name : ', Empname);
-  console.log('Empid : ', Empid);
-  //const query={};
-  // if(nname){
-  //     query.Empname={nname};
-  // }
-  await newEmployee.updateOne({ Empid: Empid }, { $set: { "Empname": Empname, "DOB": Dob, "Contact": Phone, "location": Location } })
+
+    const { Empid, Empname, Dob, Phone, Location } = req.body;
+    console.log('Name : ', Empname);
+    console.log('Empid : ', Empid);
+    //const query={};
+    // if(nname){
+    //     query.Empname={nname};
+    // }
+    await newEmployee.updateOne({ Empid: Empid }, { $set: { "Empname": Empname, "DOB": Dob, "Contact": Phone, "location": Location } })
+
+
 });
 
 
@@ -320,16 +460,19 @@ app.get('/special', (req, res) => {
     res.json(todoSpecial);
   })
 
-})
+});
 
 
-app.post("/api/todo/:Teamname", (req, res) => {
-  const { Teamname } = req.params;
 
-  newModel.find({ Teamname: Teamname }).then(todoItems => {
-    //console.log(todoItems)
-    res.json(todoItems)
-  });
+app.post('/api/todo/:Teamname',(req,res)=>{
+    const{Teamname}=req.params;
+    
+newModel.find({Teamname:Teamname}).then(todoItems=>{
+		//console.log(todoItems)
+
+        res.json(todoItems)
+    });
+
 })
 //Filter 
 app.get('/pms/Filter', (req, res) => {
@@ -339,13 +482,17 @@ app.get('/pms/Filter', (req, res) => {
 });
 //Server run localhost3001 DB Data in Home
 app.get('/pms/Hometl', (req, res) => {
-  // const db = getDB();
-  // db.collection('UserData').find({"EmpRole":"Team Leader"}).toArray().then(data => {
-  // 	res.json(data);
-  // });
-  newModel.find({ "Empstatus": "Team Leader" }).then(data => {
-    res.json(data);
-  });
+
+
+    // const db = getDB();
+    // db.collection('UserData').find({"EmpRole":"Team Leader"}).toArray().then(data => {
+    // 	res.json(data);
+    // });
+    newModel.find({ "Empstatus": "Team Leader" }).then(data => {
+        res.json(data);
+    });
+
+
 });
 
 //dropdown in Platform in UserData
@@ -369,6 +516,7 @@ app.get('/rating', (req, res) => {
 // filter in USerData
 app.post('/search', (req, res) => {
 
+
   const { spc, empplatform, emprating } = req.body;
   const adminsearch = new RegExp(spc, 'i');
   console.log({ spc, empplatform, emprating }, '123');
@@ -377,20 +525,33 @@ app.post('/search', (req, res) => {
 
   newEmployee.find({ $or: [{ Specialized1: adminsearch }, { Specialized2: adminsearch }, { Specialized3: adminsearch }, { Platform: empplatform }, { Rating: emprating }] }).then(data => res.json(data))
 
+	
 });
 
 app.get('/tlcount', (req, res) => {
-  // newModel.count({Projectstatus:"Ongoing"}).then(res=>res.json).then(data=>res.send(data));
-  newModel.count({ "Empstatus": "Team Leader" }).then(data => res.json(data));
+
+    // newModel.count({Projectstatus:"Ongoing"}).then(res=>res.json).then(data=>res.send(data));
+
+    newModel.count({ "Empstatus": "Team Leader" }).then(data => res.json(data));
+
+
 })
 
 
 app.get('/tlongoing', (req, res) => {
-  newModel.count({ "Empstatus": "Team Leader", "Projectstatus": "Ongoing" }).then(data => res.json(data));
+
+    // newModel.count({Projectstatus:"Ongoing"}).then(res=>res.json).then(data=>res.send(data));
+
+    newModel.count({ "Empstatus": "Team Leader", "Projectstatus": "Ongoing" }).then(data => res.json(data));
+
 })
 
 app.get('/tlcomplete', (req, res) => {
-  newModel.count({ "Empstatus": "Team Leader", "Projectstatus": "COMPLETED" }).then(data => res.json(data));
+    // newModel.count({Projectstatus:"Ongoing"}).then(res=>res.json).then(data=>res.send(data));
+
+    newModel.count({ "Empstatus": "Team Leader", "Projectstatus": "COMPLETED" }).then(data => res.json(data));
+
+
 })
 app.get('/empid1', async (req, res) => {
   await newEmployee.distinct('Empid').then(Empid => res.json(Empid));
@@ -423,5 +584,9 @@ if (NODE_ENV === 'DIT') {
 }
 
 app.listen(3004, () => {
-  console.log("Application is running.");
+
+
+    console.log("Application is running.")
 });
+
+

@@ -82,7 +82,7 @@ button.ratesearch  {
 }
 .down-arrow {
   position: absolute;
-  top: calc(108vh - 430px);
+  top: calc(75vh - 430px);
   left: calc(30% - 14px);
   width: 0;
   height: 30px;
@@ -93,7 +93,7 @@ button.ratesearch  {
 .down-arrow:after {
   content: " ";
   position: absolute;
-  top: 12px;
+  top: 17px;
   left: -7px;
   width: 16px;
   height: 16px;

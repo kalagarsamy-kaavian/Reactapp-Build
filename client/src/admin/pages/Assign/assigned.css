@@ -31,8 +31,14 @@ div.upheading tr h2 {
    left:100px;
    font-size: xx-large;
 }
+center.assigncenter {
+    width: 600px;
+}
 
-
-/* tbody.assignbody {
+tbody.assignbody input {
+    padding-left: 0;
+}
+div.assignclassselect td {
     position: absolute;
-} */
+    
+}

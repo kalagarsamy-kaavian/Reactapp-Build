@@ -5,7 +5,7 @@ import "./footer.css";
 function Footer() {
     return (
         <div className='footer'>
-            <p><CopyrightOutlinedIcon className='copyright'/>:{new Date().getFullYear()}|Project Managemnet Sustem | ALL Rights Reserved</p>
+            <p><CopyrightOutlinedIcon className='copyright'/>:{new Date().getFullYear()}|Project Managemnet System | ALL Rights Reserved</p>
         </div>
     )
 }

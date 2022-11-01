@@ -123,16 +123,22 @@ app.put('/test',async (req)=>{
 // })
 
 
-app.patch('/remcomplete/:Teamname', (req, res) => {
-    const { Teamname } = req.params;
-    console.log('remcomplete', Teamname)
-    //console.log(id);
-    newModel.updateMany({ Teamname: Teamname }, { $set: { Projectstatus: "COMPLETED" } }).then(updateStatus => {
-        res.json(updateStatus);
-        console.log('Btn updated')
-    })
+app.put('/remcomplete/:Team', async (req, res) => {
+  const { Team } = req.params;
+  //console.log('remcomplete', Teamname)
+  //console.log(id);
+  await newModel.updateMany({ Teamname: Team }, { $set: { Projectstatus: 'COMPLETED' } })
 
-})
+      const data = await newModel.find({ Teamname: Team })
+      let [a, b, c, d, e] = data;
+      // await newEmployee.updateMany({'Empid':e.Empid},{'Projectstatus':'COMPLETED'}).then(data => console.log(data));
+      //console.log(data);
+      await newEmployee.updateMany(
+          { Empid: { $in: [a.Empid, b.Empid, c.Empid, d.Empid, e.Empid] } },
+          { $set: { Projectstatus: 'COMPLETED' } },
+          { multi: true }
+      ).then(data => console.log(data));
+  })
 
 
 // app.post('/olist/:id',(req,res)=>{
@@ -145,24 +151,24 @@ app.patch('/remcomplete/:Teamname', (req, res) => {
 
 app.post('/olist/:id', (req, res) => {
   const { id } = req.params;
-  console.log(id)
+  // console.log(id, 'olist')
   newModel.find({ $and: [{ Empid: id }, { Projectstatus: 'Ongoing' }] }).then(data => {
-    let [first, ...rest] = data;
+      let [first, ...rest] = data;
+     // console.log(first, ...rest.Empstatus);
+      
 
-    res.json(first.Empstatus)
+      res.json(first.Empstatus)
   })
 })
-app.post('/leaderteam/:id', (req, res) => {
-
-    const { id } = req.params;
-    console.log(id)
-    newModel.find({ $and: [{ Empid: id }, { Projectstatus: 'Ongoing' }] }).then(data => {
-        let [first, ...rest] = data;
-
-        //console.log(first.Teamname)
-        res.json(first.Teamname)
-    })
-
+app.post('/leaderteam/:id',(req,res)=>{
+  const {id}=req.params;
+  //  console.log(id,'leaderteam')
+  newModel.find({$and:[{Empid:id},{Projectstatus:'Ongoing'}]}).then(data=>{
+      let [first,...rest] =data;
+      //console.log( first)
+      res.json(first.Teamname);
+      
+  })
 })
 
 app.get('/remoid', (req, res) => {

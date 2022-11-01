@@ -245,7 +245,8 @@ select.empiddrop {
 
 .updateimg img {
   position: absolute;
-  right:850px;
-  top: 250px;
+  /* right:850px; */
+  right:400px;
+  top: 150px;
   width:500px;
 }

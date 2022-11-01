@@ -13,12 +13,21 @@ export default function Employee() {
     const[displ,setDispl]=useState('none')
     const[dis,setDis]=useState('none')
     const[di,setDi]=useState('none')
+    let token = localStorage.getItem('data');
+    let username, id;
+    const [Id, setId] = useState('');
    
 
-    const id = localStorage.getItem('data');
+    //const id = localStorage.getItem('data');
     const navigate = useNavigate();
-    useEffect(()=>{
-    fetch(`${process.env.REACT_APP_SERVER_PREFIX}/employeedetail`,{method:"post",body:JSON.stringify({id}),headers:{'content-type':"application/json"}})
+    useEffect(() => {
+      fetch(`${process.env.REACT_APP_SERVER_PREFIX}/tokenDecode`, { method: 'POST', body: JSON.stringify({ token }), headers: { 'content-type': 'application/json' } })
+        .then((res) => res.json())
+        .then((data) => {
+          setId(data.Empid);
+        });
+    if(Id){
+    fetch(`${process.env.REACT_APP_SERVER_PREFIX}/employeedetail`,{method:"post",body:JSON.stringify({Id}),headers:{'content-type':"application/json"}})
     .then(res=>res.json())
     .then(data=>{
         setItems(data)
@@ -41,7 +50,7 @@ export default function Employee() {
   }
     });
     console.log(id)
-},[id])
+  }},[Id])
     //      if(!localStorage.getItem('data')){
     //     navigate('/');
     //        }

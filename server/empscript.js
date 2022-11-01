@@ -3,7 +3,7 @@ const mongoose=require('mongoose')
 const NewSchema=new mongoose.Schema({
   Empid:String,
   Empname:String,
-  DOB:Date,
+  DOB:String,
   Contact:Number,
   location:String,
   DOJ:Date,

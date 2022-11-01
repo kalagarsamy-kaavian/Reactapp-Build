@@ -41,18 +41,16 @@ app.get('/tlcount', (req, res) => {
 })
 
 
-app.get('/ongoing', (req, res) => {
+app.get('/tlongoing', (req, res) => {
     newModel.count({ "Empstatus": "Team Leader", "Projectstatus": "Ongoing" }).then(data => res.json(data));
 })
 
-app.get('/complete', (req, res) => {
+app.get('/tlcomplete', (req, res) => {
     newModel.count({ "Empstatus": "Team Leader", "Projectstatus": "COMPLETED" }).then(data => res.json(data));
 })
 
 
-    newModel.count({'Empstatus':'Team Leader','Projectstatus':'COMPLETED'}).then(data=>res.json(data));  
 
-})
 
 
 app.put('/test',async (req)=>{
@@ -268,7 +266,7 @@ app.post('/emprecord', async (req, res) => {
   console.log(user);
 
 
-  newEmployee.create([{ "Empid": pass, "Empname": input, "DOB": dob, "Contact": con, "location": loc, "DOJ": doj, "Experience": exp, "Specialized1": speo, "Specialized2": spet, "Specialized3": sper, "Platform": pt }])
+  newEmployee.create([{ "Empid": pass, "Empname": input, "DOB": dob, "Contact": con, "location": loc, "DOJ": doj, "Experience": exp, "Specialized1": speo, "Specialized2": spet, "Specialized3": sper, "Platform": pt ,"Projectstatus":""}])
     .then(() => {
       res.json({ msg: 'Success' });
     }).catch((err) => {

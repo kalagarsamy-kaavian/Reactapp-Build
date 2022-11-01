@@ -14,26 +14,12 @@ const jwt = require("jsonwebtoken");
 const JWT_SECRET_KEY = "dmbjskkfjckmxkcjskdi";
 
 app.use('/static', express.static(path.join(__dirname + '/../client/build/static')));
+
 app.use('/images', express.static(path.join(__dirname + '/../client/build/images')));
 
 app.use(cors({ origin: 'http://localhost:3000' }));
 app.use(bodyParser.json());
 
-// app.use(async (req,res,next)=>{
-//     req.cookies.Empid;
-//     // localStorage.getItem('data');
-    
-//     if(valid){
-//         const url=req.url;
-//         const isAdminurl =url.indexOf('/admin') !== -1;
-//         const user =await username.find({Empid});
-//         const userType=user.type;
-//         if(userType=='user'&& isAdminurl){
-//             return res.status(403);
-//         }
-//     }
-//     next();
-// })
 mongoose.connect("mongodb+srv://blueTeam:o9T62uCK3dt5V078@db-kaavian-sys-cluster-in1-966a0c87.mongo.ondigitalocean.com/blueDB?tls=true&authSource=admin&replicaSet=db-kaavian-sys-cluster-in1", (err) => {
     if (!err) {
         console.log("db connected")
@@ -73,6 +59,7 @@ app.put('/test', async (req, res) => {
     { "Empid": fifth.Empid, "Empname": fifth.Empname, "Projectname": pn, "Teamname": tn, "Duration": d, "Startingdate": start, "Endingdate": end, "Projectstatus": "Ongoing", "Empstatus": "Member", "Description": descr, "Platform": pt }
     ]);
 })
+
 
 // app.delete('/emprecord',(req,res)=>{
 // 	const data=req.body;
@@ -120,6 +107,7 @@ app.get('/remoid', (req, res) => {
     newEmployee.distinct('Empid').then(data => { res.send(data) })
 });
 //Delete filter
+
 // app.delete('/emprecord', async (req, res) => {
 //     const data = req.body;
 //     console.log(data.data);
@@ -128,6 +116,7 @@ app.get('/remoid', (req, res) => {
 //     console.log('deleted')
 // })
 
+
 app.post('/empdelsearch', async (req, res) => {
     const { data } = req.body;
     await newEmployee.find({ Empid: data }).then(data => {
@@ -135,6 +124,7 @@ app.post('/empdelsearch', async (req, res) => {
     });
     console.log(data);
 });
+
 
 // app.post('/login',async(req,res)=>{
 //     const{user,pass}=req.body;   
@@ -193,6 +183,7 @@ app.post('/login',async(req,res)=>{
     const {user,pass}=req.body;
     const body = { user, pass};
 
+
     console.log(body);
     // const db=getDB();
     // const collection=db.collection("userinfo");
@@ -216,15 +207,8 @@ app.post('/login',async(req,res)=>{
     } else {
         res.status(401).json({ error: "User does not exist" });
     }
-
-
-
-
-    // else{
-    //     const msg="INVALID USERNAME OR PSSWORD"
-    //                 res.send(msg);
-    // }
 });
+
 
 app.post("/employeedetail",async(req,res)=>{
     const{Id}=req.body;
@@ -232,6 +216,7 @@ app.post("/employeedetail",async(req,res)=>{
     // const collection=db.collection("details");
     console.log(Id)
     await newEmployee.find({Empid:Id}).then(data=>res.json(data))
+
 
 })
 app.get('/update', (req, res) => {
@@ -254,6 +239,7 @@ app.patch('/update', (req, res) => {
     })
 })
 
+
 app.post("/employeehistory",async(req,res)=>{
     const {Id}=req.body;
     // const db=getDB();
@@ -268,6 +254,7 @@ app.post('/emprecord', async (req, res) => {
     const body = { input, password };
     console.log(body);
     console.log(input)
+
     console.log('Inserted');
     if (!(body.input && body.password)) {
         return res.status(400).send({ error: "data format error" });
@@ -279,6 +266,7 @@ app.post('/emprecord', async (req, res) => {
     // // const db=getdb();
     // const collection=  db.collection('project');
     // user.save().then((doc) => res.status(201).send(doc));
+
     newEmployee.create([{ "Empid": pass, "Empname": input, "DOB": dob, "Contact": con, "location": loc, "DOJ": doj, "Experience": exp, "Specialized1": speo, "Specialized2": spet, "Specialized3": sper, "Platform": pt }])
         .then(() => {
             res.json({ msg: 'Success' });
@@ -286,6 +274,7 @@ app.post('/emprecord', async (req, res) => {
             console.log('Error', err);
             res.json({ err: 'already exist..' });
         });
+
     newUser.create({ "username": input, "password": user.password, "role": role, "Empid": pass });
     console.log(password);
 });
@@ -332,6 +321,7 @@ app.get('/assignname', (req, res) => {
         .catch((err) => {
         })
 });
+
 // app.post('/assignemprecord',(req,res)=>{
 // 	const {pass,passt,passr,passf,passe,mem,memt,memr,memf,meme,pn,tn,d,start,end,pco,es,descr,pt}=req.body;
 //     console.log('input')
@@ -346,11 +336,14 @@ app.get('/assignname', (req, res) => {
 // 	//console.log();
 // })
 
+
 app.post('/frstid/:mem', (req, res) => {
     const { mem } = req.params;
     console.log(mem);
 
+
 })
+
 
 
 
@@ -360,34 +353,21 @@ app.get('/empaddid', (req, res) => {
 
 app.post('/empaddsearch', async (req, res) => {
     const { Empid } = req.body;
-    await newEmployee.find({ Empid: Empid }).then(data => {
-        res.send(data)
-    });
+
+    await newEmployee.findOne({ Empid: Empid }).then(data => {
+        console.log('server', data)
+        res.json(data)
+    })
 });
 app.put('/empaddupdate', async (req, res) => {
-    const { Empid, nname, dob, phone1, location1 } = req.body;
-    console.log(location1);
-    const up = await newEmployee.updateOne({ Empid: Empid }, { $set: { Empname: nname, DOB: dob, Contact: phone1, location: location1 } })
-    // if(nname)
-    // {
-    //     await newEmployee.updateOne({Empid:Empid},{$set:{Empname:nname}})
+    const { Empid, Empname, Dob, Phone, Location } = req.body;
+    console.log('Name : ', Empname);
+    console.log('Empid : ', Empid);
+    //const query={};
+    // if(nname){
+    //     query.Empname={nname};
     // }
-    // else if(dob)
-    // {
-    //     await newEmployee.updateOne({Empid:Empid},{$set:{DOB:dob}})
-    // }
-    // else if(phone1)
-    // {
-    //     await newEmployee.updateOne({Empid:Empid},{$set:{Contact:phone1}})
-    // }
-    // else if(location1)
-    // {
-    //     await newEmployee.updateOne({Empid:Empid},{$set:{location:location1}})
-    // }
-    // else{
-    //     await newEmployee.update({Empid:Empid},{$set:[{Empname:nname,DOB:dob,Contact:phone1,location:location1}]})
-    // }
-    //console.log(up);
+    await newEmployee.updateOne({ Empid: Empid }, { $set: { "Empname": Empname, "DOB": Dob, "Contact": Phone, "location": Location } })
 });
 
 
@@ -409,11 +389,6 @@ app.post("/api/todo/:Teamname", (req, res) => {
     });
 })
 
-// app.get('/pms/Filter', (req, res) => {
-// 	newEmployee.find({}).then(data => {
-// 		res.json(data);
-// 	});
-// });
 app.get('/pms/Filter', (req, res) => {
     newEmployee.find({}).then(data => {
         res.json(data);
@@ -450,6 +425,7 @@ app.get('/rating', (req, res) => {
 
 // filter in USerData
 app.post('/search', (req, res) => {
+
     const { spc, empplatform ,emprating} = req.body;
     console.log({spc, empplatform,emprating},'123');
     console.log(typeof (empplatform));
@@ -457,7 +433,6 @@ app.post('/search', (req, res) => {
 
     newEmployee.find({ $or: [{ Specialized1: spc }, { Specialized2: spc }, { Specialized3: spc }, { Platform: empplatform }, { Rating: emprating }] }).then(data => res.json(data))
 
-});
 
 
 app.get('/tlcount', (req, res) => {

@@ -29,6 +29,7 @@ import History from './user/pages/ProjectHistory/ProjectHistory';
 import Employee from './user/pages/PersonelDetails/PersonelDetails';
 import Update from './user/pages/PersonelDetails/update';
 import Search from './admin/pages/Search/Search';
+//import Updateemp from './admin/pages/RewriteEmployee';
 import Updateemp from './admin/pages/RewriteEmployee/update';
 import Empcomplete from './admin/pages/Dashboard/dashboard';
 import { IoMailOpen } from 'react-icons/io5';

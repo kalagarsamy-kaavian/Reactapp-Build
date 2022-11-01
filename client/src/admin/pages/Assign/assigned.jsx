@@ -58,7 +58,7 @@ export default function Emplist() {
        
     }
 
-    return (<div className='updateoverall'><div className='uptable'> <center><table><br></br>
+    return (<div className='updateoverall'><div className='uptable'> <center className='assigncenter'><table className='assigntable'><br></br>
 
         <div className='upheading'>
             <thead>
@@ -70,38 +70,39 @@ export default function Emplist() {
         <tbody className='assignbody'>
 
             <div className='assignclassselect'>
+                <td>Select Team Leader</td>
                 <select value={mem} onChange={e => setMem(e.target.value)}>
                     <option value="" disablevalue>Choose a Team Leader</option>
                     {name.map(val => <option>{val}</option>)}
                 </select><br></br><br></br>
-
+                <td>Select Member Name</td>
                 <select value={memt} onChange={e => setMemt(e.target.value)}>
                     <option value="" disablevalue>Choose a Member</option>
                     {name.map(val => <option>{val}</option>)}
                 </select><br></br><br></br>
-
+                <td>Select Member Name</td>
                 <select value={memr} onChange={e => setMemr(e.target.value)}>
                     <option value="" disablevalue>Choose a Member</option>
                     {name.map(val => <option>{val}</option>)}
                 </select><br></br><br></br>
-
+                <td>Select Member Name</td>
                 <select value={memf} onChange={e => setMemf(e.target.value)}>
                     <option value="" disablevalue>Choose a Member</option>
                     {name.map(val => <option>{val}</option>)}
                 </select><br></br><br></br>
-
+                <td>Select Member Name</td>
                 <select value={meme} onChange={e => setMeme(e.target.value)}>
                     <option value="" disablevalue>Choose a Member</option>
                     {name.map(val => <option>{val}</option>)}
                 </select>
             </div>
-            <tr><td>Project Name</td><input type="text" className="name" id="pn" onChange={(e) => setPn(e.target.value)} required></input></tr><br></br>
-            <tr><td>Team Name</td><input type="text" className="name" id="tn" onChange={(e) => setTn(e.target.value)} required></input></tr><br></br>
-            <tr><td>Duration</td><input type="number" className="name" id="durat" onChange={(e) => setD(e.target.value)} required></input></tr><br></br>
-            <tr><td>Starting Date</td><input type="text" className="name" id="stdate" onChange={(e) => setStart(e.target.value)} required></input></tr><br></br>
-            <tr><td>Ending Date</td><input type="text" className="name" id="enddate" onChange={(e) => setEnd(e.target.value)} required></input></tr><br></br>
-            <tr><td>Description</td><input type="text" className="name" id="des" onChange={(e) => setDescr(e.target.value)} required></input></tr><br></br>
-            <tr><td>Platform</td><input type="text" className="name" id="plat" onChange={(e) => setPt(e.target.value)} required></input></tr><br></br>
+            <tr className='assignform'><td>Project Name</td><input type="text" className="name" id="pn" placeholder='Project Name' onChange={(e) => setPn(e.target.value)} required></input></tr><br></br>
+            <tr><td>Team Name</td><input type="text" className="name" id="tn" placeholder='Team Name' onChange={(e) => setTn(e.target.value)} required></input></tr><br></br>
+            <tr><td>Duration</td><input type="number" className="name" id="durat" placeholder='Duration' onChange={(e) => setD(e.target.value)} required></input></tr><br></br>
+            <tr><td>Starting Date</td><input type="date" className="name" id="stdate" onChange={(e) => setStart(e.target.value)} required></input></tr><br></br>
+            <tr><td>Ending Date</td><input type="date" className="name" id="enddate" onChange={(e) => setEnd(e.target.value)} required></input></tr><br></br>
+            <tr><td>Description</td><input type="text" className="name" id="des" placeholder='Description' onChange={(e) => setDescr(e.target.value)} required></input></tr><br></br>
+            <tr><td>Platform</td><input type="text" className="name" id="plat" placeholder='Platform' onChange={(e) => setPt(e.target.value)} required></input></tr><br></br>
 
 
         </tbody><button className='upbtn' onClick={func}><span>Insert</span></button>

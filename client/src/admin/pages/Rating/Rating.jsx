@@ -36,6 +36,7 @@ export default function RateEmp(){
             body:JSON.stringify({Empid,value}),
             headers:{'content-type':'application/json'}
         }).then(res => res.json()).then(console.log(details));
+        window.alert('Rating success...')
     }
     // const sendmsg=()=>{
     //     const nexmo = new Nexmo({

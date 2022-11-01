@@ -267,8 +267,7 @@ app.post('/login',async(req,res)=>{
         console.log(use.password, "pass2");
         console.log(validPassword, "pass3")
         if (!validPassword) {
-            res.status(400).json({ error: "Invalid password" });
-
+            return res.status(400).json({ error: "Invalid password" });
         } else {
             // res.status(200).json({ message: "valid password"});
             // console.log(use);
@@ -278,9 +277,6 @@ app.post('/login',async(req,res)=>{
     } else {
         res.status(401).json({ error: 'User does not exist' });
     }
-  } else {
-    res.status(401).json({ error: "User does not exist" });
-  }
 });
 
 

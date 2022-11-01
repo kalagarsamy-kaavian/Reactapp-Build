@@ -4,7 +4,7 @@ import {useState,useEffect} from 'react';
 import image from "./rating1.svg";
 import "./Rating.css";
 import "./rate.css";
-const Nexmo = require('nexmo');
+
 export default function RateEmp(){
     const [rating, setRating] = useState(0)
     const[rates,setRates]=useState("");

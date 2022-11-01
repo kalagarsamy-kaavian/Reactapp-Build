@@ -1,10 +1,9 @@
 import React from 'react';
 import { useState } from 'react';
-// import './empinsert.css'
 import "./UpdateEmployee.css"
 import { Link } from 'react-router-dom';
 
-export default function Emplistadd() {
+export default function Emplistaddnew() {
     const [pass, setPass] = useState("")
     const [input, setInput] = useState("")
     const [dob, setDob] = useState("");
@@ -18,18 +17,31 @@ export default function Emplistadd() {
     const [password, setPassword] = useState("");
     const [pt, setPt] = useState("");
     const [role, setRole] = useState("");
-    // const [eso,setEso]=useState("");
+    const [disp, setDisp] = useState("");
+	const [msg, setMsg] = useState("");
     // const [est,setEst]=useState("");
     // const [esr,setEsr]=useState("");
     // const [er,setEr]=useState("");
-    function func() {
-        if(pass&& input&&dob&& con&& loc&& doj&& exp&& speo&& spet&& sper&& pt)
-        fetch(`${process.env.REACT_APP_SERVER_PREFIX}/emprecord`, { method: 'post', body: JSON.stringify({ pass, input, dob, con, loc, doj, exp, speo, spet, sper, pt, password }), headers: { 'content-type': 'application/json' } })
-       else
-       window.alert("Inserted")
-    }
+    const func = () => {
+		if (!pass || !password ||!input || !dob || !con || !loc || !doj ||!role) {
+			window.alert("Enter Your all Details...");
+			setDisp("");
+			return;
+		}
+		else {
+			fetch(`${process.env.REACT_APP_SERVER_PREFIX}/emprecord`, { method: 'post', body: JSON.stringify({ pass, password,role,input, dob, con, loc, doj, exp, speo, spet, sper, pt }), headers: { 'content-type': 'application/json' } })
+				.then(res => res.json())
+				.then(({ msg }) => {
+					window.alert("Inserted Successfully");
+					if (msg === 'Success') {
+						window.location.reload();
+					}
 
-    // eslint-disable-next-line react/style-prop-object
+				})
+
+		}
+
+	}
     return(<div className='updateoverall'><div className='uptable'> <center><table className='addemptable'><br></br>
     <div className='upheading'>
     <thead>
@@ -39,19 +51,27 @@ export default function Emplistadd() {
     </thead>
     </div>
     <tbody>        
-        <tr><td>UserId</td><input type="text" onChange={(e) => setPass(e.target.value)} placeholder='Empid' required></input></tr>
-        <tr><td>Password</td><input type="password" onChange={(e) => setPassword(e.target.value)} placeholder="password" required></input></tr>
-        <tr><td>UserName</td><input type="text" onChange={(e) => setInput(e.target.value)} placeholder='EmpName' required></input></tr>
-        <tr><td>DOB</td><input type="date"  onChange={(e) => setDob(e.target.value)} placeholder='EmpDOB' required></input></tr>
-        <tr><td>Contact</td><input type="number" maxLength="10" onChange={(e) => setCon(e.target.value)} placeholder='EmpPhoneNo' required></input> </tr>
-        <tr><td>Location</td><input type="text" onChange={(e) => setLoc(e.target.value)} placeholder='EmpLocation' required></input></tr>
-        <tr><td>DOJ</td><input type="date" onChange={(e) => setDoj(e.target.value)} placeholder='EmpDateOfJoining' required></input></tr>
+        <tr><td>UserId*</td><input type="text" onChange={(e) => setPass(e.target.value)} placeholder='Empid' required></input></tr>
+        <tr><td>Password*</td><input type="password" onChange={(e) => setPassword(e.target.value)} placeholder="password" required></input></tr>
+        <tr><td>UserName*</td><input type="text" onChange={(e) => setInput(e.target.value)} placeholder='EmpName' required></input></tr>
+        <tr><td>DOB*</td><input type="date"  onChange={(e) => setDob(e.target.value)} placeholder='EmpDOB' required></input></tr>
+        <tr><td>Contact*</td><input type="number" maxLength="10" onChange={(e) => setCon(e.target.value)} placeholder='EmpPhoneNo' required></input> </tr>
+        <tr><td>Location*</td><input type="text" onChange={(e) => setLoc(e.target.value)} placeholder='EmpLocation' required></input></tr>
+        <tr><td>DOJ*</td><input type="date" onChange={(e) => setDoj(e.target.value)} placeholder='EmpDateOfJoining' required></input></tr>
         <tr><td>Experience</td><input type="number" onChange={(e) => setExp(e.target.value)} placeholder='EmpExperience' required></input></tr>
-        <tr><td>Specialized1</td><input type="text" onChange={(e) => setSpeo(e.target.value)} placeholder='EmpTeamName' required></input></tr>
-        <tr><td>Specialized2</td><input type="text" onChange={(e) => setSpet(e.target.value)} placeholder='EmpProjectTitle' required></input></tr>
-        <tr><td>Specialized3</td><input type="text" onChange={(e) => setSper(e.target.value)} placeholder='EmpProjectStatus' required></input></tr>
+        <tr><td>Specialized1</td><input type="text" onChange={(e) => setSpeo(e.target.value)} placeholder='EmpSpecialized1' required></input></tr>
+        <tr><td>Specialized2</td><input type="text" onChange={(e) => setSpet(e.target.value)} placeholder='EmpSpecialized2' required></input></tr>
+        <tr><td>Specialized3</td><input type="text" onChange={(e) => setSper(e.target.value)} placeholder='EmpSpecialized3' required></input></tr>
         <tr><td>Platform</td><input type="text" onChange={(e) => setPt(e.target.value)} placeholder='Platform' required></input></tr>
-        <tr><td>Role</td><input type="text" onChange={(e) => setRole(e.target.value)} placeholder='Role' required></input></tr>
+        {/* <tr><td>Role*</td>
+        <select className='useradmin' onChange={e => setRole(e.target.value)} >
+                    {/* <option>Role</option>
+                    <option>User</option>
+                    <option>Admin</option>
+                </select><br></br><br></br>
+        </tr> */}
+
+        <tr><td>Role*</td><input type="text" onChange={(e)=>setRole(e.target.value)}></input></tr>
         </tbody><tr><button className='upbtn' onClick={func}><span>Insert</span></button></tr>
  {/* <tr><td>EmpSpecialized1</td><input type="text" onChange={(e)=>setEso(e.target.value)} placeholder='EmpSpecialized1' required></input></tr>
         <tr><td>EmpSpecialized2</td><input type="text" onChange={(e)=>setEst(e.target.value)} placeholder='EmpSpecialized2' required></input></tr>

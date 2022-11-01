@@ -10,10 +10,16 @@ const fs = require('fs');
 const bodyParser = require('body-parser');
 const NODE_ENV = process.env.NODE_ENV || 'DEV';
 const bcrypt = require('bcrypt');
+const jwt = require("jsonwebtoken");
+const JWT_SECRET_KEY = "dmbjskkfjckmxkcjskdi";
 
 app.use('/static', express.static(path.join(__dirname + '/../client/build/static')));
+
+app.use('/images', express.static(path.join(__dirname + '/../client/build/images')));
+
 app.use(cors({ origin: 'http://localhost:3000' }));
 app.use(bodyParser.json());
+
 mongoose.connect("mongodb+srv://blueTeam:o9T62uCK3dt5V078@db-kaavian-sys-cluster-in1-966a0c87.mongo.ondigitalocean.com/blueDB?tls=true&authSource=admin&replicaSet=db-kaavian-sys-cluster-in1", (err) => {
     if (!err) {
         console.log("db connected")
@@ -54,6 +60,30 @@ app.put('/test', async (req, res) => {
     ]);
 })
 
+
+// app.delete('/emprecord',(req,res)=>{
+// 	const data=req.body;
+//     console.log(data.data);
+//     newEmployee.deleteOne({"Empid": data.data}).then(data=>res.json(data));
+//     console.log('deleted')
+// })
+
+app.patch('/remcomplete/:Teamname', (req, res) => {
+    const { Teamname } = req.params;
+    console.log('remcomplete', Teamname)
+    //console.log(id);
+    newModel.updateMany({ Teamname: Teamname }, { $set: { Projectstatus: "COMPLETED" } }).then(updateStatus => {
+        res.json(updateStatus);
+        console.log('Btn updated')
+    })
+})
+
+// app.post('/olist/:id',(req,res)=>{
+//     const {id}=req.params;
+//     // console.log(id)
+//     newModel.find({$and:[{Empid:id},{Projectstatus:'Ongoing'}]}).then(data=>res.json(data))
+// })
+
 app.post('/olist/:id', (req, res) => {
     const { id } = req.params;
     console.log(id)
@@ -77,13 +107,15 @@ app.get('/remoid', (req, res) => {
     newEmployee.distinct('Empid').then(data => { res.send(data) })
 });
 //Delete filter
-app.delete('/emprecord', async (req, res) => {
-    const data = req.body;
-    console.log(data.data);
-    await newEmployee.deleteOne({ "Empid": data.data }).then(data => { return res.json(data) });
-    //await newUser.deleteOne({"Empid":data.data}).then(data=>{return res.json(data)});
-    console.log('deleted')
-})
+
+// app.delete('/emprecord', async (req, res) => {
+//     const data = req.body;
+//     console.log(data.data);
+//     await newEmployee.deleteOne({ "Empid": data.data }).then(data => { return res.json(data) });
+//     //await newUser.deleteOne({"Empid":data.data}).then(data=>{return res.json(data)});
+//     console.log('deleted')
+// })
+
 
 app.post('/empdelsearch', async (req, res) => {
     const { data } = req.body;
@@ -93,9 +125,65 @@ app.post('/empdelsearch', async (req, res) => {
     console.log(data);
 });
 
-app.post('/login', async (req, res) => {
-    const { user, pass } = req.body;
-    const body = { user, pass };
+
+// app.post('/login',async(req,res)=>{
+//     const{user,pass}=req.body;   
+//     // const db=getDB();
+//     // const collection=db.collection("userinfo");
+//     const use=await newUser.findOne({username:user})
+//     if(!use)
+//     {
+//         //  return res.json({invaliduser})
+//         console.log("invalid")
+//     }
+//     else if(pass===use.password){
+//         //res.cookie('Username',user);
+//         return res.send(use);
+//     }
+//     // else{
+//     //     const msg="INVALID USERNAME OR PSSWORD"
+//     //                 res.send(msg);
+//     // }
+// });  
+// app.post('/login',async(req,res)=>{
+//     const {user,pass}=req.body;
+//     // const db=getDB();
+//     // const collection=db.collection("userinfo");
+
+//     const use=await newUser.findOne({username:user})
+//     console.log(use)
+//     if(!use)
+//     {
+//          return res.status(404).send('invalid user')
+//     }
+//  else if(pass===use.password){
+//         //res.cookie('Username',user);
+//         return res.send(use);
+//     }
+//     // else{
+//     //     const msg="INVALID USERNAME OR PSSWORD"
+//     //                 res.send(msg);
+//     // }
+// })
+
+app.post('/tokenDecode', async (req, res) => {
+    const { token } = req.body;
+    const { user } = jwt.verify(token,"dmbjskkfjckmxkcjskdi");
+
+    const userId = user.Empid;
+    const userRole = user.role;
+
+    await newUser.findOne({ $and: [{ Empid: userId }, { role: userRole }] })
+        .then((data) => {
+            return res.json(data);
+        })
+})
+    
+app.post('/login',async(req,res)=>{
+    const {user,pass}=req.body;
+    const body = { user, pass};
+
+
     console.log(body);
     // const db=getDB();
     // const collection=db.collection("userinfo");
@@ -113,19 +201,22 @@ app.post('/login', async (req, res) => {
         } else {
             // res.status(200).json({ message: "valid password"});
             // console.log(use);
-            return res.json(use);
+            const token = jwt.sign({ user: use },"dmbjskkfjckmxkcjskdi");
+            return res.json({token,use});
         }
     } else {
         res.status(401).json({ error: "User does not exist" });
     }
 });
 
-app.post("/employeedetail", async (req, res) => {
-    const { id } = req.body;
+
+app.post("/employeedetail",async(req,res)=>{
+    const{Id}=req.body;
     // const db=getDB();
     // const collection=db.collection("details");
-    console.log(id)
-    await newEmployee.find({ Empid: id }).then(data => res.json(data))
+    console.log(Id)
+    await newEmployee.find({Empid:Id}).then(data=>res.json(data))
+
 
 })
 app.get('/update', (req, res) => {
@@ -148,17 +239,22 @@ app.patch('/update', (req, res) => {
     })
 })
 
-app.post("/employeehistory", async (req, res) => {
-    const { id } = req.body;
+
+app.post("/employeehistory",async(req,res)=>{
+    const {Id}=req.body;
     // const db=getDB();
     // const collection=db.collection("employeehistory");
-    await newModel.find({ Empid: id }).then(data => res.send(data))
+    await newModel.find({Empid:Id}).then(data=>res.send(data))
+
 })
+
 app.post('/emprecord', async (req, res) => {
+    console.log('Add');
     const { pass, input, dob, con, loc, doj, exp, speo, spet, sper, pt, role, password } = req.body;
     const body = { input, password };
     console.log(body);
-    console.log('input')
+    console.log(input)
+
     console.log('Inserted');
     if (!(body.input && body.password)) {
         return res.status(400).send({ error: "data format error" });
@@ -170,11 +266,18 @@ app.post('/emprecord', async (req, res) => {
     // // const db=getdb();
     // const collection=  db.collection('project');
     // user.save().then((doc) => res.status(201).send(doc));
-    newEmployee.create({ "Empid": pass, "Empname": input, "DOB": dob, "Contact": con, "location": loc, "DOJ": doj, "Experience": exp, "Specialized1": speo, "Specialized2": spet, "Specialized3": sper, "Platform": pt });
-    // //console.log();
+
+    newEmployee.create([{ "Empid": pass, "Empname": input, "DOB": dob, "Contact": con, "location": loc, "DOJ": doj, "Experience": exp, "Specialized1": speo, "Specialized2": spet, "Specialized3": sper, "Platform": pt }])
+        .then(() => {
+            res.json({ msg: 'Success' });
+        }).catch((err) => {
+            console.log('Error', err);
+            res.json({ err: 'already exist..' });
+        });
+
     newUser.create({ "username": input, "password": user.password, "role": role, "Empid": pass });
     console.log(password);
-})
+});
 
 
 app.post("/api/todo", (req, res) => {
@@ -219,12 +322,30 @@ app.get('/assignname', (req, res) => {
         })
 });
 
+// app.post('/assignemprecord',(req,res)=>{
+// 	const {pass,passt,passr,passf,passe,mem,memt,memr,memf,meme,pn,tn,d,start,end,pco,es,descr,pt}=req.body;
+//     console.log('input')
+// 	console.log('Inserted');
+// 	// const db=getdb();
+// 	// const collection=  db.collection('project');
+// 	newModel.create([{"Empid":pass,"Empname":mem,"Projectname":pn,"Teamname":tn,"Duration":d,"Startingdate":start,"Endingdate":end,"Projectstatus":pco,"Empstatus":es,"Description":descr,"Platform":pt},
+//     {"Empid":passt,"Empname":memt,"Projectname":pn,"Teamname":tn,"Duration":d,"Startingdate":start,"Endingdate":end,"Projectstatus":pco,"Empstatus":es,"Description":descr,"Platform":pt},
+//     {"Empid":passr,"Empname":memr,"Projectname":pn,"Teamname":tn,"Duration":d,"Startingdate":start,"Endingdate":end,"Projectstatus":pco,"Empstatus":es,"Description":descr,"Platform":pt},
+//     {"Empid":passf,"Empname":memf,"Projectname":pn,"Teamname":tn,"Duration":d,"Startingdate":start,"Endingdate":end,"Projectstatus":pco,"Empstatus":es,"Description":descr,"Platform":pt},
+//     {"Empid":passe,"Empname":meme,"Projectname":pn,"Teamname":tn,"Duration":d,"Startingdate":start,"Endingdate":end,"Projectstatus":pco,"Empstatus":es,"Description":descr,"Platform":pt}]);
+// 	//console.log();
+// })
+
 
 app.post('/frstid/:mem', (req, res) => {
     const { mem } = req.params;
     console.log(mem);
 
+
 })
+
+
+
 
 app.get('/empaddid', (req, res) => {
     newEmployee.distinct('Empid').then(Empid => res.json(Empid));
@@ -232,6 +353,7 @@ app.get('/empaddid', (req, res) => {
 
 app.post('/empaddsearch', async (req, res) => {
     const { Empid } = req.body;
+
     await newEmployee.findOne({ Empid: Empid }).then(data => {
         console.log('server', data)
         res.json(data)
@@ -293,20 +415,24 @@ app.get('/platform', (req, res) => {
     });
 });
 
+//dropdown in Rating in UserData
+app.get('/rating', (req, res) => {
+    newEmployee.distinct('Rating').then(data => {
+        res.json(data);
+    });
+});
 
 
 // filter in USerData
 app.post('/search', (req, res) => {
-    const { spc, empplatform } = req.body;
-    console.log(spc, empplatform);
+
+    const { spc, empplatform ,emprating} = req.body;
+    console.log({spc, empplatform,emprating},'123');
     console.log(typeof (empplatform));
-    if (spc || empplatform) {
-        newEmployee.find({ $or: [{ "Specialized1": spc }, { "Specialized2": spc }, { "Specialized3": spc }, { "Platform": empplatform }] }).then(data => res.json(data))
-    }
-    else {
-        res.send('Null')
-    }
-});
+    console.log(typeof (emprating));
+
+    newEmployee.find({ $or: [{ Specialized1: spc }, { Specialized2: spc }, { Specialized3: spc }, { Platform: empplatform }, { Rating: emprating }] }).then(data => res.json(data))
+
 
 
 app.get('/tlcount', (req, res) => {
@@ -354,6 +480,15 @@ if (NODE_ENV === 'DIT') {
         res.send(indexHTMLContent);
     });
 }
+//Authorization
+// app.get('/pms/authorized/:id', (req, res) => {
+//     const {id}=req.params;
+//     newEmployee.find({'Empid':id}).then(data => {
+//         console.log(data);
+        
+//     });
+// });
+
 
 app.listen(3004, () => {
     console.log("Application is running.");

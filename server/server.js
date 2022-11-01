@@ -41,8 +41,8 @@ app.get('/complete',(req,res)=>{
 })
 
 
-
 app.put('/test',async (req)=>{
+    try{
     const{mem,memt,memr,memf,meme,pn,tn,d,start,end,descr,pt}=req.body;
     const test= await newEmployee.find({$or:[{Empname:mem},{Empname:memt},{Empname:memr},{Empname:memf},{Empname:meme}]})
     let [frst,scnd,third,fourth,fifth]=test;
@@ -67,6 +67,11 @@ app.put('/test',async (req)=>{
         { $set: { Empstatus : 'Member' } },
         {multi: true}
      )
+    }
+    catch(err){
+       console.log(err,'err')
+    }
+    
 })
 
 // app.delete('/emprecord',(req,res)=>{
@@ -253,16 +258,16 @@ app.post('/details/:Teamname',(req,res)=>{
 
 
 
-app.get('/assignspecial',(res)=>{
+app.get('/assignspecial',(req,res)=>{
    
     newModel.distinct('Projectstatus').then(todoSpecial=>{
         res.json(todoSpecial);
     })
   
 })
-app.get('/assignname',async(res)=>{
+app.get('/assignname',(req,res)=>{
     // newEmployee.distinct('Empname',{"Projectstatus":"COMPLETED"||""}).then(data=>res.json(data))
-   await newEmployee.find ( { Projectstatus: { $in: ['COMPLETED', ''] } } ) .distinct('Empname').then(data=>res.json(data))
+   newEmployee.find ( { Projectstatus: { $in: ['COMPLETED', ''] } } ) .distinct('Empname').then(data=>res.json(data))
 
 
 });

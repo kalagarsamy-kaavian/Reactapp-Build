@@ -36,15 +36,7 @@
     "extends": [
       "react-app",
       "react-app/jest"
-    ],
-    "rules": {
-      "semi-spacing": ["error", {"before": false, "after": true}],
-      "semi-style": ["error", "last"],
-      "no-unused-vars": ["error", { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }],
-      "quotes": ["error", "single"],
-      "brace-style": [2, "1tbs", { "allowSingleLine": false }],
-      "init-declarations": ["error", "always"]
-  }
+    ]
   },
   "browserslist": {
     "production": [

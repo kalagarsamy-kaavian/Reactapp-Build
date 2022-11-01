@@ -117,6 +117,12 @@ thead h2{
   width:500px;
   /* height:100px; */
 }
+.useradmin{
+  padding-left: -100px;
+  padding-right: 100px;
+  position: absolute;
+
+}
 
    /* { border-radius: 4px;
     background-color: rgb(3, 95, 194);

@@ -20,7 +20,7 @@ app.use(bodyParser.json());
 // app.use(async (req,res,next)=>{
 //     req.cookies.Empid;
 //     // localStorage.getItem('data');
-    
+
 //     if(valid){
 //         const url=req.url;
 //         const isAdminurl =url.indexOf('/admin') !== -1;
@@ -242,7 +242,7 @@ app.post("/employeehistory", async (req, res) => {
     // const collection=db.collection("employeehistory");
     await newModel.find({ Empid: id }).then(data => res.send(data))
 })
-
+//Add Employee
 app.post('/emprecord', async (req, res) => {
     console.log('Add');
     const { pass, input, dob, con, loc, doj, exp, speo, spet, sper, pt, role, password } = req.body;
@@ -268,6 +268,7 @@ app.post('/emprecord', async (req, res) => {
             res.json({ err: 'already exist..' });
         });
     newUser.create({ "username": input, "password": user.password, "role": role, "Empid": pass });
+    //    newEmployee.updateMany({"Empid":pass},{$set:{"Projectstatus":""}})
     console.log(password);
 });
 
@@ -298,8 +299,6 @@ app.post('/details/:Teamname', (req, res) => {
 
     newModel.find({ "Teamname": Teamname }).then(data => res.json(data))
 })
-
-
 
 app.get('/assignspecial', (req, res) => {
 
@@ -431,12 +430,13 @@ app.get('/rating', (req, res) => {
 
 // filter in USerData
 app.post('/search', (req, res) => {
-    const { spc, empplatform ,emprating} = req.body;
-    console.log({spc, empplatform,emprating},'123');
+    const { spc, empplatform, emprating } = req.body;
+    const adminsearch = new RegExp(spc, 'i');
+    console.log({ spc, empplatform, emprating }, '123');
     console.log(typeof (empplatform));
     console.log(typeof (emprating));
 
-    newEmployee.find({ $or: [{ Specialized1: spc }, { Specialized2: spc }, { Specialized3: spc }, { Platform: empplatform }, { Rating: emprating }] }).then(data => res.json(data))
+    newEmployee.find({ $or: [{ Specialized1: adminsearch }, { Specialized2: adminsearch }, { Specialized3: adminsearch }, { Platform: empplatform }, { Rating: emprating }] }).then(data => res.json(data))
 
 });
 
@@ -491,7 +491,7 @@ if (NODE_ENV === 'DIT') {
 //     const {id}=req.params;
 //     newEmployee.find({'Empid':id}).then(data => {
 //         console.log(data);
-        
+
 //     });
 // });
 

@@ -92,7 +92,7 @@ left: 990px;
 .deltable {
   position: absolute;
   width: fit-content;
-  left: 600px;
+  left: 670px;
   top: 200px;
 }
 .sbtn {
@@ -136,7 +136,7 @@ left: 990px;
 }
 button.sbtn {
   position: absolute;
-  left: 1190px;
+  left: 1210px;
   top: 250px;
 }
 /* tr.ttr{

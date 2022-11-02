@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import homeimg from './image1.svg';
 import waveimg from './wav.png';
-import welcome from './welcome.svg';
 import './Home.css';
 function Homepa() {
 

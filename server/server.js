@@ -112,10 +112,10 @@ app.put('/remcomplete/:Team', async (req, res) => {
 
 app.post('/olist/:id', (req, res) => {
   const { id } = req.params;
-  // console.log(id, 'olist')
+   console.log(id, 'olist')
   newModel.find({ $and: [{ Empid: id }, { Projectstatus: 'Ongoing' }] }).then(data => {
       let [first, ...rest] = data;
-     // console.log(first, ...rest.Empstatus);
+      //console.log(first);
       
 
       res.json(first.Empstatus)
@@ -123,7 +123,7 @@ app.post('/olist/:id', (req, res) => {
 })
 app.post('/leaderteam/:id',(req,res)=>{
   const {id}=req.params;
-  //  console.log(id,'leaderteam')
+   console.log(id,'leaderteam')
   newModel.find({$and:[{Empid:id},{Projectstatus:'Ongoing'}]}).then(data=>{
       let [first,...rest] =data;
       //console.log( first)
@@ -159,7 +159,7 @@ app.post('/empdelsearch', async (req, res) => {
 
 app.post('/tokenDecode', async (req, res) => {
   const { token } = req.body;
-  console.log(token);
+  //console.log(token);
   const { user } = jwt.verify(token, "dmbjskkfjckmxkcjskdi");
 
 

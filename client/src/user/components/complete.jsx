@@ -26,19 +26,32 @@ export default function Complete(){
   const id = localStorage.getItem('data');
   const [olist,setOlist]=useState('');
   const [team,setTeam]=useState('');
+  const token = localStorage.getItem('data');
+  const [tokendata, setTokendata] = useState('');
    
    
- useEffect(()=>{
-  console.log(id)
-  fetch(`${process.env.REACT_APP_SERVER_PREFIX}/olist/${id}`,{method:"post",headers:{'content-type':'apllication/json'}})
-  .then(res=>res.json())
-  .then(data=>setOlist(data))
-  fetch(`${process.env.REACT_APP_SERVER_PREFIX}/leaderteam/${id}`,{method:"post",headers:{'content-type':'apllication/json'}})
-  .then(res=>res.json())
-  .then(data=>setTeam(data))
- },[])
+  useEffect(() => {
+    //console.log(id)
+    fetch(`${process.env.REACT_APP_SERVER_PREFIX}/tokenDecode`, { method: 'POST', body: JSON.stringify({ token }), headers: { 'content-type': 'application/json' } })
+      .then((res) => res.json())
+      .then((data) => {
+        setTokendata(data);
+        
+      });
 
-
+  }, [])
+  
+  if (tokendata) {
+    console.log(tokendata)
+    fetch(`${process.env.REACT_APP_SERVER_PREFIX}/olist/${tokendata.Empid}`, { method: "post", headers: { 'content-type': 'apllication/json' } })
+      .then(res => res.json())
+      .then(data => setOlist(data))
+      
+    fetch(`${process.env.REACT_APP_SERVER_PREFIX}/leaderteam/${tokendata.Empid}`, { method: "post", headers: { 'content-type': 'apllication/json' } })
+      .then(res => res.json())
+      .then(data => setTeam(data))
+      
+  }
 
 
   function complete(){

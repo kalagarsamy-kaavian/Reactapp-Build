@@ -27,8 +27,6 @@ app.use('/images', express.static(path.join(__dirname + '/../client/build/images
 app.use(cors({ origin: 'http://localhost:3000' }));
 app.use(bodyParser.json());
 
-
-
 mongoose.connect("mongodb+srv://blueTeam:o9T62uCK3dt5V078@db-kaavian-sys-cluster-in1-966a0c87.mongo.ondigitalocean.com/blueDB?tls=true&authSource=admin&replicaSet=db-kaavian-sys-cluster-in1", (err) => {
   if (!err) {
     console.log("db connected")
@@ -268,34 +266,34 @@ app.post("/employeehistory",async(req,res)=>{
 
 
 })
-
+//Add Employee
 app.post('/emprecord', async (req, res) => {
-
-  console.log('Add');
-  const { pass, input, dob, con, loc, doj, exp, speo, spet, sper, pt, role, password } = req.body;
-  const body = { input, password };
-  console.log(body);
-  console.log(input)
-
-  console.log('Inserted');
-  if (!(body.input && body.password)) {
-    return res.status(400).send({ error: "data format error" });
-  }
-  const user = new newUser(body);
-  user.password = await bcrypt.hash(user.password, 10);
-  console.log(user);
-
-
-  newEmployee.create([{ "Empid": pass, "Empname": input, "DOB": dob, "Contact": con, "location": loc, "DOJ": doj, "Experience": exp, "Specialized1": speo, "Specialized2": spet, "Specialized3": sper, "Platform": pt ,"Projectstatus":""}])
-    .then(() => {
-      res.json({ msg: 'Success' });
-    }).catch((err) => {
-      console.log('Error', err);
-      res.json({ err: 'already exist..' });
-    });
-
-  newUser.create({ "username": input, "password": user.password, "role": role, "Empid": pass });
-  console.log(password);
+    console.log('Add');
+    const { pass, input, dob, con, loc, doj, exp, speo, spet, sper, pt, role, password } = req.body;
+    const body = { input, password };
+    console.log(body);
+    console.log(input)
+    console.log('Inserted');
+    if (!(body.input && body.password)) {
+        return res.status(400).send({ error: "data format error" });
+    }
+    const user = new newUser(body);
+    // const salt = await bcrypt.gensalt(6);
+    user.password = await bcrypt.hash(user.password, 10);
+    console.log(user);
+    // // const db=getdb();
+    // const collection=  db.collection('project');
+    // user.save().then((doc) => res.status(201).send(doc));
+    newEmployee.create([{ "Empid": pass, "Empname": input, "DOB": dob, "Contact": con, "location": loc, "DOJ": doj, "Experience": exp, "Specialized1": speo, "Specialized2": spet, "Specialized3": sper, "Platform": pt }])
+        .then(() => {
+            res.json({ msg: 'Success' });
+        }).catch((err) => {
+            console.log('Error', err);
+            res.json({ err: 'already exist..' });
+        });
+    newUser.create({ "username": input, "password": user.password, "role": role, "Empid": pass });
+    //    newEmployee.updateMany({"Empid":pass},{$set:{"Projectstatus":""}})
+    console.log(password);
 });
 
 
@@ -329,8 +327,6 @@ app.post('/details/:Teamname', (req, res) => {
 
 
 })
-
-
 
 app.get('/assignspecial', (req, res) => {
 
@@ -459,16 +455,14 @@ app.get('/rating', (req, res) => {
 
 // filter in USerData
 app.post('/search', (req, res) => {
+    const { spc, empplatform, emprating } = req.body;
+    const adminsearch = new RegExp(spc, 'i');
+    console.log({ spc, empplatform, emprating }, '123');
+    console.log(typeof (empplatform));
+    console.log(typeof (emprating));
 
+    newEmployee.find({ $or: [{ Specialized1: adminsearch }, { Specialized2: adminsearch }, { Specialized3: adminsearch }, { Platform: empplatform }, { Rating: emprating }] }).then(data => res.json(data))
 
-  const { spc, empplatform, emprating } = req.body;
-  const adminsearch = new RegExp(spc, 'i');
-  console.log({ spc, empplatform, emprating }, '123');
-  console.log(typeof (empplatform));
-  console.log(typeof (emprating));
-
-
-  newEmployee.find({ $or: [{ Specialized1: adminsearch }, { Specialized2: adminsearch }, { Specialized3: adminsearch }, { Platform: empplatform }, { Rating: emprating }] }).then(data => res.json(data))
 });
 //API to get distinct Emp id in the dropdown menu
 
@@ -507,7 +501,7 @@ if (NODE_ENV === 'DIT') {
 //     const {id}=req.params;
 //     newEmployee.find({'Empid':id}).then(data => {
 //         console.log(data);
-        
+
 //     });
 // });
 app.listen(3004, () => {

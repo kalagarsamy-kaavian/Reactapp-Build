@@ -1,24 +1,25 @@
+// importing the required packages
 import { Rating } from 'react-simple-star-rating'
 import React from 'react';
 import {useState,useEffect} from 'react';
 import image from "./rating1.svg";
+//importing the css files 
 import "./Rating.css";
 import "./rate.css";
-
+//function to create contents of the rate Employee
 export default function RateEmp(){
+//declaring the required variables
     const [rating, setRating] = useState(0)
-    const[rates,setRates]=useState("");
     const [emp,setEmp] = useState([]);
     const [Empid,setEmpid] = useState('');
     const [value,setvalue]=useState([]);
     const [details,setDetails]=useState([]);
-    
     useEffect(() => {
-        
-
+        //fetch call to get the distinct empid
         fetch(`${process.env.REACT_APP_SERVER_PREFIX}/empid1`).then(res => res.json()).then(data => setEmp(data));
     },[emp]);
     const submit = (e) => {
+        //fetch call to search and display the details of selected empid from the dropdown
         fetch(`${process.env.REACT_APP_SERVER_PREFIX}/search1`,{
             method:'POST',
             body:JSON.stringify({Empid}),
@@ -29,6 +30,7 @@ export default function RateEmp(){
             console.log(details);
         })
     }
+    //fetch call to update the rating value of the employee with the selected value of stars
     const upemp = () => {
         console.log(value)
         fetch(`${process.env.REACT_APP_SERVER_PREFIX}/rateemp`,{
@@ -36,36 +38,20 @@ export default function RateEmp(){
             body:JSON.stringify({Empid,value}),
             headers:{'content-type':'application/json'}
         }).then(res => res.json()).then(console.log(details));
+        window.alert('Rating Success')
     }
-    // const sendmsg=()=>{
-    //     const nexmo = new Nexmo({
-    //         apiKey: '54543ba1',
-    //         apiSecret: '6Xrnpq1Rg4YOkKlq',
-    //     });
-        
-    //     const from = "Vonage APIs";
-    //     const to = "+91 9488983600";
-    //     const text = "Message from my project";
-        
-    //     var result = nexmo.message.sendSms(from, to, text); 
-        
-    //     console.log(result);
-    // }
-
    // Catch Rating value
     const handleRating = (rate) => {
       setRating(rate)
-      // console.log("rate",rate)
-      // setRates(rate)
-      // other logic
     }
-    // Optinal callback functions
+    //callback functions
     const onPointerEnter = () => console.log('Enter')
     const onPointerLeave = () => console.log('Leave')
    const onPointerMove = (value, index) => {
     setvalue(value)
     console.log(value, index)
 }
+
    return(
     <div>
         <body>
@@ -107,14 +93,14 @@ export default function RateEmp(){
         onPointerLeave={onPointerLeave}
         onPointerMove={onPointerMove}
            />
+
            </div>
-            {/* <center><button classname="starupdate" onClick={() => { upemp(); sendmsg();}}>RATE<span></span></button></center> */}
-            {/* <center><button className='starupdate' onClick={()=>{upemp();sendmsg();}}>RATE<span></span></button></center> */}
             <center><button className='starupdate' onClick={upemp}>RATE<span></span></button></center>
             <div className='starimage'>
             <img src={image}></img>
             </div>
         </center>
         </body>
-        </div>)
+        </div>
+        )
 }

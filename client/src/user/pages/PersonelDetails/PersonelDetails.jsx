@@ -1,13 +1,11 @@
+//importing the required packages
 import React from "react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
-import Update from "./update";
-
 import './PersonelDetails.css'
+//function to create contents of Personal details
 export default function Employee() {
     const [item, setItems] = useState([]);
-    const [logout, setLogout] = useState(false);
     const[display,setDisplay]=useState('none')
     const[displa,setDispla]=useState('none')
     const[displ,setDispl]=useState('none')
@@ -16,22 +14,21 @@ export default function Employee() {
     let token = localStorage.getItem('data');
     let username, id;
     const [Id, setId] = useState('');
-   
-
-    //const id = localStorage.getItem('data');
-    const navigate = useNavigate();
+    //fetch call to decode the token  
     useEffect(() => {
       fetch(`${process.env.REACT_APP_SERVER_PREFIX}/tokenDecode`, { method: 'POST', body: JSON.stringify({ token }), headers: { 'content-type': 'application/json' } })
         .then((res) => res.json())
         .then((data) => {
           setId(data.Empid);
         });
+      //if decoded id exists   
     if(Id){
+      //fetch call to display the basic details of the particular id 
     fetch(`${process.env.REACT_APP_SERVER_PREFIX}/employeedetail`,{method:"post",body:JSON.stringify({Id}),headers:{'content-type':"application/json"}})
     .then(res=>res.json())
     .then(data=>{
         setItems(data)
-        
+        //logic to dispay star rating value of the Employee
    let [a]=data;
    if(a.Rating==5){
      setDisplay("");
@@ -51,10 +48,7 @@ export default function Employee() {
     });
     console.log(id)
   }},[Id])
-    //      if(!localStorage.getItem('data')){
-    //     navigate('/');
-    //        }
-
+    //to display the details of the employee in table format
     return <div ><table border="7px" className="personaldetailstable"><thead>
         <tr>
             <th>ID</th>
@@ -83,6 +77,7 @@ export default function Employee() {
             </tr>
         ))}
     </table>
+  {/* to display star rating */}
     <div className="Containerrate">
             <div className="skills">
                 {/* <div className="rateh2"> */}
@@ -97,9 +92,7 @@ export default function Employee() {
         <span class="r">T</span>
         <span class="G2">E</span>
         </div>
-  
-       
-                {/* </div> */}
+                {/* To display rating value in progress bar*/}
                 <div className="progress-bar">
                 {item.map(({ Rating})=>(
                     <div className="raterating"><span>{Rating}</span>
@@ -132,8 +125,6 @@ export default function Employee() {
                 ))}
                 </div>
             </div>
-          
         </div>
-      
     </div>
 }

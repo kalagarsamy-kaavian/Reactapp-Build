@@ -54,7 +54,18 @@ app.get('/tlcomplete', (req, res) => {
 })
 
 
-
+app.get('/tldate', async(req,res)=>{
+  const a=new Date();
+  a.setDate(a.getDate()+30);
+  let b=a.toISOString();
+  
+  let final=b.slice(0,10)
+  
+  await newModel.countDocuments({$and:[
+      {"Empstatus":"Team Leader"},{"Projectstatus":"Ongoing"},
+      {"Endingdate":{$gt:final}}
+  ]}).then(data=>res.json(data));
+})
 
 
 app.put('/test',async (req)=>{

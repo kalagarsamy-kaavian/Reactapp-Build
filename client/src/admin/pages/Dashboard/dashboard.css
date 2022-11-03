@@ -20,6 +20,8 @@
     font-size: 1.5rem;
     box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
     background-color:#3dd9d6;
+    position:relative;
+    right:100px;
 }
 
 .countshsad .completehsad td{
@@ -32,6 +34,8 @@
     padding: 50px;
     box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
     background-color:#3dd9d6;
+    position:relative;
+    right:100px;
 }
 .countshsad .ongoinghsad td{
     border-radius: 20px;
@@ -44,21 +48,23 @@
     padding: 50px;
     box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
     background-color:#3dd9d6;
+    position:relative;
+    right:100px;
 }
 
-.countshsad .listhsad td{
+.countshsad .workhsad td {
+    font-weight: bold;    
     border-radius: 20px;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    overflow-y: hidden;
-    row-gap: 40px;
-    font-size: 1.5rem;
-    padding-right: 6rem;
+    row-gap: 30px;
     padding: 50px;
-    font-weight: bold;    
+    padding-right: 6rem;
+    font-size: 1.5rem;
     box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
     background-color:#3dd9d6;
+    position:relative;
+    right:100px;
 }
-
 .teamshsad{
     margin-right: 4rem;
 }

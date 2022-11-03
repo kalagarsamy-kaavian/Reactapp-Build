@@ -6,8 +6,8 @@ export default function Empcomplete() {
 
     const [counts, setCount] = useState(0)
     const [numbers, setNum] = useState(0);
-//     const [list,setList]=useState(0);
     const [team, setTeam] = useState(0);
+    const [work,setWork]=useState(0);
     /**
      * the useEffect that fetch the API call from the backend and display that to the UI.
      * These are the contents that need to visible to the user or client
@@ -16,6 +16,7 @@ export default function Empcomplete() {
         fetch(`${process.env.REACT_APP_SERVER_PREFIX}/tlcomplete`).then(res => res.json()).then(data => setCount(data));
         fetch(`${process.env.REACT_APP_SERVER_PREFIX}/tlongoing`).then(res => res.json()).then(data => setNum(data));
         fetch(`${process.env.REACT_APP_SERVER_PREFIX}/tlcount`).then(res => res.json()).then(data => setTeam(data));
+        fetch(`${process.env.REACT_APP_SERVER_PREFIX}/tldate`).then(res => res.json()).then(data => setWork(data));
     })
     
 
@@ -33,6 +34,11 @@ export default function Empcomplete() {
                 <td>ONGOING<br></br><br></br>
                     {numbers}</td>
             </div>
+            <div class="workhsad">
+                <td>TARGET<br></br><br></br>
+                    {work}</td>
+                
+            </div> 
          </div>
          </body>)
 }

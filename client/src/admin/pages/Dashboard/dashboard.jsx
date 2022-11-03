@@ -35,7 +35,7 @@ export default function Empcomplete() {
                     {numbers}</td>
             </div>
             <div class="workhsad">
-                <td>TARGET<br></br><br></br>
+                <td>PROGRESS<br></br><br></br>
                     {work}</td>
                 
             </div> 

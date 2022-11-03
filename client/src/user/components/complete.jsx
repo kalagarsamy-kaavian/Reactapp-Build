@@ -41,6 +41,7 @@ export default function Complete(){
 
   }, [])
   
+ 
   if (tokendata) {
     console.log(tokendata)
     fetch(`${process.env.REACT_APP_SERVER_PREFIX}/olist/${tokendata.Empid}`, { method: "post", headers: { 'content-type': 'apllication/json' } })
@@ -53,8 +54,8 @@ export default function Complete(){
       
   }
 
-
   function complete(){
+ 
    console.log(olist,"olist")
    console.log(team,"team")
     //let [first]=olist;

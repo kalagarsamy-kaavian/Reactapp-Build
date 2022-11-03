@@ -28,7 +28,7 @@ function Header() {
                 <Typography className='htitlename' variant='h6' component="div" sx={{ flexGrow: 1 }}><h1>Project Management System</h1></Typography>
                 {/* <Search /> */}
                 <LogOutbtn/>
-             {/* <Complete/> */}
+             <Complete/>
                 
                 {/* <Button color="inherit">LogOut<BiLogOut className='logout'/></Button> */}
             </Toolbar>

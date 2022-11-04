@@ -13,7 +13,7 @@ const NewSchema=new mongoose.Schema({
   Specialized2:String,
   Specialized3:String,
   Platform:String,
-  Rating:Number,
+  Rating:String,
   Projectstatus:String
 },{collection:'employeenew'})
 

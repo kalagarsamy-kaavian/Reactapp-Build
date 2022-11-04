@@ -20,6 +20,7 @@ export default function Search() {
     }, []);
     //Onsearch Function
     function onSearch() {
+        
         fetch(`${process.env.REACT_APP_SERVER_PREFIX}/search`, {
             method: 'POST', body: JSON.stringify({ spc, empplatform,emprating }),
             headers: { 'content-type': 'application/json' }
@@ -36,25 +37,25 @@ export default function Search() {
             <h1>Search Employee</h1>
         </div>
         <div className="filteralign">
-            <h2>
+            {/* <h2> */}
                 {/* <label className="plat">Platform : </label> */}
-                <select className="searchselect" value={empplatform} onChange={e => setEmpplatform(e.target.value)}>
+                {/* <select className="searchselect" value={empplatform} onChange={e => setEmpplatform(e.target.value)}>
                     <option value="" disablevalue>Platform</option>
                     {platform.map(plat => <option>{plat}</option>)}
-                </select>
-            </h2>
-            <h20>
+                </select> */}
+            {/* </h2> */}
+            {/* <h20>
                     <select className="trate" value={emprating} onChange={e => setEmprating(e.target.value)}>
 							<option value="" disablevalue>Rating</option>
 							{rating.map(rate => <option>{rate}</option>)}
 						</select>
-            </h20>
-            <h3>
+            </h20> */}
+            <h100>
 
                 {/* <label className="fill">Specialized : </label><h20> </h20> */}
-                <input className="searchbox" placeholder="Specialized...." value={spc} onChange={e => setSpc(e.target.value)} />
+                <input className="searchbox" placeholder="Specialized/Rating/Platform" value={spc} onChange={e => setSpc(e.target.value)} />
 
-            </h3>
+            </h100>
             <h4><button className="searchbtn" onClick={onSearch}><span>🔍</span></button></h4>
         </div>
 

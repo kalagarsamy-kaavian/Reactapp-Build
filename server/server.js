@@ -106,8 +106,7 @@ app.put('/test',async (req)=>{
 
 app.put('/remcomplete/:Team', async (req, res) => {
   const { Team } = req.params;
-  //console.log('remcomplete', Teamname)
-  //console.log(id);
+  
   await newModel.updateMany({ Teamname: Team }, { $set: { Projectstatus: 'COMPLETED' } })
 
       const data = await newModel.find({ Teamname: Team })
@@ -121,27 +120,49 @@ app.put('/remcomplete/:Team', async (req, res) => {
       ).then(data => console.log(data));
   })
 
-app.post('/olist/:id', (req, res) => {
-  const { id } = req.params;
-   console.log(id, 'olist')
-  newModel.find({ $and: [{ Empid: id }, { Projectstatus: 'Ongoing' }] }).then(data => {
-      let [first, ...rest] = data;
-      //console.log(first);
-      
+app.post('/olist/:tokendata', async(req, res) => {
+  const { tokendata} = req.params;
+  //  console.log(id, 'olist')
+   console.log(tokendata,'token')
+ const data=await newModel.find({ $and: [{ Empid: tokendata }, { Projectstatus: 'Ongoing' }] })
+console.log(data)
+if(data.length==0){
+  console.log('helo')
+}
+else{
+let[first]=data;
+res.json(first.Empstatus)
+}
 
-      res.json(first.Empstatus)
-  })
+//  if(data){
+//   let[first]=data;
+//    res.json(first.Empstatus)
+//  }
+//  else{
+//   console.log('helo');
+//  }
 })
-app.post('/leaderteam/:id',(req,res)=>{
+app.post('/leaderteam/:id',async(req,res)=>{
   const {id}=req.params;
    console.log(id,'leaderteam')
-  newModel.find({$and:[{Empid:id},{Projectstatus:'Ongoing'}]}).then(data=>{
-      let [first,...rest] =data;
+  const data=await newModel.find({$and:[{Empid:id},{Projectstatus:'Ongoing'}]})
       //console.log( first)
-      res.json(first.Teamname);
+   if(data.length==0){
+      console.log('helo')
+   }
+   else{
+    let[first]=data;
+    res.json(first.Teamname)
+   }
+      // if(data!=[]){
+      //   let[first]=data;
+      //   console.log(first.Teamname)
+      // }
+      // else{
+      //  console.log('helo');
+      // }
       
   })
-})
 
 app.get('/remoid', (req, res) => {
   newEmployee.distinct('Empid').then(data => { res.send(data) })

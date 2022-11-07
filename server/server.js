@@ -11,172 +11,211 @@ const bodyParser = require('body-parser');
 const NODE_ENV = process.env.NODE_ENV || 'DEV';
 const bcrypt = require('bcrypt');
 
+
+
+const jwt = require("jsonwebtoken");
+const JWT_SECRET_KEY = "dmbjskkfjckmxkcjskdi";
+// const LocalStorage= require('node-localstorage').LocalStorage;
+// global.localStorage=new LocalStorage('./scratch');
+
+
+
 app.use('/static', express.static(path.join(__dirname + '/../client/build/static')));
+
 app.use('/images', express.static(path.join(__dirname + '/../client/build/images')));
 
 app.use(cors({ origin: 'http://localhost:3000' }));
 app.use(bodyParser.json());
 
-// app.use(async (req,res,next)=>{
-//     req.cookies.Empid;
-//     // localStorage.getItem('data');
-
-//     if(valid){
-//         const url=req.url;
-//         const isAdminurl =url.indexOf('/admin') !== -1;
-//         const user =await username.find({Empid});
-//         const userType=user.type;
-//         if(userType=='user'&& isAdminurl){
-//             return res.status(403);
-//         }
-//     }
-//     next();
-// })
 mongoose.connect("mongodb+srv://blueTeam:o9T62uCK3dt5V078@db-kaavian-sys-cluster-in1-966a0c87.mongo.ondigitalocean.com/blueDB?tls=true&authSource=admin&replicaSet=db-kaavian-sys-cluster-in1", (err) => {
-    if (!err) {
-        console.log("db connected")
-    }
-    else {
-        console.log("db error")
-    }
+  if (!err) {
+    console.log("db connected")
+  }
+  else {
+    console.log("db error")
+  }
+
 });
 
 
 app.get('/tlcount', (req, res) => {
-    // newModel.count({Projectstatus:"Ongoing"}).then(res=>res.json).then(data=>res.send(data));
+
     newModel.count({ "Empstatus": "Team Leader" }).then(data => res.json(data));
 })
 
 
-app.get('/ongoing', (req, res) => {
-    // newModel.count({Projectstatus:"Ongoing"}).then(res=>res.json).then(data=>res.send(data));
+app.get('/tlongoing', (req, res) => {
     newModel.count({ "Empstatus": "Team Leader", "Projectstatus": "Ongoing" }).then(data => res.json(data));
 })
 
-app.get('/complete', (req, res) => {
-    // newModel.count({Projectstatus:"Ongoing"}).then(res=>res.json).then(data=>res.send(data));
+app.get('/tlcomplete', (req, res) => {
     newModel.count({ "Empstatus": "Team Leader", "Projectstatus": "COMPLETED" }).then(data => res.json(data));
+
 })
 
 
+app.get('/tldate', async(req,res)=>{
+  const a=new Date();
+  a.setDate(a.getDate()+30);
+  let b=a.toISOString();
+  
+  let final=b.slice(0,10)
+  
+  await newModel.countDocuments({$and:[
+      {"Empstatus":"Team Leader"},{"Projectstatus":"Ongoing"},
+      {"Endingdate":{$gt:final}}
+  ]}).then(data=>res.json(data));
+})
 
-app.put('/test', async (req, res) => {
-    const { mem, memt, memr, memf, meme, pn, tn, d, start, end, pco, es, descr, pt } = req.body;
-    const test = await newEmployee.find({ $or: [{ Empname: mem }, { Empname: memt }, { Empname: memr }, { Empname: memf }, { Empname: meme }] })
-    let [frst, scnd, third, fourth, fifth] = test;
-    newModel.create([{ "Empid": frst.Empid, "Empname": frst.Empname, "Projectname": pn, "Teamname": tn, "Duration": d, "Startingdate": start, "Endingdate": end, "Projectstatus": "Ongoing", "Empstatus": "Team Leader", "Description": descr, "Platform": pt },
-    { "Empid": scnd.Empid, "Empname": scnd.Empname, "Projectname": pn, "Teamname": tn, "Duration": d, "Startingdate": start, "Endingdate": end, "Projectstatus": "Ongoing", "Empstatus": "Member", "Description": descr, "Platform": pt },
-    { "Empid": third.Empid, "Empname": third.Empname, "Projectname": pn, "Teamname": tn, "Duration": d, "Startingdate": start, "Endingdate": end, "Projectstatus": "Ongoing", "Empstatus": "Member", "Description": descr, "Platform": pt },
-    { "Empid": fourth.Empid, "Empname": fourth.Empname, "Projectname": pn, "Teamname": tn, "Duration": d, "Startingdate": start, "Endingdate": end, "Projectstatus": "Ongoing", "Empstatus": "Member", "Description": descr, "Platform": pt },
-    { "Empid": fifth.Empid, "Empname": fifth.Empname, "Projectname": pn, "Teamname": tn, "Duration": d, "Startingdate": start, "Endingdate": end, "Projectstatus": "Ongoing", "Empstatus": "Member", "Description": descr, "Platform": pt }
+
+app.put('/test',async (req)=>{
+    try{
+    const{mem,memt,memr,memf,meme,pn,tn,d,start,end,descr,pt}=req.body;
+    const test= await newEmployee.find({$or:[{Empname:mem},{Empname:memt},{Empname:memr},{Empname:memf},{Empname:meme}]})
+    let [frst,scnd,third,fourth,fifth]=test;
+    
+    newModel.create([{'Empid':frst.Empid,'Empname':frst.Empname,'Projectname':pn,'Teamname':tn,'Duration':d,'Startingdate':start,'Endingdate':end,'Projectstatus':'Ongoing','Empstatus':'Team Leader','Description':descr,'Platform':pt},
+        {'Empid':scnd.Empid,'Empname':scnd.Empname,'Projectname':pn,'Teamname':tn,'Duration':d,'Startingdate':start,'Endingdate':end,'Projectstatus':'Ongoing','Empstatus':'Member','Description':descr,'Platform':pt},
+        {'Empid':third.Empid,'Empname':third.Empname,'Projectname':pn,'Teamname':tn,'Duration':d,'Startingdate':start,'Endingdate':end,'Projectstatus':'Ongoing','Empstatus':'Member','Description':descr,'Platform':pt},
+        {'Empid':fourth.Empid,'Empname':fourth.Empname,'Projectname':pn,'Teamname':tn,'Duration':d,'Startingdate':start,'Endingdate':end,'Projectstatus':'Ongoing','Empstatus':'Member','Description':descr,'Platform':pt},
+        {'Empid':fifth.Empid,'Empname':fifth.Empname,'Projectname':pn,'Teamname':tn,'Duration':d,'Startingdate':start,'Endingdate':end,'Projectstatus':'Ongoing','Empstatus':'Member','Description':descr,'Platform':pt}
+
+
     ]);
+    await newEmployee.updateMany(
+        { Empid: { $in: [frst.Empid, scnd.Empid, third.Empid, fourth.Empid, fifth.Empid] } },
+        { $set: { Projectstatus : 'Ongoing' } },
+        {multi: true}
+     )
+     await newEmployee.updateMany(
+        { Empid: frst.Empid  },
+        { $set: { Empstatus : 'Team Leader' } },
+     )
+     await newEmployee.updateMany(
+        { Empid: { $in: [ scnd.Empid, third.Empid, fourth.Empid, fifth.Empid] } },
+        { $set: { Empstatus : 'Member' } },
+        {multi: true}
+     )
+    }
+    catch(err){
+       console.log(err,'err')
+    }
+    
 })
 
-// app.delete('/emprecord',(req,res)=>{
-// 	const data=req.body;
-//     console.log(data.data);
-//     newEmployee.deleteOne({"Empid": data.data}).then(data=>res.json(data));
-//     console.log('deleted')
-// })
 
-app.patch('/remcomplete/:Teamname', (req, res) => {
-    const { Teamname } = req.params;
-    console.log('remcomplete', Teamname)
-    //console.log(id);
-    newModel.updateMany({ Teamname: Teamname }, { $set: { Projectstatus: "COMPLETED" } }).then(updateStatus => {
-        res.json(updateStatus);
-        console.log('Btn updated')
-    })
+app.put('/remcomplete/:Team', async (req, res) => {
+  const { Team } = req.params;
+  
+  await newModel.updateMany({ Teamname: Team }, { $set: { Projectstatus: 'COMPLETED' } })
+
+      const data = await newModel.find({ Teamname: Team })
+      let [a, b, c, d, e] = data;
+      // await newEmployee.updateMany({'Empid':e.Empid},{'Projectstatus':'COMPLETED'}).then(data => console.log(data));
+      //console.log(data);
+      await newEmployee.updateMany(
+          { Empid: { $in: [a.Empid, b.Empid, c.Empid, d.Empid, e.Empid] } },
+          { $set: { Projectstatus: 'COMPLETED' } },
+          { multi: true }
+      ).then(data => console.log(data));
+  })
+
+app.post('/olist/:tokendata', async(req, res) => {
+  const { tokendata} = req.params;
+  //  console.log(id, 'olist')
+   console.log(tokendata,'token')
+ const data=await newModel.find({ $and: [{ Empid: tokendata }, { Projectstatus: 'Ongoing' }] })
+console.log(data)
+if(data.length==0){
+  console.log('helo')
+}
+else{
+let[first]=data;
+res.json(first.Empstatus)
+}
+
+//  if(data){
+//   let[first]=data;
+//    res.json(first.Empstatus)
+//  }
+//  else{
+//   console.log('helo');
+//  }
 })
-
-// app.post('/olist/:id',(req,res)=>{
-//     const {id}=req.params;
-//     // console.log(id)
-//     newModel.find({$and:[{Empid:id},{Projectstatus:'Ongoing'}]}).then(data=>res.json(data))
-// })
-
-app.post('/olist/:id', (req, res) => {
-    const { id } = req.params;
-    console.log(id)
-    newModel.find({ $and: [{ Empid: id }, { Projectstatus: 'Ongoing' }] }).then(data => {
-        let [first, ...rest] = data;
-
-        res.json(first.Empstatus)
-    })
-})
-app.post('/leaderteam/:id', (req, res) => {
-    const { id } = req.params;
-    console.log(id)
-    newModel.find({ $and: [{ Empid: id }, { Projectstatus: 'Ongoing' }] }).then(data => {
-        let [first, ...rest] = data;
-        //console.log(first.Teamname)
-        res.json(first.Teamname)
-    })
-})
+app.post('/leaderteam/:id',async(req,res)=>{
+  const {id}=req.params;
+   console.log(id,'leaderteam')
+  const data=await newModel.find({$and:[{Empid:id},{Projectstatus:'Ongoing'}]})
+      //console.log( first)
+   if(data.length==0){
+      console.log('helo')
+   }
+   else{
+    let[first]=data;
+    res.json(first.Teamname)
+   }
+      // if(data!=[]){
+      //   let[first]=data;
+      //   console.log(first.Teamname)
+      // }
+      // else{
+      //  console.log('helo');
+      // }
+      
+  })
 
 app.get('/remoid', (req, res) => {
-    newEmployee.distinct('Empid').then(data => { res.send(data) })
+  newEmployee.distinct('Empid').then(data => { res.send(data) })
 });
+
+
 //Delete filter
-// app.delete('/emprecord', async (req, res) => {
-//     const data = req.body;
-//     console.log(data.data);
-//     await newEmployee.deleteOne({ "Empid": data.data }).then(data => { return res.json(data) });
-//     //await newUser.deleteOne({"Empid":data.data}).then(data=>{return res.json(data)});
-//     console.log('deleted')
-// })
+
+app.delete('/emprecord',async (req,res)=>{
+	const data=req.body;
+    console.log(data.data);
+   await newEmployee.deleteOne({'Empid': data.data}).then(data=>{return res.json(data)});
+   //await newUser.deleteOne({"Empid":data.data}).then(data=>{return res.json(data)});
+    console.log('deleted')
+})
 
 app.post('/empdelsearch', async (req, res) => {
-    const { data } = req.body;
-    await newEmployee.find({ Empid: data }).then(data => {
-        res.send(data)
-    });
-    console.log(data);
+  const { data } = req.body;
+  await newEmployee.find({ Empid: data }).then(data => {
+    res.send(data)
+  });
+  console.log(data);
 });
+//Delete filter
 
-// app.post('/login',async(req,res)=>{
-//     const{user,pass}=req.body;   
-//     // const db=getDB();
-//     // const collection=db.collection("userinfo");
-//     const use=await newUser.findOne({username:user})
-//     if(!use)
-//     {
-//         //  return res.json({invaliduser})
-//         console.log("invalid")
-//     }
-//     else if(pass===use.password){
-//         //res.cookie('Username',user);
-//         return res.send(use);
-//     }
-//     // else{
-//     //     const msg="INVALID USERNAME OR PSSWORD"
-//     //                 res.send(msg);
-//     // }
-// });  
-// app.post('/login',async(req,res)=>{
-//     const {user,pass}=req.body;
-//     // const db=getDB();
-//     // const collection=db.collection("userinfo");
 
-//     const use=await newUser.findOne({username:user})
-//     console.log(use)
-//     if(!use)
-//     {
-//          return res.status(404).send('invalid user')
-//     }
-//  else if(pass===use.password){
-//         //res.cookie('Username',user);
-//         return res.send(use);
-//     }
-//     // else{
-//     //     const msg="INVALID USERNAME OR PSSWORD"
-//     //                 res.send(msg);
-//     // }
-// })
-app.post('/login', async (req, res) => {
-    const { user, pass } = req.body;
-    const body = { user, pass };
+app.post('/tokenDecode', async (req, res) => {
+  const { token } = req.body;
+  //console.log(token);
+  const { user } = jwt.verify(token, "dmbjskkfjckmxkcjskdi");
+
+
+  const userId = user.Empid;
+  const userRole = user.role;
+
+  await newUser.findOne({ $and: [{ Empid: userId }, { role: userRole }] })
+    .then((data) => {
+      return res.json(data);
+    })
+})
+
+ //API for logging in.It gets username and password from the text field and compares the username and password      
+
+
+
+
+app.post('/login',async(req,res)=>{
+    const {user,pass}=req.body;
+    const body = { user, pass};
+
+
     console.log(body);
+
     // const db=getDB();
     // const collection=db.collection("userinfo");
     const use = await newUser.findOne({ username: user })
@@ -184,63 +223,80 @@ app.post('/login', async (req, res) => {
     console.log(use);
     if (use) {
         const validPassword = await bcrypt.compare(body.pass, use.password);
+
         console.log(body.pass, "pass1");
         console.log(use.password, "pass2");
         console.log(validPassword, "pass3")
         if (!validPassword) {
-            res.status(400).json({ error: "Invalid password" });
+            return res.status(400).json({ error: "Invalid password" });
 
         } else {
-            // res.status(200).json({ message: "valid password"});
-            // console.log(use);
-            return res.json(use);
+            const token = jwt.sign({ user: use },JWT_SECRET_KEY);
+            return res.json({token,use});
         }
     } else {
-        res.status(401).json({ error: "User does not exist" });
+        res.status(401).json({ error: 'User does not exist' });
     }
-
-
-
-
-    // else{
-    //     const msg="INVALID USERNAME OR PSSWORD"
-    //                 res.send(msg);
-    // }
 });
 
-app.post("/employeedetail", async (req, res) => {
-    const { id } = req.body;
+//API to get the personal details of the employee who logged in
+
+
+
+
+app.post("/employeedetail",async(req,res)=>{
+    const{Id}=req.body;
+
     // const db=getDB();
     // const collection=db.collection("details");
-    console.log(id)
-    await newEmployee.find({ Empid: id }).then(data => res.json(data))
+    console.log(Id)
+    await newEmployee.find({Empid:Id}).then(data=>res.json(data))
+
+
+
 
 })
+
+
 app.get('/update', (req, res) => {
-    newModel.find({}).then(updateStatus => {
-        res.json(updateStatus);
-    });
+  newModel.find({}).then(updateStatus => {
+    res.json(updateStatus);
+  });
 });
+
+
+
 app.delete('/emprecord', (req, res) => {
+
     const data = req.body;
     console.log(data.data);
+
     newEmployee.deleteOne({ "Empid": data.data }).then(data => res.json(data));
     newUser.deleteOne({ "Empid": data.data }).then(data => res.json(data));
+
     console.log('deleted')
 })
 app.patch('/update', (req, res) => {
     const { updateStatus } = req.body;
     console.log(updateStatus);
+
+
     newModel.updateMany({ Teamname: updateStatus }, { $set: { Projectstatus: "COMPLETED" } }).then(updateStatus => {
+
         res.json(updateStatus);
     })
 })
 
-app.post("/employeehistory", async (req, res) => {
-    const { id } = req.body;
+//API to display the current and past project details of the logged in employee
+
+app.post("/employeehistory",async(req,res)=>{
+    const {Id}=req.body;
+
     // const db=getDB();
     // const collection=db.collection("employeehistory");
-    await newModel.find({ Empid: id }).then(data => res.send(data))
+    await newModel.find({Empid:Id}).then(data=>res.send(data))
+
+
 })
 //Add Employee
 app.post('/emprecord', async (req, res) => {
@@ -273,158 +329,159 @@ app.post('/emprecord', async (req, res) => {
 });
 
 
-app.post("/api/todo", (req, res) => {
-    const { data } = req.body;
-    console.log(data)
 
-    if (data === 'Completed') {
-        newModel.find({ $and: [{ "Empstatus": "Team Leader" }, { "Projectstatus": "COMPLETED" }] }).then(data => {
-            res.json(data);
-        })
-    }
-    else if (data === "Ongoing")
-        newModel.find({ $and: [{ "Empstatus": "Team Leader" }, { "Projectstatus": "Ongoing" }] }).then(data => {
-            res.json(data);
-        })
-    else {
-        newModel.find({ "Empstatus": "Team Leader" }).then(todoItem => res.json(todoItem))
-    }
+app.post("/api/todo", (req, res) => {
+  const { data } = req.body;
+  console.log(data)
+
+  if (data === 'Completed') {
+    newModel.find({ $and: [{ "Empstatus": "Team Leader" }, { "Projectstatus": "COMPLETED" }] }).then(data => {
+      res.json(data);
+    })
+  }
+  else if (data === "Ongoing")
+    newModel.find({ $and: [{ "Empstatus": "Team Leader" }, { "Projectstatus": "Ongoing" }] }).then(data => {
+      res.json(data);
+    })
+  else {
+    newModel.find({ "Empstatus": "Team Leader" }).then(todoItem => res.json(todoItem))
+  }
+
 })
 
 app.post('/details/:Teamname', (req, res) => {
 
 
-    const { Teamname } = req.params;
-    console.log(Teamname)
+  const { Teamname } = req.params;
+  console.log(Teamname)
 
-    newModel.find({ "Teamname": Teamname }).then(data => res.json(data))
+  newModel.find({ "Teamname": Teamname }).then(data => res.json(data))
+
+
 })
 
 app.get('/assignspecial', (req, res) => {
 
-    newModel.distinct('Projectstatus').then(todoSpecial => {
-        res.json(todoSpecial);
-    })
+
+  newModel.distinct('Projectstatus').then(todoSpecial => {
+    res.json(todoSpecial);
+  })
 
 })
-app.get('/assignname', (req, res) => {
-    newModel.distinct('Empname', { "Projectstatus": "COMPLETED" }).then(data => res.json(data))
-        .catch((err) => {
-        })
+
+
+app.get('/assignname',(req,res)=>{
+    // newEmployee.distinct('Empname',{"Projectstatus":"COMPLETED"||""}).then(data=>res.json(data))
+   newEmployee.find ( { Projectstatus: { $in: ['COMPLETED', ''] } } ) .distinct('Empname').then(data=>res.json(data))
+
+
+
 });
-// app.post('/assignemprecord',(req,res)=>{
-// 	const {pass,passt,passr,passf,passe,mem,memt,memr,memf,meme,pn,tn,d,start,end,pco,es,descr,pt}=req.body;
-//     console.log('input')
-// 	console.log('Inserted');
-// 	// const db=getdb();
-// 	// const collection=  db.collection('project');
-// 	newModel.create([{"Empid":pass,"Empname":mem,"Projectname":pn,"Teamname":tn,"Duration":d,"Startingdate":start,"Endingdate":end,"Projectstatus":pco,"Empstatus":es,"Description":descr,"Platform":pt},
-//     {"Empid":passt,"Empname":memt,"Projectname":pn,"Teamname":tn,"Duration":d,"Startingdate":start,"Endingdate":end,"Projectstatus":pco,"Empstatus":es,"Description":descr,"Platform":pt},
-//     {"Empid":passr,"Empname":memr,"Projectname":pn,"Teamname":tn,"Duration":d,"Startingdate":start,"Endingdate":end,"Projectstatus":pco,"Empstatus":es,"Description":descr,"Platform":pt},
-//     {"Empid":passf,"Empname":memf,"Projectname":pn,"Teamname":tn,"Duration":d,"Startingdate":start,"Endingdate":end,"Projectstatus":pco,"Empstatus":es,"Description":descr,"Platform":pt},
-//     {"Empid":passe,"Empname":meme,"Projectname":pn,"Teamname":tn,"Duration":d,"Startingdate":start,"Endingdate":end,"Projectstatus":pco,"Empstatus":es,"Description":descr,"Platform":pt}]);
-// 	//console.log();
-// })
+
 
 app.post('/frstid/:mem', (req, res) => {
     const { mem } = req.params;
     console.log(mem);
-
 })
 
-
-
+//The module for the Update
 app.get('/empaddid', (req, res) => {
-    newEmployee.distinct('Empid').then(Empid => res.json(Empid));
+    newEmployee.distinct('Empid').then(Empid => res.json(Empid));//Display the distinct employees id
 });
 
 app.post('/empaddsearch', async (req, res) => {
-    const { Empid } = req.body;
-    await newEmployee.find({ Empid: Empid }).then(data => {
-        res.send(data)
-    });
+    const { Empid } = req.body;     //by clicking the id it returns the data that is stored in the database
+  await newEmployee.findOne({ Empid: Empid }).then(data => {
+    console.log('server', data)
+    res.json(data)
+  })
 });
+
+
+//The code that able to update code into the database that already exists
 app.put('/empaddupdate', async (req, res) => {
-    const { Empid, nname, dob, phone1, location1 } = req.body;
-    console.log(location1);
-    const up = await newEmployee.updateOne({ Empid: Empid }, { $set: { Empname: nname, DOB: dob, Contact: phone1, location: location1 } })
-    // if(nname)
-    // {
-    //     await newEmployee.updateOne({Empid:Empid},{$set:{Empname:nname}})
+    const { Empid, Empname, Dob, Phone, Location } = req.body; //need to update these fields
+
+
+    console.log('Name : ', Empname);
+    console.log('Empid : ', Empid);
+    //const query={};
+    // if(nname){
+    //     query.Empname={nname};
     // }
-    // else if(dob)
-    // {
-    //     await newEmployee.updateOne({Empid:Empid},{$set:{DOB:dob}})
-    // }
-    // else if(phone1)
-    // {
-    //     await newEmployee.updateOne({Empid:Empid},{$set:{Contact:phone1}})
-    // }
-    // else if(location1)
-    // {
-    //     await newEmployee.updateOne({Empid:Empid},{$set:{location:location1}})
-    // }
-    // else{
-    //     await newEmployee.update({Empid:Empid},{$set:[{Empname:nname,DOB:dob,Contact:phone1,location:location1}]})
-    // }
-    //console.log(up);
+
+    await newEmployee.updateOne({ Empid: Empid }, { $set: { "Empname": Empname, "DOB": Dob, "Contact": Phone, "location": Location } })
+
 });
 
 
 app.get('/special', (req, res) => {
 
-    newModel.distinct('Projectstatus').then(todoSpecial => {
-        res.json(todoSpecial);
-    })
 
-})
+  newModel.distinct('Projectstatus').then(todoSpecial => {
+    res.json(todoSpecial);
+  })
 
 
-app.post("/api/todo/:Teamname", (req, res) => {
-    const { Teamname } = req.params;
+});
 
-    newModel.find({ Teamname: Teamname }).then(todoItems => {
-        //console.log(todoItems)
+
+
+
+app.post('/api/todo/:Teamname',(req,res)=>{
+    const{Teamname}=req.params;
+    
+newModel.find({Teamname:Teamname}).then(todoItems=>{
+		//console.log(todoItems)
+
+
         res.json(todoItems)
     });
-})
 
-// app.get('/pms/Filter', (req, res) => {
-// 	newEmployee.find({}).then(data => {
-// 		res.json(data);
-// 	});
-// });
+
+})
+//Filter 
 app.get('/pms/Filter', (req, res) => {
-    newEmployee.find({}).then(data => {
-        res.json(data);
-    });
+  newEmployee.find({}).then(data => {
+    res.json(data);
+  });
 });
 //Server run localhost3001 DB Data in Home
 app.get('/pms/Hometl', (req, res) => {
+
+
+
     // const db = getDB();
     // db.collection('UserData').find({"EmpRole":"Team Leader"}).toArray().then(data => {
     // 	res.json(data);
     // });
+
     newModel.find({ "Empstatus": "Team Leader" }).then(data => {
         res.json(data);
     });
+
+
+
 });
 
 //dropdown in Platform in UserData
 app.get('/platform', (req, res) => {
-    // const db = getDB();
-    // const collection = db.collection("UserData");
 
-    newEmployee.distinct('Platform').then(data => {
-        res.json(data);
-    });
+  // const db = getDB();
+  // const collection = db.collection("UserData");
+
+  newEmployee.distinct('Platform').then(data => {
+    res.json(data);
+  });
+
 });
 
 //dropdown in Rating in UserData
 app.get('/rating', (req, res) => {
-    newEmployee.distinct('Rating').then(data => {
-        res.json(data);
-    });
+
+  newEmployee.distinct('Rating').then(data => {
+    res.json(data);
+  });
 });
 
 
@@ -439,52 +496,37 @@ app.post('/search', (req, res) => {
     newEmployee.find({ $or: [{ Specialized1: adminsearch }, { Specialized2: adminsearch }, { Specialized3: adminsearch }, { Platform: adminsearch }, { Rating: adminsearch}] }).then(data => res.json(data))
 
 });
+//API to get distinct Emp id in the dropdown menu
 
-
-app.get('/tlcount', (req, res) => {
-    // newModel.count({Projectstatus:"Ongoing"}).then(res=>res.json).then(data=>res.send(data));
-    newModel.count({ "Empstatus": "Team Leader" }).then(data => res.json(data));
-})
-
-
-app.get('/tlongoing', (req, res) => {
-    // newModel.count({Projectstatus:"Ongoing"}).then(res=>res.json).then(data=>res.send(data));
-    newModel.count({ "Empstatus": "Team Leader", "Projectstatus": "Ongoing" }).then(data => res.json(data));
-})
-
-app.get('/tlcomplete', (req, res) => {
-    // newModel.count({Projectstatus:"Ongoing"}).then(res=>res.json).then(data=>res.send(data));
-    newModel.count({ "Empstatus": "Team Leader", "Projectstatus": "COMPLETED" }).then(data => res.json(data));
-})
 app.get('/empid1', async (req, res) => {
-    await newEmployee.distinct('Empid').then(Empid => res.json(Empid));
+  await newEmployee.distinct('Empid').then(Empid => res.json(Empid));
 });
+//API to search the details of selected Emp id in rating page
 app.post('/search1', async (req, res) => {
-    const { Empid } = req.body;
-    await newEmployee.find({ Empid: Empid }).then(data => {
-        res.send(data)
-    });
+  const { Empid } = req.body;
+  await newEmployee.find({ Empid: Empid }).then(data => {
+    res.send(data)
+  });
 });
+//API to update the rating of employee using star rating
 app.put('/rateemp', async (req, res) => {
-    const { Empid, value } = req.body;
-    console.log(Empid);
-    const str = value.toString()
-    console.log(str);
-    const up = await newEmployee.updateOne({ Empid: Empid }, { $set: { Rating: str } })
-    // const up1= await newUser.updateOne({Empid:Empid},{$set:{username:name1}})
-    console.log(up);
-    //console.log(up1);
-    // const up2 = await newModel.updateOne({Empid:Empid},{$set:{Empname:name1}})
-    // console.log(up2);
+  const { Empid, value } = req.body;
+  console.log(Empid);
+  const str = value.toString()
+  console.log(str);
+  const up = await newEmployee.updateOne({ Empid: Empid }, { $set: { Rating: str } })
+  console.log(up);
+
 });
 
 // for any other request, serve HTML in DIT environment (cloud env)
 if (NODE_ENV === 'DIT') {
-    const indexHTMLContent = fs.readFileSync(path.join(__dirname + '/../client/build/index.html'), 'utf8');
-    console.log('Index')
-    app.all('*', (req, res) => {
-        res.send(indexHTMLContent);
-    });
+  const indexHTMLContent = fs.readFileSync(path.join(__dirname + '/../client/build/index.html'), 'utf8');
+  console.log('Index')
+  app.all('*', (req, res) => {
+    res.send(indexHTMLContent);
+  });
+
 }
 //Authorization
 // app.get('/pms/authorized/:id', (req, res) => {
@@ -494,8 +536,10 @@ if (NODE_ENV === 'DIT') {
 
 //     });
 // });
-
-
 app.listen(3004, () => {
-    console.log("Application is running.");
+
+
+
+    console.log("Application is running.")
+
 });

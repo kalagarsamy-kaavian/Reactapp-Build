@@ -1,44 +1,39 @@
+//importing the required packages
 import React, { useState, useEffect } from 'react';
 import "./ProjectHistory.css";
-// import { Link, useParams } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
-// import './todo.css'
+//function to create contents of the project history page
 export default function History() {
-    const navigate = useNavigate();
-    const id = localStorage.getItem('data');
+    //declaring required variables
+    let token = localStorage.getItem('data');
     const [item, setItems] = useState([]);
-    const [logout, setLogout] = useState(false);
+    const [Id, setId] = useState('');
+    //fetch call to decode the token 
     useEffect(() => {
-        fetch(`${process.env.REACT_APP_SERVER_PREFIX}/employeehistory`, { method: "post", body: JSON.stringify({ id }), headers: { 'content-type': 'application/json' } })
+        fetch(`${process.env.REACT_APP_SERVER_PREFIX}/tokenDecode`, { method: 'POST', body: JSON.stringify({ token }), headers: { 'content-type': 'application/json' } })
+          .then((res) => res.json())
+          .then((data) => {
+            setId(data.Empid);
+          });
+          //if decoded id exists 
+        if (Id) {
+            //fetch call to display the project history of the logged in employee
+        fetch(`${process.env.REACT_APP_SERVER_PREFIX}/employeehistory`, { method: "post", body: JSON.stringify({ Id}), headers: { 'content-type': 'application/json' } })
             .then(res => res.json())
-            .then(data => setItems(data));
-        console.log(item);
-
-        if (!localStorage.getItem('data'))
-            navigate('/');
-    }, [id]);
-    useEffect(() => {
-    }, [logout])
-
-    const logoutPage = () => {
-        // e.preventDefault();
-        localStorage.removeItem('data');
-        setLogout(true);
-    }
-
-    // return <div className='historyoverall'>
-        {/* <div className='histroytable'> */}
+            .then(data => {setItems(data);
+                console.log(item);
+                console.log(data);         
+            });
+        }},[Id])
+        {/* displaying the project details in table view */}
             return <div className='ph'><table  border={1} class="center"> 
                 <thead>
                 <tr>
-                {/* <div className='tableheading'> */}
                     <th>PROJECT TITLE</th>
                     <th>TEAM NAME</th>
                     <th>PROJECT DURATION(in months)</th>
                     <th>PROJECT STARETED ON</th>
                     <th>PROJECT COMPLETED ON</th>
-                    <th>PROJECT STATUS</th>
-                    {/* </div> */}
+                    <th>PROJECT STATUS</th>  
                 </tr>
                 </thead>
                 {item.map(({ Projectname, Teamname, Duration, Startingdate, Endingdate, Projectstatus }) => (
@@ -52,8 +47,5 @@ export default function History() {
                     </tr> 
                 ))}
             </table>
-            {/* <button onClick={logoutPage}>LOGOUT</button> */}
-        {/* </div> */}
     </div>
 }
-

@@ -13,6 +13,7 @@
 }
 .searchdetails {
     overflow-y: auto;
+    /* cursor: not-allowed; */
 
 }
 .searchtable thead tr{
@@ -20,7 +21,8 @@
     color: #000000;
     text-align: left;
     font-weight: bold;
-    overflow-y: auto;
+    /* overflow-y: auto; */
+    overflow: auto;
 
 }
 .searchtable th,
@@ -70,17 +72,18 @@ td {
     color: rgb(57, 57, 57);
 } */
 
-label.plat {
-    position: absolute ;
-    top: 220px;
-    left: 1010px;
-}
+
 /* .searchselect {
 } */
 label.fill{
     position: absolute;
     top: 275px;
     left: 250px;
+}
+.searchselect {
+    position: absolute;
+    margin-left: 850px;
+    margin-top: 47px;
 }
 
 
@@ -94,8 +97,11 @@ label.fill{
 }
 .searchbtn {
     position: absolute;
+
     top: 200px;
     left: 690px;
+
+
     background: #3dd9d6;
 }
 .searchbtn:hover {
@@ -113,8 +119,10 @@ label.fill{
     color: #000000;
     text-align: center;
     font-size: 18px;
+
     padding: 10px;
     width: 80px;
+
     transition: all 0.5s;
     cursor: pointer;
     margin: 5px;
@@ -143,4 +151,13 @@ label.fill{
   .searchbtn:hover span:after {
     opacity: 1;
     right: 0;
+  }
+  .searchbox {
+    position: absolute;
+    top: 300px;
+    left: 310px
+  }
+  .trate {
+    margin-top: 50px;
+
   }

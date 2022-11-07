@@ -485,15 +485,15 @@ app.get('/rating', (req, res) => {
 });
 
 
-// filter in USerData
+// filter in Admin
 app.post('/search', (req, res) => {
-    const { spc, empplatform, emprating } = req.body;
+    const { spc } = req.body;
     const adminsearch = new RegExp(spc, 'i');
-    console.log({ spc, empplatform, emprating }, '123');
-    console.log(typeof (empplatform));
-    console.log(typeof (emprating));
-
-    newEmployee.find({ $or: [{ Specialized1: adminsearch }, { Specialized2: adminsearch }, { Specialized3: adminsearch }, { Platform: empplatform }, { Rating: emprating }] }).then(data => res.json(data))
+    console.log(adminsearch,'search')
+    console.log({ spc }, '123');
+    // console.log(empplatform,'empplat');
+    // console.log(typeof (emprating));
+    newEmployee.find({ $or: [{ Specialized1: adminsearch }, { Specialized2: adminsearch }, { Specialized3: adminsearch }, { Platform: adminsearch }, { Rating: adminsearch}] }).then(data => res.json(data))
 
 });
 //API to get distinct Emp id in the dropdown menu

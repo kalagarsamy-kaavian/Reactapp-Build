@@ -14,10 +14,10 @@ export default function History() {
           .then((data) => {
             setId(data.Empid);
           });
-          //if decoded id exists 
+          //if decoded id exists asdfghijklmnopqrstuvwxyz
         if (Id) {
             //fetch call to display the project history of the logged in employee
-        fetch(`${process.env.REACT_APP_SERVER_PREFIX}/employeehistory`, { method: "post", body: JSON.stringify({ Id}), headers: { 'content-type': 'application/json' } })
+        fetch(`${process.env.REACT_APP_SERVER_PREFIX}/employeehistory`, { method: "POST", body: JSON.stringify({ Id}), headers: { 'content-type': 'application/json' } })
             .then(res => res.json())
             .then(data => {setItems(data);
                 console.log(item);
@@ -25,7 +25,8 @@ export default function History() {
             });
         }},[Id])
         {/* displaying the project details in table view */}
-            return <div className='ph'><table  border={1} class="center"> 
+            return <div className='ph'>
+                <table  border={1} class="center"> 
                 <thead>
                 <tr>
                     <th>PROJECT TITLE</th>

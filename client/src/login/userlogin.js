@@ -92,7 +92,7 @@ export default function Userlogin() {
                             {/* eye icon with handletoggle function used to toggle between icon */}
                             <span className="click" onClick={handleToggle}><Icon icon={icon} size={10} /></span>
                         </div>
-                    </div>
+                    </div> 
                     <div id="captcha">
                         {/* Recaptcha function to implement google recaptcha */}
                         <ReCAPTCHA

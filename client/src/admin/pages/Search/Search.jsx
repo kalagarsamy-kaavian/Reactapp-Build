@@ -5,9 +5,9 @@ import './Adminfilter.css';
 export default function Search() {
     const [item, setItem] = useState([]);
     const [platform, setPlatform] = useState([]);
+    const [rating, setRating] = useState([]);
     const [spc, setSpc] = useState('');
     const [empplatform, setEmpplatform] = useState('');
-    const [rating, setRating] = useState([]);
 	const [emprating, setEmprating] = useState('');
 
 

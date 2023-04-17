@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import "./RewriteEmployee.css";
 
 export default function Updateemp() {
-    const [emp,setEmp] = useState([]);
+        const [emp,setEmp] = useState([]);
         const [Empid,setEmpid] = useState('');
         const [details,setDetails]=useState([]);
         //Variables that contains the newly changed values from the input box

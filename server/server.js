@@ -186,7 +186,6 @@ app.post('/empdelsearch', async (req, res) => {
   });
   console.log(data);
 });
-//Delete filter
 
 
 app.post('/tokenDecode', async (req, res) => {
@@ -409,15 +408,11 @@ app.put('/empaddupdate', async (req, res) => {
     // if(nname){
     //     query.Empname={nname};
     // }
-
     await newEmployee.updateOne({ Empid: Empid }, { $set: { "Empname": Empname, "DOB": Dob, "Contact": Phone, "location": Location } })
-
 });
 
 
 app.get('/special', (req, res) => {
-
-
   newModel.distinct('Projectstatus').then(todoSpecial => {
     res.json(todoSpecial);
   })
@@ -443,7 +438,7 @@ newModel.find({Teamname:Teamname}).then(todoItems=>{
 //Filter 
 app.get('/pms/Filter', (req, res) => {
   newEmployee.find({}).then(data => {
-    res.json(data);
+    res.json(data); 
   });
 });
 //Server run localhost3001 DB Data in Home
